@@ -3,7 +3,7 @@ assume cs:lab, ds:lab, es:nothing, ss:nothing
 org 100h
 main: jmp processing
 
-tetr_to_hex	proc near
+tetr_to_hex	proc near 
 	and	al, 0fh
 	cmp al, 09
 	jbe	next
@@ -45,33 +45,6 @@ word_to_hex	proc near
 	ret
 word_to_hex	endp
 
-byte_to_dec	proc near
-	;перевод в 10 сс, si - адрес поля младшей цифры
-	push cx
-	push dx
-	push ax
-	xor	ah, ah
-	xor	dx, dx
-	mov	cx, 10
-loop_bd: 
-	div	cx
-	or dl, 30h
-	mov	[si], dl
-	dec	si
-	xor	dx, dx
-	cmp	ax, 10
-	jae	loop_bd
-	cmp	ax, 00h
-	jbe	end_l
-	or al, 30h
-	mov	[si], al
-end_l:	
-	pop	ax
-	pop	dx
-	pop	cx
-	ret
-byte_to_dec	endp
-
 print proc near
 	push ax
 	mov ah, 09h
@@ -81,124 +54,102 @@ print proc near
 print endp
 
 processing:
-	push ds
-	pop es
-
 	;Unavailable memory segment address
-	mov ax, es:[02h]
+	mov ax, ds:[02h]
 	mov di, offset memData + 39	
 	call word_to_hex
 	mov dx, offset memData
 	call print
   
 	;Segment address of the environment
-	mov di, offset blcData + 39
-	mov ax, es:[2ch]
-	mov blcSeg, ax ;запоминаем сегмент
+	mov di, offset envData + 39
+	mov ax, ds:[2ch]
+	mov env_seg, ax ;запоминаем сегмент
 	call word_to_hex
-	mov dx, offset blcData
+	mov dx, offset envData
 	call print 
 
 	;Command line tail
-	mov cl, es:[80h]
-	mov di, offset CmdLine + 18
+	mov cl, ds:[80h]
+	mov di, offset cmdLine + 18
 	test cl, cl
 	je noCmdLine	
-	mov si,081h
-    
+	mov si, 81h    
 	copy: 
-		mov al, es:[si]
+		mov al, ds:[si]
 		mov [di], al
 		inc si
 		inc di
-		loop copy
-  
-	mov al, '$'
-	mov [di], al
-	mov dx, offset CmdLine
+		loop copy  
+	mov dx, offset cmdLine
 	call print
-	jmp contents
+	jmp env
     noCmdLine:
-		mov dx, offset ZCmdLine
+		mov dx, offset ZcmdLine
 		call print
 	
-	;contents	
-	contents:	
-	mov es, blcSeg
-	xor si, si
-	mov cl, 2 ;счетчик нулей	
-	mov di, offset Cont + 12
-	mov al, 13
-	inc di
-	mov [di], al
-	mov al, 10
-	dec si
-	jmp conti
-	copyO:  mov al, es:[si] ;копируем окружение
-	test al, al
-	jnz notZero
-	
-	mov al, 20h ;0 заменяем на пробел
-	dec cl ;если 2-а нуля подряд конец окружения
-	jz ending
-	
-	mov al, 13
-	mov [di], al
-	mov al, 10
-	inc di
-	
-	conti:	mov [di], al
-	inc si
-	inc di
-	jmp short copyO	
-	notZero: mov cl, 2 ;востанавливаем счетчик
-	jmp short conti
-
-	ending: 
-	inc si
-	inc si
-	push si	
-	mov al, '$'
-	mov [di], al
-	mov dx, offset Cont
+	;Environment
+	env:	
+	mov dx, offset content
 	call print
-
-	
-	mov di, offset Path + 7
-	mov cx, 5
-
-	CopyD:  mov al,[si]
-	mov [di],al
-	inc si
-	inc di
-	loop CopyD
-	pop si
-
-	FullPath: mov al, es:[si]
-	or al,al
-	jz okSave
-	mov [di],al
-	inc si
-	inc di
-	jmp short FullPath
-	
-	okSave:
-	mov dx, offset Path
+	xor di, di
+	mov ds, env_seg	
+	mov cx, 2
+	reading:
+		cmp byte ptr [di], 00h ;конец строки
+		je output
+		mov dl, [di]
+		mov ah, 02h
+		int 21h
+		jmp env_end	
+   	output:
+		cmp cx, 0
+		jz env_end
+		mov dl, 13
+		mov ah, 02h
+		int 21h
+		mov dl, 10
+		mov ah, 02h
+		int 21h
+		dec cx
+    env_end:		
+		inc di
+		cmp byte ptr [di], 0001h 
+		je path
+		jmp reading
+		
+	;Path
+	path:
+	add di, 2 ;пропуск байтов 00h, 01h
+	mov cx, cs
+	mov ds, cx
+	lea	dx, path_string
 	call print
-	
-	
-
+	mov ds, env_seg			
+   	reading_path:
+		cmp byte ptr [di], 00h
+		je end_path
+		mov dl, [di]
+		mov ah, 02h
+		int 21h
+		inc di
+		jmp reading_path
+	end_path:
+		mov cx, cs
+		mov ds, cx
+		lea dx, env_string
+		call print
 	mov ah, 4ch
 	int	21h
 	ret 
   
-blcSeg dw ?
+env_seg dw ?
 memData db 'Unavailable memory segment address:     ', 13, 10, '$' 
-blcData db 'Segment address of the environment:     ', 13, 10, '$' 
-CmdLine db 'Command line tail:', 256 dup(?), 13, 10, '$'  
-ZCmdLine db 'No command line tail', '$'  
-Cont db 13, 10, 'Contents:', 70 dup(?), '$' 
-Path db 'Path:             ', 13, 10, '$' 
-
+envData db 'Segment address of the environment:     ', 13, 10, '$' 
+cmdLine db 'Command line tail:            ', '$'  
+ZcmdLine db 'No command line tail', '$' 
+content db 13, 10, 'Content:', 13, 10, '$'
+path_string db 13, 10, 'Path: ', '$' 
+env_string db  '$' 
 lab ends  
 end main
