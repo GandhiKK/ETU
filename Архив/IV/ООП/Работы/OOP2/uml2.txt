@@ -1,0 +1,152 @@
+[≪Interface≫;AbstractFactory|createInfantry(Type type) : InfantryInterface*;createCavalry(Type type) : CavalryInterface*;createArcher(Type type) : ArcherInterface*]
+[≪Overrride≫;CritUnitsFactory|createInfantry(Type type) : InfantryInterface*;createCavalry(Type type) : CavalryInterface*;createArcher(Type type) : ArcherInterface*]
+[≪Overrride≫;DamageAbsorberUnitsFactory|createInfantry(Type type) : InfantryInterface*;createCavalry(Type type) : CavalryInterface*;createArcher(Type type) : ArcherInterface*]
+
+[Base|-field:Filed*;-critDealersFactory:AbstractFactory*;-absorbersFactory:AbstractFactory*|+createUnit(UnitType
+unsigned int row
+unsigned int column):void;≪Overrride≫;+getClass():Qstring;+isMove():bool;+getCreatureType():CreatureType;+onUnitDestroyed(UnitInterface* destroyedUnit):void;+copy():CreatureInterface*;+takeDamage(int damage):void;+getHealth():Feature;+setHealth(int newHealth):void]
+[cellInterface|-landscapeProxy:LandscapeInterface*;-creature:CreatureInterface*;-object:NeutralObjectInterface*|+copy():cellInterface*;+hasCreature():bool;+hasNeutralObject():bool;+canHoldCreature():bool;+onCreatureDestroyed():void;+setCreature(CreatureInterface* newCreature):void]
+
+[≪Interface≫;LandscapeInterface|+canHoldCreature():bool;+copy():Landscape*]
+[Feature|-value:int;-extra:int]
+[Field|-fieldModel:cellInterface***;-NmRows:unsigned int;-NmColumns:unsigned int;-MaxObjects:unsigned int;-CurrObjects:unsigned int|+moveObject(unsigned int NrowFrom
+unsigned int NcolFrom
+unsigned int NrowTo
+unsigned int NcolTo):void;+commitFight(unsigned int NrowFrom
+unsigned int NcolFrom
+unsigned int NrowTo
+unsigned int NcolTo):void;+void addObject(unsigned int Nrows
+unsigned int Ncols
+CreatureInterface *creature):void;+setMaxObjects(unsigned int maxObjectsNewValue):void;+getCell(unsigned int rowNumber
+unsigned int columnNumber):cellInterface*]
+[IteratorForField|-filed:Field*;-x:unsigned int;-y:unsigned int;-maxX:unsigned int;-maxY:unsigned int|+reset():void;+begin():void;+end():void;+getNext():cellInterface*]
+
+
+[CreatureInterface|#health:Feature*;#type:Type|≪Virtual≫;+copy():CreatureInterface*;+isMove():bool;+getCreatureType():CreatureType;+takeDamage(int damage):void;+setHealth(int newHealth):void;+attachFieldComponent(CreatureObserverInterface* fieldComponent):void]
+
+[NeutralObjectInterface|#strategy:NeutralObjectsEffectStrategyInterface*|≪Virtual≫;+unitInfl(UnitInterface* unit):void;+copy():NeutralObjectInterface*]
+
+[UnitInterface|#armor:Feature*;#damage:Feature*|+commitAttack(CreatureInterface* attackedUnit):void;+clearNeutralObjectEffect():void;+operator+=(NeutralObjectInterface* neutralObject):UnitInterface&;+getType():UnitType;+attachBase(UnitObserverInterface* base):void;+isMove():bool;+getCreatureType():CreatureType;+setHealth(int newHealth):void]
+
+[Proxy|-landscape:LandscapeInterface*|≪Override≫;+interaction():bool;+getClass():Qstring;+copy():LandscapeInterface*]
+
+[Mountains|≪Override≫;+interaction():bool;+getClass():Qstring;+copy():LandscapeInterface*]
+[Water|≪Override≫;+interaction():bool;+getClass():Qstring;+copy():LandscapeInterface*]
+[Ground|≪Override≫;+interaction():bool;+getClass():Qstring;+copy():LandscapeInterface*]
+
+[BoostTower|≪Override≫;+unitInfl(UnitInterface* unit):void;+getClass():Qstring;+copy():NeutralObjectInterface*]
+[Village|≪Override≫;+unitInfl(UnitInterface* unit):void;+getClass():Qstring;+copy():NeutralObjectInterface*]
+[ArmorHouse|≪Override≫;+unitInfl(UnitInterface* unit):void;+getClass():Qstring;+copy():NeutralObjectInterface*]
+[GunSmith|≪Override≫;+unitInfl(UnitInterface* unit):void;+getClass():Qstring;+copy():NeutralObjectInterface*]
+[≪Interface≫;NeutralObjectsEffectStrategyInterface|+unitInfl(UnitInterface* unit):void]
+
+[VillageInfantryStrategy|≪Override≫;+unitInfl(UnitInterface* unit):void]
+[VillageCavalryStrategy|≪Override≫;+unitInfl(UnitInterface* unit):void]
+[VillageArcherStrategy|≪Override≫;+unitInfl(UnitInterface* unit):void]
+[BoostTowerInfantryStrategy|≪Override≫;+unitInfl(UnitInterface* unit):void]
+[BoostTowerCavalryStrategy|≪Override≫;+unitInfl(UnitInterface* unit):void]
+[BoostTowerArcherStrategy|≪Override≫;+unitInfl(UnitInterface* unit):void]
+[ArmorHouseInfantryStrategy|≪Override≫;+unitInfl(UnitInterface* unit):void]
+[ArmorHouseCavalryStrategy|≪Override≫;+unitInfl(UnitInterface* unit):void]
+[ArmorHouseArcherStrategy|≪Override≫;+unitInfl(UnitInterface* unit):void]
+[SmithInfantryStrategy|≪Override≫;+unitInfl(UnitInterface* unit):void]
+[SmithArcherStrategy|≪Override≫;+unitInfl(UnitInterface* unit):void]
+[SmithCavalryStrategy|≪Override≫;+unitInfl(UnitInterface* unit):void]
+
+
+[≪Interface≫;UnitObserverInterface|+onUnitDestroyed(UnitInterface* destroyedUnit):void]
+[≪Interface≫;UnitObservableByBaseInterface|+attachBase(UnitObserverInterface* base):void]
+
+[≪Interface≫;CreatureObserverInterface|+onCreatureDestroyed():void]
+[≪Interface≫;CreatureObservableByFieldComponentInterface|+attachFieldComponent(CreatureObserverInterface* fieldComponent):void]
+
+[≪Interface≫;printInterface|+getClass():Qstring]
+
+[DamageAbsorberInfantry|≪Override≫;+getClass():Qstring;+copy():CreatureInterface*;+getType():UnitType]
+[CritInfantry|≪Override≫;+getClass():Qstring;+copy():CreatureInterface*;+getType():UnitType]
+[DamageAbsorberCavalry|≪Override≫;+getClass():Qstring;+copy():CreatureInterface*;+getType():UnitType]
+[CritCavalry|≪Override≫;+getClass():Qstring;+copy():CreatureInterface*;+getType():UnitType]
+[DamageAbsorberArcher|≪Override≫;+getClass():Qstring;+copy():CreatureInterface*;+getType():UnitType]
+[CritArcher|≪Override≫;+getClass():Qstring;+copy():CreatureInterface*;+getType():UnitType]
+
+[ArcherInterface]
+[CavalryInterface]
+[InfantryInterface]
+[UnitCritInterface|#critFactor:double|≪Override≫;+takeDamage(int damage):void]
+[UnitDamageAbsorberInterface|#absorptionFactor:double|≪Override≫;+takeDamage(int damage):void]
+
+[IteratorForField]-Friend class++[Field]
+[Field]++-[cellInterface]
+[cellInterface]-.-^[CreatureObserverInterface]
+[cellInterface]->[LandscapeInterface]
+
+[Proxy]-.-^[LandscapeInterface]
+[Ground]-.-^[LandscapeInterface]
+[Mountains]-.-^[LandscapeInterface]
+[Water]-.-^[LandscapeInterface]
+
+[Ground]-++[Proxy]
+[Mountains]-++[Proxy]
+[Water]-++[Proxy]
+
+[LandscapeInterface]-^[printInterface]
+[CreatureInterface]-++[cellInterface]
+
+[CreatureInterface]-.-^[CreatureObservableByFieldComponentInterface]
+
+[Feature]<-++[CreatureInterface]
+[Feature]<-++[UnitInterface]
+[UnitInterface]-^[CreatureInterface]
+[UnitInterface]-.-^[UnitObservableByBaseInterface]
+
+[Base]-^[CreatureInterface]
+[Base]++-[CritUnitsFactory]
+[Base]++-[DamageAbsorberUnitsFactory]
+[CritUnitsFactory]-.-^[AbstractFactory]
+[DamageAbsorberUnitsFactory]-.-^[AbstractFactory]
+[Base]-.-^[UnitObserverInterface]
+
+[CreatureInterface]-.-^[printInterface]
+[NeutralObjectInterface]-++[cellInterface]
+
+[Village]-^[NeutralObjectInterface]
+[BoostTower]-^[NeutralObjectInterface]
+[GunSmith]-^[NeutralObjectInterface]
+[ArmorHouse]-^[NeutralObjectInterface]
+[Village]+-[NeutralObjectsEffectStrategyInterface]
+[BoostTower]+-[NeutralObjectsEffectStrategyInterface]
+[GunSmith]+-[NeutralObjectsEffectStrategyInterface]
+[ArmorHouse]+-[NeutralObjectsEffectStrategyInterface]
+
+
+[NeutralObjectsEffectStrategyInterface]^-.-[VillageInfantryStrategy]
+[NeutralObjectsEffectStrategyInterface]^-.-[VillageCavalryStrategy]
+[NeutralObjectsEffectStrategyInterface]^-.-[VillageArcherStrategy]
+[NeutralObjectsEffectStrategyInterface]^-.-[BoostTowerInfantryStrategy]
+[NeutralObjectsEffectStrategyInterface]^-.-[BoostTowerCavalryStrategy]
+[NeutralObjectsEffectStrategyInterface]^-.-[BoostTowerArcherStrategy]
+[NeutralObjectsEffectStrategyInterface]^-.-[ArmorHouseInfantryStrategy]
+[NeutralObjectsEffectStrategyInterface]^-.-[ArmorHouseCavalryStrategy]
+[NeutralObjectsEffectStrategyInterface]^-.-[ArmorHouseArcherStrategy]
+[NeutralObjectsEffectStrategyInterface]^-.-[SmithInfantryStrategy]
+[NeutralObjectsEffectStrategyInterface]^-.-[SmithCavalryStrategy]
+[NeutralObjectsEffectStrategyInterface]^-.-[SmithArcherStrategy]
+
+[InfantryInterface]-^[UnitInterface]
+[ArcherInterface]-^[UnitInterface]
+[CavalryInterface]-^[UnitInterface]
+
+[InfantryInterface]^-[CritInfantry]
+[InfantryInterface]^-[DamageAbsorberInfantry]
+[ArcherInterface]^-[CritArcher]
+[ArcherInterface]^-[DamageAbsorberArcher]
+[CavalryInterface]^-[DamageAbsorberCavalry]
+[CavalryInterface]^-[CritCavalry]
+
+[UnitCritInterface]^-[CritInfantry]
+[UnitCritInterface]^-[CritArcher]
+[UnitCritInterface]^-[CritCavalry]
+
+[UnitDamageAbsorberInterface]^-[DamageAbsorberInfantry]
+[UnitDamageAbsorberInterface]^-[DamageAbsorberArcher]
+[UnitDamageAbsorberInterface]^-[DamageAbsorberCavalry]

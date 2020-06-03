@@ -1,0 +1,18 @@
+[Color]-++[Shape]
+[Point]-++[Shape]
+[Point]-++[Parallelogram]
+[Square]-Extends^[Shape]
+[Rhombus]-Extends^[Shape]
+[Parallelogram]-Extends^[Shape]
+
+[Color|-red: unsigned int;-green: unsigned int;-blue: unsigned int|+Color(red: unsigned int, green: unsigned int, blue: unsigned int);+get_red(): unsigned int const;+get_green(): unsigned int const;+get_blue(): unsigned int const]
+
+[Shape|#color: Color;#center: Point;#points: vector/Point/|+Shape(color: Color, center: Point);+set_color(color:Color): void;+get_color(): Color const;+moving(point:Point): void;+rotation(grade:double): void;+scaling(scale: double): void; +printObject(stream: &ostream, shape: Shape);+operator//(stream: &ostream, shape: Shape):ostream]
+
+[Point|-x: double;-y: double|+Point(x: double, y: double);+get_x(): double const;+get_y(): double const;+set_x(x: double): void;+set_y(y: double): void]
+
+[Square|-length: double|+Square(length: double, color: Color, center: Point)]
+
+[Rhombus|-diag1: double;-diag2: double|+Rhombus(diag1: double, diag2: double, point: Point, color: Color)]
+
+[Parallelogram|-point1: Point;-point2: Point;-point3: Point|+Parallelogram(color: Color, point1: Point, point2:Point, point3:Point)]
