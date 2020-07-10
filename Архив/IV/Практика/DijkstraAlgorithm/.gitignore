@@ -1,0 +1,5 @@
+/build/
+/.gradle/
+/out/
+/src/main/kotlin/META-INF/
+/src/main/resources/
