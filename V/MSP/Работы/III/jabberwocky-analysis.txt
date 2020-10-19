@@ -1,0 +1,5 @@
+Word / Num. of entries / No. str. with first occurrence
+
+the:	15	1
+abcdef:	0	NaN
+and:	9	1

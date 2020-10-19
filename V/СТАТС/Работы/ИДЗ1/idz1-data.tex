@@ -1,0 +1,166 @@
+\problemset{Статистический анализ}
+\problemset{Индивидуальное домашнее задание №1}
+
+\renewcommand*{\proofname}{Решение}
+
+Плотность двумерного нормального распределения имеет вид:
+\[ p_{\xi,\eta}(x, y) = C \cdot \exp \left\{-\frac12(4x^2 - 4xy + 7y^2 - 16x - 16y + 40)\right\} \]
+
+%% Задание 1: условие
+\begin{problem}
+	Вычислить вектор мат. ожиданий и ковариационные характеристики данного случайного вектора.
+\end{problem}
+
+%% Задание 1: решение
+\begin{proof}
+	Обозначим степень экспоненты через  $q(x,y)$. Тогда:
+	\begin{multline} 
+		q(x,y) = (4x^2-4xy-16x)+7y^2-16y+40=((2x)^2-2\cdot2x\cdot(y+4)+(y^2+8y+16))+\\+7y^2-y^2-16y+40-8y-16=(2x-y-4)^2+6y^2-24y+24=(2x-y-4)^2+6(y^2-4y+4)=\\=\underline{(2x-y-4)^2+6(y-2)^2}=([2x-6]-[y-2])^2+6(y-2)^2=4(x-3)^2-4(x-3)(y-2)+\\+(y-2)^2+6(y-2)^2=4(x-3)^2+2\cdot(-2)\cdot(x-3)(y-2)+7(y-2)^2.
+	\end{multline}
+
+	Получаем:	
+	$ \mathbb E\begin{pmatrix} \xi \\ \eta \end{pmatrix} = \begin{pmatrix} 3 \\ 2 \end{pmatrix}$,
+	
+	$ \Sigma^{-1} = \begin{pmatrix} 4 & -2 \\ -2 & 7 \end{pmatrix} $, 
+	$ \Sigma = \cfrac1{24}\begin{pmatrix} 7 & 2 \\ 2 & 4 \end{pmatrix} $,
+	
+	$  \cov(\xi, \xi)=\mathbb D\xi = \sigma^2_\xi = \cfrac7{24} $,
+	
+	$  \cov(\eta, \eta)=\mathbb D\eta = \sigma^2_\eta = \cfrac16 $,
+	
+	$ \cov(\xi, \eta) = \cfrac1{12} $,
+	$ \rho_{\xi, \eta}= \cfrac{\cov(\xi, \eta)}{\sqrt{D_\xi D_\eta}}=\cfrac{\frac1{12}}{\frac{\sqrt{7}}{12}} = \cfrac1{\sqrt7} $,
+	
+	$ C = \cfrac1{(2\pi)^{n/2}\cdot\sqrt{\det\Sigma}} = \cfrac{\sqrt6}{\pi} $.
+	
+\end{proof}
+%\newpage
+%% Задание 2: условие
+\begin{problem}
+	Найти аффинное преобразование, переводящее исходный случайный вектор в стандартный нормальный. 
+\end{problem}
+
+%% Задание 2: решение
+\begin{proof}	
+	\begin{multline} \begin{pmatrix} \zeta_1 \\ \zeta_2 \end{pmatrix}=\begin{pmatrix} 2 & -1 \\ 0 & \sqrt{6} \end{pmatrix}\begin{pmatrix} \xi_1-3 \\ \xi_2-2 \end{pmatrix}=\begin{pmatrix} 2\xi_1-\xi_2-4 \\ \sqrt{6}\xi_2-2\sqrt{6} \end{pmatrix};	
+	\\B \Sigma B^T = I \Rightarrow 	
+	\cfrac1{24}\begin{pmatrix} 2 & -1 \\ 0 & \sqrt{6} \end{pmatrix}\begin{pmatrix} 7 & 2 \\ 2 & 4 \end{pmatrix}\begin{pmatrix} 2 & 0 \\ -1 & \sqrt{6} \end{pmatrix}=\cfrac1{24}\begin{pmatrix} 12 & 0 \\ 2\sqrt{6} & 4\sqrt{6} \end{pmatrix}\begin{pmatrix} 2 & 0 \\ -1 & \sqrt{6} \end{pmatrix}=\\=\cfrac1{24}\begin{pmatrix} 24 & 0 \\ 0 & 24 \end{pmatrix}=\begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix}\Rightarrow \begin{pmatrix} \zeta_1 \\ \zeta_2 \end{pmatrix}\sim \mathscr{N}(0, I).	
+	\end{multline} 		
+\end{proof}
+
+
+%% Задание 3: условие
+\begin{problem}
+	Найти ортогональное преобразование, переводящее соответствующий центрированный случайный вектор в вектор с независимыми компонентами. 
+\end{problem}
+
+%% Задание 3: решение
+\begin{proof}
+	$ $		
+		
+	$ \Sigma^{-1}=\begin{pmatrix} 4 && -2 \\ -2 && 7 \end{pmatrix} $
+		
+	$ \det\begin{pmatrix}\Sigma^{-1}-\lambda I\end{pmatrix} = 0$
+	
+	$\det\begin{pmatrix} 4-\lambda && -2 \\ -2 && 7-\lambda \end{pmatrix}=0\Rightarrow	(4-\lambda)(7-\lambda)-4=0; 28-4\lambda-7\lambda+\lambda^2-4=0; $
+	
+	$ \lambda^2-11\lambda+24=0 \Rightarrow \underline{\lambda_1=3}; \underline{\lambda_2=8} $
+ 	
+ 	$ \lambda_1=3: \begin{pmatrix} 1 && -2 \\ -2 && 4\end{pmatrix}\Leftrightarrow\begin{pmatrix} 1 && -2 \end{pmatrix}; x=\begin{pmatrix} 2 \\ 1\end{pmatrix}\cfrac{1}{\sqrt{5}} $	
+ 	
+ 	$ \lambda_2=8: \begin{pmatrix} -4 && -2 \\ -2 && -1\end{pmatrix}\Leftrightarrow\begin{pmatrix} 2 && 1 \end{pmatrix}; x=\begin{pmatrix} 1 \\ -2\end{pmatrix}\cfrac{1}{\sqrt{5}} $	
+ 	
+ 	$ \underline{Q=\cfrac{1}{\sqrt{5}}\begin{pmatrix} 2 && 1 \\ 1 && -2\end{pmatrix}} - \text{матрица ортогональных преобразований} $
+ 	
+ 	$ \mathbb E\begin{pmatrix} \zeta_1 \\ \zeta_2 \end{pmatrix}=Q\cdot\mathbb E\begin{pmatrix} \xi \\ \eta \end{pmatrix}=Q\begin{pmatrix} 3 \\ 2 \end{pmatrix}=\cfrac{1}{\sqrt{5}}\begin{pmatrix} 2 && 1 \\ 1 && -2 \end{pmatrix}\begin{pmatrix} 3 \\ 2 \end{pmatrix} = \cfrac{1}{\sqrt{5}}\begin{pmatrix} 8 \\ -1 \end{pmatrix} $
+ 	
+ 	$ \uwave{Q \Sigma Q^T}; \Sigma = \cfrac1{24}\begin{pmatrix} 7 & 2 \\ 2 & 4 \end{pmatrix}; $
+ 	
+ 	$ Q \Sigma Q^T = \cfrac{1}{\sqrt{5}}\begin{pmatrix} 2 & 1 \\ 1 & -2 \end{pmatrix}\cdot\cfrac{1}{24}\begin{pmatrix} 7 & 2 \\ 2 & 4 \end{pmatrix}\cdot\cfrac{1}{\sqrt{5}}\begin{pmatrix} 2 & 1 \\ 1 & -2 \end{pmatrix}=\cfrac15\cdot\cfrac1{24}\begin{pmatrix} 16 & 8 \\ 3 & -6 \end{pmatrix}\begin{pmatrix} 2 & 1 \\ 1 & -2 \end{pmatrix}= $
+ 	
+ 	$ =\cfrac15\cdot\cfrac1{24}\begin{pmatrix} 40 & 0 \\ 0 & 15 \end{pmatrix} $
+
+	$ \begin{pmatrix} \zeta_1 \\ \zeta_2 \end{pmatrix} \rightsquigarrow \mathscr{M} \left(\begin{pmatrix} 8/\sqrt{5} \\ -1/\sqrt{5} \end{pmatrix}, \cfrac1{24}\begin{pmatrix} 8 & 0 \\ 0 & 3 \end{pmatrix}\right) $
+	
+\end{proof}
+
+%% Задание 4: условие
+\begin{problem}
+	Вычислить характеристики совместного распределения случайного вектора \\ (-5$\xi$ - 4$\eta$, 4$\xi$ - 4$\eta$) и записать его плотность. 
+\end{problem}
+
+%% Задание 4: решение
+\begin{proof}
+	$ $
+	
+	$ \begin{pmatrix} \zeta_1 \\ \zeta_2 \end{pmatrix}=\begin{pmatrix} -5\xi-4\eta \\ 4\xi-4\eta \end{pmatrix} $
+	
+	$ x \sim \mathscr{N}(\mu, \Sigma); Y=BX; Y \sim \mathscr{N}(B\mu, B\Sigma B^T); $
+	
+	$ \uwave{\mathbb E\begin{pmatrix} \xi \\ \eta \end{pmatrix} = \begin{pmatrix} 3 \\ 2 \end{pmatrix}; \Sigma = \cfrac1{24}
+	\begin{pmatrix} 7 && 2 \\ 2 && 4 \end{pmatrix};} $ 	
+
+	$ \mathbb E\begin{bmatrix} -5\xi-4\eta \\ 4\xi-4\eta \end{bmatrix}=\begin{bmatrix} -5 && -4 \\ 4 && -4 \end{bmatrix}\begin{bmatrix} 3 \\ 2 \end{bmatrix}=\begin{pmatrix} -23 \\ 4 \end{pmatrix}$	
+	
+	$ \Sigma_Y=B \Sigma B^T=\cfrac1{24}\begin{bmatrix} -5 && -4 \\ 4 && -4 \end{bmatrix}\begin{bmatrix} 7 && 2 \\ 2 && 4 \end{bmatrix}\begin{bmatrix} -5 && 4 \\ -4 && -4 \end{bmatrix}=\cfrac1{24}\begin{bmatrix} -43 && -26 \\ 20 && -8 \end{bmatrix}\begin{bmatrix} -5 && 4 \\ -4 && -4 \end{bmatrix}=$ 	
+	
+	$ =\cfrac1{24}\begin{bmatrix} 319 && -68 \\ -68 && 112 \end{bmatrix} $
+	
+	$ \det(\Sigma_Y)=54 $
+	
+	$ \Sigma_Y^{-1}=\cfrac1{1296}\begin{pmatrix} 112 && 68 \\ 68 && 319 \end{pmatrix}$
+	
+	$ p_{\zeta_1,\zeta_2}(x, y) = \cfrac1{2\pi\sqrt{54}} \cdot \exp \left\{-\cfrac12\begin{pmatrix} x+23 \\ y-4 \end{pmatrix}^T\cdot\cfrac1{1296}\begin{pmatrix} 112 && 68 \\ 68 && 319 \end{pmatrix}\cdot\begin{pmatrix} x+23 \\ y-4 \end{pmatrix}\right\} $
+	
+	Обозначим степень экспоненты как $\left(-\frac12\right)\cdot q(x, y)$. Тогда:
+	
+	$ q(x, y)=\cfrac1{1296}\cdot\begin{pmatrix} x+23 && y-4 \end{pmatrix}\begin{pmatrix} 112 && 68 \\ 68 && 319 \end{pmatrix}\begin{pmatrix} x+23 \\ y-4 \end{pmatrix}= $
+	
+	$ =\left(\cfrac1{1296}\right)\cdot\begin{pmatrix} 112(x+23)+68(y-4) && 68(x+23)+319(y-4) \end{pmatrix}\begin{pmatrix} x+23 \\ y-4 \end{pmatrix}= $
+	
+	$ =\left(\cfrac1{1296}\right)\cdot\begin{pmatrix} 112(x+23)^2+136(x+23)(y-4)+319(y-4)^2\end{pmatrix}= $
+	
+	$ =\left(\cfrac1{1296}\right)\cdot(112x^2+136xy+319y^2+4608x+576y+51480)= $
+	
+	$ =\cfrac7{81}x^2+\cfrac{17}{162}xy+\cfrac{319}{1296}y^2+\cfrac{32}9x+\cfrac49y+40 \Rightarrow $
+	  
+	\large $ p_{\zeta_1,\zeta_2}(x, y) = \cfrac1{2\pi\sqrt{54}} \cdot \exp \left\{-\cfrac12\cdot\left(\cfrac7{81}x^2+\cfrac{17}{162}xy+\cfrac{319}{1296}y^2+\cfrac{32}9x+\cfrac49y+40\right)\right\} $	  
+\end{proof}
+
+%% Задание 5: условие
+\begin{problem}      
+	Найти условное распределение $\xi$ при условии $\eta$. 
+\end{problem}
+
+%% Задание 5: решение
+\begin{proof}	
+	$ $
+	
+	\large $ p_{\xi,\eta}(x, y) = C \cdot \exp \left\{-\frac12(4x^2 - 4xy + 7y^2 - 16x - 16y + 40)\right\} $
+	
+	$ p_{\xi|\eta=y}=\cfrac{p_{\xi,\eta}(x, y)}{p_{\eta}(y)}= \cfrac{C \cdot \exp \left\{-\frac12(4x^2 - 4xy + 7y^2 - 16x - 16y + 40)\right\}}{C_1(y)}= $
+	
+	$ =C_2(y) \cdot \exp \{-\frac12(4x^2-16x-4xy)\underbrace{-\frac12(7y^2-16y+40)}_{C_3(y)}\}= $
+	
+	\begin{multline}	
+	=C_2(y) \cdot \exp \Bigg\{-\cfrac12\cdot\cfrac1{1/4}\bigg(x^2-2\cdot x\cdot\bigg(\cfrac24y+\cfrac84\bigg)+\bigg(\cfrac12 y+2\bigg)^2\bigg)+\\\underbrace{+\cfrac1{2\cdot 1/4}\cdot\bigg(\cfrac12y+2\bigg)^2 -\frac12\bigg(7y^2-16y+40\bigg)}_{C_3(y)}\Bigg\}=
+	\end{multline}
+
+	\large $ =C_4(y) \cdot \exp \left\{\cfrac{-\bigg(x-\bigg(\cfrac12 y+2\bigg)\bigg)^2}{2\cdot\bigg(\cfrac12\bigg)^2}\right\}; $ \Large $ \mu=\frac12y+2; \sigma=\frac12; $ \large
+	
+	$ \mathbb E(\xi|\eta=y)=\cfrac12\eta+2; $ 	
+	$ \mathbb D(\xi|\eta=y)=\cfrac14; $ 	
+	$ \sigma=\cfrac12; $ 
+	
+	$ C = \cfrac1{\sqrt{2\pi\sigma^2}}=\cfrac1{\sqrt{2\pi\frac14}}=\sqrt{\cfrac2{\pi}}; $
+	
+	$ p_{\xi|\eta=y}(x, y)=\sqrt{\cfrac2{\pi}}\cdot \exp \left\{\cfrac{-\bigg(x-\bigg(\cfrac12 y+2\bigg)\bigg)^2}{2\cdot\bigg(\cfrac12\bigg)^2}\right\}; $
+	
+\end{proof}
+
+
+
+
+
+
+
