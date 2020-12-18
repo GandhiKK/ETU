@@ -1,0 +1,467 @@
+---
+title: "Статистический анализ \\\n Индивидуальное домашнее задание №3 \\\n Вариант 8"
+author: "Киреев Константин"
+date: "`r format(Sys.time(), '%d.%m.%Y')`"
+output:
+  pdf_document:
+    keep_tex: yes
+    latex_engine: xelatex
+mainfont: Times New Roman
+sansfont: Arial
+monofont: Courier New
+fontsize: 10pt
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tinytex)
+options(tinytex.verbose = TRUE)
+```
+
+***
+
+#### Результаты статистического эксперимента приведены в таблице 1. Требуется оценить характер (случайной) зависимости переменной Y от переменной X.
+##### Таблица 1. $\alpha_1 = 0.05; h = 1.70$
+
+```{r echo=FALSE}
+data1 <- c(8.89, 10.33, 8.22, 12.15, 6.60, 7.65, 8.64, 4.05, 6.68, 2.27, 10.63, 5.70, 8.92, 4.59, 10.82, 11.09, 2.14, 6.63, 8.02, 6.99, 8.28, 7.01, 4.09, 8.52, 5.48, 9.92, 7.35, 9.92, 10.16, 10.49, 9.10, 7.29, 5.29, 5.06, 8.32, 7.64, 10.25, 9.02, 8.92, 4.98, 8.33, 6.61, 9.19, 11.52, 9.74, 6.55, 5.67, 6.01, 4.57, 2.29)
+data2 <- c(3, 2, 1, 2, 0, 2, 3, 1, 1, 2, 3, 3, 3, 3, 2, 0, 3, 1, 1, 2, 2, 3, 2, 1, 1, 4, 2, 2, 2, 1, 1, 1, 1, 3, 2, 2, 3, 4, 4, 3, 3, 4, 3, 2, 2, 3, 2, 3, 1, 2)
+regr <- data.frame(x = data2, y = data1)
+data.T <- t(regr[,1:ncol(regr)])
+print(data.T, right = TRUE, row.names = FALSE)
+```
+
+***
+
+```{r include=FALSE}
+alpha1 <- 0.05; h <- 1.70; n <- 50
+meanX <- mean(regr$x)
+meanY <- mean(regr$y)
+
+b1 <- (mean(regr$x*regr$y)-meanX*meanY)/(sum(regr$x^2)/n-meanX^2); b1
+b0 <- meanY - b1*meanX; b0
+s <- sum((regr$y-meanY)^2)/(n-2); s
+```
+
+#### *Задание 1*
+##### Построить графически результаты эксперимента. Сформулировать линейную регрессионную модель переменной Y по переменной X. Построить МНК оценки параметров сдвига $\beta_0$ и масштаба $\beta_1$. Построить полученную линию регрессии. Оценить визуально соответствие полученных данных и построенной оценки.
+
+\
+
+\begin{align}
+  & Y_i = \beta_0+\beta_1X_i + \varepsilon_i, \varepsilon_i - N(0, \sigma^2) \\
+  & \beta_1 = \frac{\bar{xy}-\bar{x}\bar{y}}{\bar{x^2}-\bar{x}^2} = `r b1` \\
+  & \beta_0 = \bar{Y} - \beta_1\bar{X} = `r b0` \\
+  & Y = \hat{\beta_1}X + \beta_0 = `r b1`X + `r b0`
+\end{align}
+
+```{r fig1, fig.height = 5, fig.width = 6, fig.align = "center", echo=FALSE}
+with(regr, {
+  plot(x, y)
+  abline(lm(y~x), col="red")
+  title("Linear regression")
+})
+```
+
+***
+
+#### *Задание 2*
+##### Построить и интерпретировать несмещенную оценку дисперсии. На базе ошибок построить гистограмму с шагом $h$. Проверить гипотезу нормальности ошибок на уровне $\alpha_1$ по $\chi^2$. Оценить расстояние полученной оценки до класса нормальных распределений по Колмогорову. Визуально оценить данный факт.
+
+\
+
+\begin{align}
+  \hat{\sigma}^2=\frac{1}{n-2}&\sum\limits_{1}^{n}(Y-\bar{Y})^2 = `r s` \\
+  \varepsilon_i=&Y_i -\hat{\beta_1}X_i - \hat{\beta_0}
+\end{align}
+
+###### $\varepsilon_1, ..., \varepsilon_n:$
+```{r echo=FALSE}
+eps = regr$y - b1*regr$x - b0; 
+print(eps)
+```
+
+```{r fig2, fig.height = 5, fig.width = 6, fig.align = "center", echo=FALSE}
+eps <- sort(eps)
+k <- min(eps)-h/2
+u <- (eps[n]-eps[1])/h
+for (i in 2:(u+3)) k[i]=k[i-1]+h
+hist(eps, breaks <- k)
+```
+
+\begin{align}
+  & H_0:\varepsilon_1, ..., \varepsilon_n \sim N(0, \sigma^2) \\
+  & \sum\limits_{i=1}^{r}\frac{n_i-np_i(0, \sigma^2))^2}{np_i(0, \sigma^2)} \rightarrow \chi^2_{кр}
+\end{align}
+
+<center>Метод минимизации хи-квадрат</center>
+\begin{equation}
+  \underset{\sigma^2}{argmin}\sum\limits_{i=1}^{r}\frac{n_i-np_i(0, \sigma^2))^2}{np_i(0, \sigma^2)} 
+\end{equation}
+
+##### Разделим выборку на 6 зон:
+
+| Интервал | $(-\infty; -3.4)$ | $(-3.4; -1.7)$ | $(-1.7; 0)$ | $(0; 1.7)$ | $(1.7; 3.4)$ | $(3.4; \infty)$ |
+| -------- | ----------------- | -------------- | ----------- | ---------- | ------------ | --------------- |
+| $m_i$    | 5                 | 8              | 10          | 15         | 9            | 3               |
+
+**Задача реализована в R с помощью скрипта:**
+
+```{r eval=FALSE}
+csq <- function(sgm.sq){
+  prob <- pnorm(up, 0, sgm.sq) - pnorm(lw, 0, sgm.sq)
+  return (sum((m-n*prob)^2)/prob/n)
+}
+XM <- nlm(csq, sqrt(s)) 
+XM$estimate^2; XM$minimum
+```
+
+```{r include=FALSE}
+r <- 6
+P <- function(a){
+  p<-0
+  p[1] <- pnorm(-3.4, 0, a)
+  p[2] <- pnorm(-1.7, 0, a) - sum(p)
+  p[3] <- pnorm(0, 0, a) - sum(p)
+  p[4] <- pnorm(1.7, 0, a) - sum(p)
+  p[5] <- pnorm(3.4, 0, a) - sum(p)
+  p[6] <- 1 - sum(p)
+  p}
+X2 <- function(a){g<-n*P(a); f<-(nu-g)^2/g;sum(f)}
+nu <- c(5, 8, 10, 15, 9, 3)
+a <- c(sqrt(s))
+XM <- nlm(X2, a)
+XM$estimate^2; XM$minimum
+xa <- qchisq(1- alpha1, r-1-1)
+```
+
+##### Получаем $\hat{\sigma}^2=`r XM$estimate^2`$ и $\chi^2_{набл}=`r XM$minimum`$
+\begin{align}
+  l&=r - d - 1 = `r r-1-1` \\
+  \chi^2_{кр} &=`r xa` \\
+  \chi^2_{набл}=`r XM$minimum` < \chi^2_{кр} & = `r xa` \Rightarrow \text{гипотеза $H_0$ принимается} 
+\end{align}
+
+**Оценим расстояние оценки до класса нормальных распределений по Колмогорову. Минимизируем статистику Колмогорова с помощью следующего скрипта:**
+
+```{r}
+kolm.stat<-function(s){
+  sres<-sort(eps)
+  fdistr<-pnorm(sres,0,s)
+  max(abs(c(0:(n-1))/n-fdistr),abs(c(1:n)/n-fdistr))
+}
+ks.dist<-nlm(kolm.stat, 2.453257)
+```
+
+##### Получаем расстояние $D = `r ks.dist$minimum`$ и $\tilde{\sigma}^2 = `r ks.dist$estimate^2`$. Ниже представлены эмпирическая функция распределения ошибок и фукнция распределения $N(0, \tilde{\sigma}^2)$.
+
+```{r fig3, fig.height = 5, fig.width = 6, fig.align = "center", echo=FALSE}
+plot(ecdf(eps), main = '')
+points(sort(eps), pnorm(sort(eps), 0, ks.dist$estimate), type="l", col="green", lwd=2)
+```
+  
+***  
+  
+#### *Задание 3*
+##### В предположении нормальности ошибок построить доверительные интервалы для параметров $\beta_0$ и $\beta_1$ уровня доверия $1-\alpha_1$. Построить доверительный эллипс уровня доверия $1-\alpha_1$ для $(\beta_0, \beta_1)$ (вычислить его полуоси).
+
+\
+
+```{r include=FALSE}
+X <- matrix(c(rep(1, 50), regr$x), nrow=2, byrow=TRUE)
+C <- diag(2)
+XXt <- X %*% t(X)
+BVar <- t(C) %*% solve(XXt) %*% C
+xal <- qt(1-alpha1/2, n-2)
+b_0 <- BVar[1,1]
+b_1 <- BVar[2,2]
+
+b0lw <- b0 - xal*sqrt(s)*sqrt(BVar[1,1])
+b0up <- b0 + xal*sqrt(s)*sqrt(BVar[1,1])
+
+b1lw <- b1 - xal*sqrt(s)*sqrt(BVar[2,2])
+b1up <- b1 + xal*sqrt(s)*sqrt(BVar[2,2])
+
+BVar[1, 1] = b_1
+BVar[2, 2] = b_0
+
+Fis <- qf(1-alpha1, 2, n-2)
+ff <- Fis*2*s
+zn <- eigen(BVar)$values
+sqrt(ff/zn[1]); sqrt(ff/zn[2])
+```
+
+\begin{align}
+  \psi&=C^T\beta \\
+  \hat{\psi}\sim N(\psi, \sigma^2b), \sigma^2b&=var(\hat{\psi})=\sigma^2C^T(XX^T)^{-1}C \\
+  \frac{\hat{\psi}-\psi}{\sigma\sqrt{b}}\sim N(0, 1);&\frac{(n-r)s^2}{\sigma^2}\sim \chi^2_{n-r}\Rightarrow \frac{\hat{\psi}-\psi}{s\sqrt{b}}\sim S_{n-r} \\
+  x_{\alpha}:&S_{n-r}(x_{\alpha})=1-\frac{\alpha}{2} \\
+  P(-x_{\alpha} \leqslant \frac{\hat{\psi}-\psi}{s\sqrt{b}} \leqslant &x_{\alpha})=P(\hat{\psi}-x_{\alpha}s\sqrt{b} \leqslant \psi \leqslant \hat{\psi}+x_{\alpha}s\sqrt{b}) \\
+  x_{\alpha}&=`r xal` \\
+  \beta_0 \in (`r b0lw`; &`r b0up`) \text{ - ДИ с уровнем доверия }1-\alpha \\
+  \beta_1 \in (`r b1lw`; &`r b1up`) \text{ - ДИ с уровнем доверия }1-\alpha
+\end{align}
+
+\begin{align}
+  &\frac{(\hat{\psi}-\psi)^T(C^T(XX^T)^{-1}C)^{-1}(\hat{\psi}-\psi)}{\sigma^2}\sim\chi^2_q \\
+  &\frac{((\hat{\psi}-\psi)^T(C^T(XX^T)^{-1}C)^{-1}(\hat{\psi}-\psi)q\sigma^2)}{\frac{n-r}{n+r}\cdot\frac{s^2}{\sigma^2}}=\frac{(\hat{\psi}-\psi)^T(C^T(XX^T)^{-1}C)^{-1}(\hat{\psi}-\psi)}{qs^2}\sim F_{q, n-r}
+\end{align}
+\begin{align}
+  & x_{\alpha}: F_{q, n-r}(x_{\alpha})=1-\alpha \\
+  & \left\{ \psi: (\hat{\psi}-\psi)^T(C^T(XX^T)^{-1}C)^{-1}(\hat{\psi}-\psi) \leqslant s^2qx_{\alpha} \right\} \\
+  & x_{\alpha} = `r Fis` \\
+  & \begin{pmatrix} \beta_1-\hat{\beta_1} & \beta_0-\hat{\beta_0} \end{pmatrix} \begin{pmatrix} `r BVar[1,1]` & `r BVar[1,2]` \\ `r BVar[2,1]` & `r BVar[2,2]` \end{pmatrix} \begin{pmatrix} \beta_1-\hat{\beta_1} \\ \beta_0-\hat{\beta_0} \end{pmatrix} \leqslant `r ff`
+\end{align}
+
+Собственные числа матрицы: **`r zn[1]`, `r zn[2]`**
+\
+После ортогонального преобразования получаем:
+
+\begin{align}
+  `r zn[1]`(\beta_1^*-`r b1`)^2&+`r zn[2]`(\beta_0^*+`r b0`)^2 \leqslant `r ff` \\
+  \frac{(\beta_1^*-`r b1`)^2}{`r sqrt(ff/zn[1])`^2}&+\frac{(\beta_0^*+`r b0`)^2}{`r sqrt(ff/zn[2])`^2} \leqslant 1
+\end{align}
+
+Полуоси эллипса: **`r sqrt(ff/zn[1])`; `r sqrt(ff/zn[2])`**.
+
+***
+
+#### *Задание 4*
+##### Сформулировать гипотезу независимости переменной Y от переменной X. Провести проверку значимости.
+
+\
+
+```{r include=FALSE}
+f <- (b1^2)/BVar[2, 2]/s
+xFal<-qf(1-alpha1, 1, n-2)
+pv.f<-pf(f,1,n-2,lower.tail=FALSE)
+```
+
+\begin{align}
+  & \psi=C^T\beta; \hat{\psi}\sim N(\psi, \sigma^2C^T(XX^T)^{-1}C) \\
+  & H_0: \psi=0 \\
+  & \text{Статистика F-критерия:} \\
+  & F=\frac{\hat{\psi^T(C^T(XX^T)^{-1}C)^{-1}\hat{\psi}}}{qs^2}\overset{H_0}{\sim}F_{q, n-r} \\
+  & F=`r f` \\
+  & x_{\alpha}: F_{q, n-r}(x_{\alpha})=1-\alpha; \phi(Y, X)=1_{F>x_{\alpha}} \\
+  & x_{\alpha}=`r xFal` \\
+  & H_1: \hat{\psi}=\beta_1
+\end{align}
+\begin{align}
+  & F<x_{\alpha}\Rightarrow \text{ Принимаем гипотезу $H_0$, переменная $Y$ независима с переменной $X$ на уровне значимости $\alpha$}\\
+  & `r pv.f` \text{ – наибольшее значение уровня значимости, на котором нет оснований отвергнуть данную гипотезу.}
+\end{align}
+
+***
+
+#### *Задание 5*
+##### Сформулировать модель, включающую дополнительный член с $X^2$. Построить МНК оценки параметров $\beta_1, \beta_2, \beta_3$ в данной модели. Изобразить графически полученную регрессионную зависимость.
+
+\
+
+```{r include=FALSE}
+B1 <- b1
+B0 <- b0
+coef <- coefficients(lm(regr$y~regr$x+I(regr$x^2)))
+b1 <- as.numeric(coef[3])
+b2 <- as.numeric(coef[2])
+b3 <- as.numeric(coef[1])
+s <- sum((regr$y-b1*regr$x^2 - b2*regr$x - b3)^2)/(n-3); s
+```
+
+\begin{align}
+  & Y_i = \beta_3+\beta_2X_i+\beta_1X_i^2+\varepsilon_i, \varepsilon_i\sim N(0, \sigma^2) \\
+  & \hat{\beta}=(X^TX)^{-1}X^TY \\
+  & \hat{\beta}=\begin{pmatrix}\hat{\beta_1} \\ \hat{\beta_2} \\ \hat{\beta_3}\end{pmatrix}=\begin{pmatrix}`r b1` \\ `r b2` \\ `r b3`\end{pmatrix}
+\end{align}
+
+
+```{r fig4, fig.height = 5, fig.width = 6, fig.align = "center", echo=FALSE}
+with(regr, {
+  plot(x, y)
+  xu <- sort(unique(x))
+  points(xu, B1*xu+B0, col="red", type='l', lwd=2)
+  points(xu, b1*xu^2+b2*xu+b3, col="blue", type='l', lwd=2)
+  title("Linear regression")
+})
+```
+
+***
+
+#### *Задание 6*
+##### Построить несмещенную оценку дисперсии. Провести исследование нормальности ошибок как в п.3.
+
+\
+
+\begin{align}
+  \hat{\sigma}^2=\frac{1}{n-3}&\sum\limits_{1}^{n}(Y_i-\hat{\beta_1}X_i^2-\hat{\beta_2}X_i-\hat{\beta_3})^2 = `r s` \\
+  & \varepsilon_i=\hat{Y}-X^T\hat{\beta}
+\end{align}
+
+###### $\varepsilon_1, ..., \varepsilon_n:$
+```{r echo=FALSE}
+eps = regr$y-b1*regr$x^2 - b2*regr$x - b3; 
+print(eps)
+```
+
+```{r fig5, fig.height = 5, fig.width = 6, fig.align = "center", echo=FALSE}
+eps <- sort(eps)
+k <- min(eps)-h/2
+u <- (eps[n]-eps[1])/h
+for (i in 2:(u+2)) k[i]=k[i-1]+h
+hist(eps, breaks <- k)
+```
+
+\begin{align}
+  & H_0:\varepsilon_1, ..., \varepsilon_n \sim N(0, \sigma^2) \\
+  & \sum\limits_{i=1}^{r}\frac{n_i-np_i(0, \sigma^2))^2}{np_i(0, \sigma^2)} \rightarrow \chi^2_{кр}
+\end{align}
+
+<center>Метод минимизации хи-квадрат</center>
+\begin{equation}
+  \underset{\sigma^2}{argmin}\sum\limits_{i=1}^{r}\frac{n_i-np_i(0, \sigma^2))^2}{np_i(0, \sigma^2)} 
+\end{equation}
+
+##### Разделим выборку на 6 зон:
+
+| Интервал | $(-\infty; -3.4)$ | $(-3.4; -1.7)$ | $(-1.7; 0)$ | $(0; 1.7)$ | $(1.7; 3.4)$ | $(3.4; \infty)$ |
+| -------- | ----------------- | -------------- | ----------- | ---------- | ------------ | --------------- |
+| $m_i$    | 4                 | 9              | 10          | 15         | 9            | 3               |
+
+```{r include=FALSE}
+r <- 6
+P <- function(a){
+  p<-0
+  p[1] <- pnorm(-3.4, 0, a)
+  p[2] <- pnorm(-1.7, 0, a) - sum(p)
+  p[3] <- pnorm(0, 0, a) - sum(p)
+  p[4] <- pnorm(1.7, 0, a) - sum(p)
+  p[5] <- pnorm(3.4, 0, a) - sum(p)
+  p[6] <- 1 - sum(p)
+  p}
+X2 <- function(a){g<-n*P(a); f<-(nu-g)^2/g;sum(f)}
+nu <- c(4, 9, 10, 15, 9, 3)
+a <- c(sqrt(s))
+XM <- nlm(X2, a)
+xa <- qchisq(1- alpha1, r-1-1)
+```
+
+##### Получаем $\hat{\sigma}^2=`r XM$estimate^2`$ и $\chi^2_{набл}=`r XM$minimum`$
+\begin{align}
+  l&=r - d - 1 = `r r-1-1` \\
+  \chi^2_{кр} &=`r xa` \\
+  \chi^2_{набл}=`r XM$minimum` < \chi^2_{кр} & = `r xa` \Rightarrow \text{гипотеза $H_0$ принимается}
+\end{align}
+
+**Оценим расстояние оценки до класса нормальных распределений по Колмогорову. Минимизируем статистику Колмогорова с помощью следующего скрипта:**
+```{r}
+kolm.stat<-function(s){
+  sres<-sort(eps)
+  fdistr<-pnorm(sres,0,s)
+  max(abs(c(0:(n-1))/n-fdistr),abs(c(1:n)/n-fdistr))
+}
+ks.dist<-nlm(kolm.stat, 2.357102)
+```
+
+##### Получаем расстояние $D = `r ks.dist$minimum`$ и $\tilde{\sigma}^2 = `r ks.dist$estimate^2 `$. Ниже представлены эмпирическая функция распределения ошибок и фукнция распределения $N(0, \tilde{\sigma}^2)$.
+
+```{r fig6, fig.height = 5, fig.width = 6, fig.align = "center", echo=FALSE}
+plot(ecdf(eps), main = '')
+points(sort(eps), pnorm(sort(eps), 0, ks.dist$estimate), type="l", col="green", lwd=2)
+```
+
+***
+
+#### *Задание 7*
+##### В предположении нормальности ошибок построить доверительные интервалы для параметров $\beta_1, \beta_2, \beta_3$ уровня $1-\alpha_1$. Написать уравнение доверительного эллипсоида уровня доверия $1-\alpha_1$.
+
+\
+
+```{r include=FALSE}
+X <- matrix(c(rep(1, 50), regr$x, regr$x^2), nrow=3, byrow=TRUE)
+C <- diag(3)
+XXt <- X %*% t(X)
+BVar <- t(C) %*% solve(XXt) %*% C
+xal <- qt(1-alpha1/2, n-3)
+b_1 <- BVar[1,1]
+b_2 <- BVar[2,2]
+b_3 <- BVar[3,3]
+
+b1lw <- b1 - xal*sqrt(s)*sqrt(b_3)
+b1up <- b1 + xal*sqrt(s)*sqrt(b_3)
+
+b2lw <- b2 - xal*sqrt(s)*sqrt(b_2)
+b2up <- b2 + xal*sqrt(s)*sqrt(b_2)
+
+b3lw <- b3 - xal*sqrt(s)*sqrt(b_1)
+b3up <- b3 + xal*sqrt(s)*sqrt(b_1)
+
+rotate <- function(x) t(apply(x, 2, rev))
+BVar <- rotate(rotate(BVar))
+
+Fis <- qf(1-alpha1, 3, n-3)
+ff <- Fis*3*s
+zn <- eigen(BVar)$values
+```
+
+\begin{align}
+  & \psi=C^T\beta; \hat{\psi}\sim N(\psi, \sigma^2C^T(XX^T)^{-1}C) \\
+  & x_{\alpha}: S_{n-r}(x_{\alpha})=1-\frac{\alpha}{2} \\
+  & P(\hat{\psi}-x_{\alpha}s\sqrt{b} \leqslant \psi \leqslant \hat{\psi}+x_{\alpha}s\sqrt{b}) \\
+  & x_{\alpha} = `r xal` \\
+  & \beta_1 \in (`r b1lw`; `r b1up`) \text{ - ДИ с уровнем доверия }1-\alpha \\
+  & \beta_2 \in (`r b2lw`; `r b2up`) \text{ - ДИ с уровнем доверия }1-\alpha \\
+  & \beta_3 \in (`r b3lw`; `r b3up`) \text{ - ДИ с уровнем доверия }1-\alpha
+\end{align}
+
+\
+
+\begin{align}
+  & x_{\alpha}: F_{q, n-r}(x_{\alpha})=1-\alpha \\
+  & \left\{ \psi: (\hat{\psi}-\psi)^T(C^T(XX^T)^{-1}C)^{-1}(\hat{\psi}-\psi) \leqslant s^2qx_{\alpha} \right\} \\
+  & x_{\alpha} = `r Fis`
+\end{align}
+\begin{align}
+  & \begin{pmatrix} \beta_1-\hat{\beta_1} & \beta_2-\hat{\beta_2} & \beta_3-\hat{\beta_3} \end{pmatrix} \begin{pmatrix} `r BVar[1,1]` & `r BVar[1,2]`& `r BVar[1,3]` \\ `r BVar[2,1]` & `r BVar[2,2]` & `r BVar[2,3]` \\ `r BVar[3,1]` & `r BVar[3,2]` & `r BVar[3,3]` \end{pmatrix} \begin{pmatrix} \beta_1-\hat{\beta_1} \\ \beta_2-\hat{\beta_2} \\ \beta_3-\hat{\beta_3} \end{pmatrix} \leqslant `r ff`
+\end{align}
+
+Собственные числа матрицы: **`r zn[1]`, `r zn[2]`, `r zn[3]`** 
+\
+После ортогонального преобразования получаем:
+
+\begin{align}
+  `r zn[1]`(\beta_1^*-`r b1`)^2&+`r zn[2]`(\beta_2^*-(`r b2`))^2+`r zn[3]`(\beta_3^*-`r b3`)^2 \leqslant `r ff` \\
+  \frac{(\beta_1^*-`r b1`)^2}{`r sqrt(ff/zn[1])`^2}&+\frac{(\beta_2^*-(`r b2`))^2}{`r sqrt(ff/zn[2])`^2}+\frac{(\beta_3^*-`r b3`)^2}{`r sqrt(ff/zn[3])`^2} \leqslant 1
+\end{align}
+
+Полуоси эллипсоида: **`r sqrt(ff/zn[1])`; `r sqrt(ff/zn[2])`; `r sqrt(ff/zn[3])`**.
+
+***
+
+#### *Задание 8*
+##### Сформулировать гипотезу линейной регрессионной зависимости переменной $Y$ от переменной $X$ и проверить ее значимость на уровне $\alpha_1$.
+
+\
+
+```{r include=FALSE}
+f <- (b1^2)/(BVar[3, 3]*s)
+xFal<-qf(1-alpha1, 1, n-3)
+pv.f<-pf(f,1,n-3,lower.tail=FALSE)
+```
+
+\begin{align}
+  & \psi=C^T\beta; \hat{\psi}\sim N(\psi, \sigma^2C^T(XX^T)^{-1}C) \\
+  & H_0: \psi=0 \\
+  & \text{Статистика F-критерия:} \\
+  & F=\frac{\hat{\psi^T(C^T(XX^T)^{-1}C)^{-1}\hat{\psi}}}{qs^2}\overset{H_0}{\sim}F_{q, n-r} \\
+  & F=`r f` \\
+  & x_{\alpha}: F_{q, n-r}(x_{\alpha})=1-\alpha; \phi(Y, X)=1_{F>x_{\alpha}} \\
+  & x_{\alpha}=`r xFal` \\
+  & H_1: \hat{\psi}=\beta_1
+\end{align}
+\begin{align}
+  & F<x_{\alpha}\Rightarrow \text{ Принимаем гипотезу $H_0$, переменная $Y$ линейно регрессионно зависима с переменной $X$ на уровне значимости $\alpha$}\\
+  & `r pv.f` \text{ – наибольшее значение уровня значимости, на котором нет оснований отвергнуть данную гипотезу.}
+\end{align}
+
+***

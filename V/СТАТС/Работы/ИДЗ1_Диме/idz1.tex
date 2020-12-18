@@ -1,0 +1,34 @@
+\documentclass[12pt]{amsart}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T2A]{fontenc}
+\usepackage[english, russian]{babel}
+\usepackage{fontspec}
+\setmainfont[Ligatures={TeX,Historic}]{Times New Roman}
+\usepackage{amsmath,amsfonts,amssymb,amsthm,mathtools,mathrsfs}
+\usepackage{icomma}
+\usepackage{graphicx}
+\usepackage{fullpage}
+\usepackage{ulem}
+\usepackage{eufrak}
+\mathtoolsset{showonlyrefs=true}
+\usepackage{setspace}
+\onehalfspacing
+
+\newtheorem{problem}{Задача}
+
+\DeclareMathOperator{\cov}{\mathop{cov}}
+
+\begin{document}
+	\normalem
+	
+	\newcommand{\problemset}[1]{
+	
+		\begin{center}
+			\Large #1
+		\end{center}
+	}
+	
+	\input{h.tex}
+	\input{idz1-data.tex} 
+\end{document}
