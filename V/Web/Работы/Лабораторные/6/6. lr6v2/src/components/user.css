@@ -1,0 +1,16 @@
+
+#change_button{
+    width: 20px;
+    height: 20px;
+}
+
+
+.count{
+    background-color: transparent;
+    border-bottom: 2px;
+    width: 80px;
+}
+
+#sell0{
+    color: red;
+}

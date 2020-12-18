@@ -1,0 +1,20 @@
+<head>
+  <meta charset="utf-8">
+  <title>Пожарник</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/js.js"></script>
+</head>
+<body>
+  <input type="text" name="lead_name" id="form-control" onchange="setName(this.value)" placeholder="Ведите имя" required="">
+  <canvas id="canvas" width="1000" height="600"  style="margin-left:260px; background: url('image/grass.png') repeat;display:none"></canvas>
+  <ul class="navigation" id="main">
+    <a class="main">Меню</a>
+    <li class="n1"><a onclick="init(0)">Первый уровень</a></li>
+    <li class="n2"><a  onclick="init(1)">Второй уровень</a></li>
+    <li class="n3"><a  onclick="records('record')">Рекорды</a></li>
+  </ul>
+  <div id="rec"></div>
+</body>
+</html>
+
+

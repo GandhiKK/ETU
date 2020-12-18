@@ -1,0 +1,44 @@
+extends layout
+
+block css
+    link(rel="stylesheet", href="../public/assets/css/user.css")
+
+block js
+    script(src='../public/assets/js/user.js')
+    script(src='http://localhost:3030/socket.io/socket.io.js')
+
+block content
+    .container-fluid
+        .row.vh-100
+            div#art-block.app-block.col-md-8.d-flex.flex-column.align-items-center
+                div.d-flex.justify-content-center.align-items-center.plug-square.app-block.mb-4
+                    h3 Торги начнутся #{beginDate}, в #{beginTime}
+                img#img.art-block__image(style='display: none;')
+                div#titleArt.app-block.mb-4
+                    div.art-block__name
+                    div.art-block__price
+                div.price-wrapper.app-block.d-flex.flex-column.align-items-center
+                    div#slider.mb-4.w-100
+                    div
+                        div.price-offer-button.btn.btn-primary.mr-2 Предложить новую цену
+                        div.price-offer Повысить цену на: 0
+                    div#count.invisibility
+                        =count
+
+            div#info-messages.app-block.col-md-4
+                div.header Ход торгов
+                div.content
+
+            div#info-draggable.portlet.app-block
+                div#balance
+                    div Ваш баланс
+                    strong#name #{name}
+                    | &nbsp;&nbsp;
+                    strong#money #{money}
+
+                div#purch
+                    div Покупки
+                    div#purchases
+                div#long
+                    div Длительность аукциона
+                    div#time

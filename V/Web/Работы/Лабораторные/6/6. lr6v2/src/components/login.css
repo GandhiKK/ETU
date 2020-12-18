@@ -1,0 +1,22 @@
+.Login {
+    text-align: center;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#a {
+    padding: 1em;
+    background: rgba(177, 248, 80, 0.97);
+    border-right: 1px solid #38b100;
+    color: #000000;
+}
+#a:hover {
+    background: #20b109;
+}
+
+#warning{
+    color: red;
+}

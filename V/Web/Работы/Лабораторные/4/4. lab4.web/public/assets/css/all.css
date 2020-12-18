@@ -1,0 +1,43 @@
+body {
+    background-color: #efefef !important;
+}
+
+p, h1, h2, h3, h4, h5, h6 {
+    color: #212121;
+}
+
+li {
+    list-style-type: none;
+}
+
+.invisibility {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: none
+}
+
+.app-block {
+    box-shadow: 0 0 15px -5px rgba(0,0,0,.25);
+    border-radius: 5px;
+    padding: 25px 15px;
+    background-color: white;
+}
+
+/* Ход торгов */
+#info-messages .header {
+    border-bottom: 1px solid lightgray;
+}
+
+#info-messages .content div {
+    border-radius: 2px;
+    margin: 10px 0;
+}
+
+.info-message__time {
+    background-color: lightgray;
+    padding: 3px 5px;
+    border-radius: 3px;
+}

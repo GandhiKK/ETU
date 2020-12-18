@@ -1,0 +1,45 @@
+doctype html
+html
+    head
+        meta(charset="utf-8")
+        link(href="/css/style.css" rel="stylesheet")
+        link(href="/css/w3.css" rel="stylesheet")
+        script(src="/js/xhr.js")
+
+        title Библиотека
+    body
+        #header_btn
+            a(href="/add_user")
+                button() Новый пользователь
+            a(href="/add_book") 
+                button() Новая книга
+            a(href="/") 
+                button() Список книг
+            
+        #list_btn    
+            button(id="all_books" onclick="print_all()") Все книги
+            button(id="sort_date" onclick="sort_date()") Читаются
+            button(id="sort_available" onclick="sort_available()") В наличии
+        #book_list
+            each book in book_list
+                div#book_card
+                    -var date = new Date(book.return_date)
+                    -var cur_date = new Date()
+                    -var options = {era: 'long', year: 'numeric', month: 'long', day: 'numeric', weekday: 'long', timezone: 'UTC', hour: 'numeric', minute: 'numeric', second: 'numeric' };
+                    -var overstay = (cur_date > date) ? true : false
+                    a(href= "/book_card/" + book.id)= book.name
+                    if (overstay && !book.available)
+                        p
+                            b
+                                span(style="color: red") Просрочено
+                    if book.available
+                        p
+                            b
+                                span(style="color: green ") В наличии
+                    else 
+                        p= `У читателя ${book.userName} до ` + date.toDateString()
+                    form(method="GET" action="/" + book.id)
+                        button(type="submit") Удалить
+
+
+            

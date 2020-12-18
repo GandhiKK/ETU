@@ -1,0 +1,35 @@
+@import url('./app/styles/bootstrap.min.css');
+
+.badValue {
+    border: 2px solid red;
+    color: red;
+}
+
+.badValue::-webkit-input-placeholder {
+    color: red;
+}
+
+.badValue::-moz-placeholder {
+    color: red;
+}
+
+.lab5-modal {
+    position: absolute;
+    width: 450px;
+    z-index: 999;
+    left: calc(50% - 225px);
+    top: 0;
+    margin-top: 50px;
+    transition: .5s all;
+}
+
+.lab5-backdrop {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0,0,0,.7);
+    z-index: 998;
+    transition: .5s all;
+}

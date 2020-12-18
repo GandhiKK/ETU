@@ -1,0 +1,40 @@
+doctype html
+html
+    head
+        meta(charset="utf-8")
+        link(href="css/style.css" rel="stylesheet")
+        link(href="css/w3.css" rel="stylesheet")
+        link(href="css/add_book.css" rel="stylesheet")
+        script(src="../js/xhr.js")
+
+        title Библиотека
+    body
+        #header_btn
+            a(href="/add_user")
+                button() Новый пользователь
+            a(href="/add_book") 
+                button() Новая книга
+            a(href="/") 
+                button() Список книг
+
+        p
+            form(action="/add_book" method="POST")
+                table
+                    tr
+                        th Название:
+                        th
+                            input(name="name" required)
+                    tr
+                        th Автор:
+                        th
+                            input(name="author")
+                    tr
+                        th Год выпуска:
+                        th
+                            input(type="number" oninput="isValidate(this)"  name="release_date")
+                    tr
+                        th Краткое описание:
+                        th
+                            input( name="info")
+                button(type="submit") Добавить книгу
+

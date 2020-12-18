@@ -1,0 +1,14 @@
+{ "columns":19,
+ "image":"image\/d-cutout.png",
+ "imageheight":34,
+ "imagewidth":615,
+ "margin":0,
+ "name":"d-cutout",
+ "spacing":0,
+ "tilecount":19,
+ "tiledversion":"1.4.3",
+ "tileheight":32,
+ "tilewidth":32,
+ "type":"tileset",
+ "version":1.4
+}

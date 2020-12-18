@@ -1,0 +1,57 @@
+body{
+    margin-top: 100px;
+    background: #ffffff;
+    color: #333;
+    display: grid;
+    justify-content: center;
+    grid-template-rows:auto auto auto;
+    grid-row-gap: 15px;
+    font-family: 'Tahoma', serif;
+    background-size: 100%;
+}
+
+button{
+    border: 1px solid black;
+}
+
+a{
+    text-decoration: none;
+    color: #333;
+
+}
+
+#header_btn{
+    display: flex;
+    justify-content: space-between;
+}
+
+#header_btn button{
+    margin: 0 3px;
+    background: #e0d9d9;
+}
+
+#list_btn{
+    display: flex;
+    justify-content: space-between;
+}
+
+#list_btn button {
+    background: #e0d9d9;
+}
+
+.card{
+    width: 500px;
+    background: #fff;
+    margin-bottom: 5px;
+    padding: 6px;
+    box-shadow: 0 2px 0 rgba(0,0,0,0.05);
+
+}
+
+#book_card{
+    border: 1px solid black;
+}
+
+.card p{
+    margin: 3px;
+}

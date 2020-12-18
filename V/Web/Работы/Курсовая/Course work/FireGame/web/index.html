@@ -1,0 +1,20 @@
+<head>
+  <meta charset="utf-8">
+  <title>Санта Клаус</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/js.js"></script>
+</head>
+<body style="background-color: #dcdcdc">
+  <input type="text" name="lead_name" id="form-control" onchange="setName(this.value)" placeholder="Введите имя" required="">
+  <canvas id="canvas" width="1000" height="600"  style="margin-left:260px; background: url('image/snow5.jpg') repeat;display:none"></canvas>
+  <ul class="navigation" id="main">
+    <a class="main">Меню</a>
+    <button onclick="init(0)", style = "width: 250px; height: 40px; background: cornflowerblue; color: whitesmoke">Первый уровень</button>
+    <button onclick="init(1)", style = "width: 250px; height: 40px; background: cornflowerblue; color: whitesmoke">Второй уровень</button>
+    <button onclick="records('record')", style = "width: 250px; height: 40px; background: cornflowerblue; color: whitesmoke">Рекорды</button>
+  </ul>
+  <div id="rec"></div>
+</body>
+</html>
+
+

@@ -1,0 +1,14 @@
+{ "columns":2,
+ "image":"image\/8bitholiday-cutout.png",
+ "imageheight":100,
+ "imagewidth":72,
+ "margin":0,
+ "name":"8bitholiday-cutout",
+ "spacing":0,
+ "tilecount":6,
+ "tiledversion":"1.4.3",
+ "tileheight":32,
+ "tilewidth":32,
+ "type":"tileset",
+ "version":1.4
+}

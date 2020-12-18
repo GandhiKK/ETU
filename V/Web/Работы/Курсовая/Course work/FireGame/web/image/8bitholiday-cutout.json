@@ -1,0 +1,14 @@
+{ "columns":3,
+ "image":"..\/..\/..\/..\/OneDrive\/\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0441\u0442\u043e\u043b\/8bitholiday-cutout.png",
+ "imageheight":151,
+ "imagewidth":108,
+ "margin":0,
+ "name":"8bitholiday-cutout",
+ "spacing":0,
+ "tilecount":12,
+ "tiledversion":"1.4.3",
+ "tileheight":32,
+ "tilewidth":32,
+ "type":"tileset",
+ "version":1.4
+}

@@ -1,0 +1,18 @@
+extends layout
+
+block css
+    link(rel='stylesheet', href='../public/assets/css/enter.css')
+
+block content
+    .container
+        div.enter-wrapper.d-flex.justify-content-center.align-items-center
+            div.enter-popup.app-block.d-flex.flex-column.align-items-center
+                h4 Участие в аукционе картин
+                div
+                    .input-group
+                        input.mr-2(type="text", placeholder="Имя участника")
+                        div#enter.btn.btn-primary Участвовать
+
+
+block js
+    script(src='../public/assets/js/enter.js')

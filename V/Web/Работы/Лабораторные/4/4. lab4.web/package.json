@@ -1,0 +1,35 @@
+{
+  "name": "weblab4",
+  "version": "1.0.0",
+  "description": "MOEVM LETI WEB lab",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "flow": "flow",
+    "prepublish": "npm run build",
+    "build": "flow-remove-types ./public/assets/js/ lib/"
+  },
+  "author": "Oleg",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "latest",
+    "debug": "latest",
+    "events": "^3.0.0",
+    "express": "^4.17.1",
+    "flow-bin": "^0.109.0",
+    "flow-remove-types": "^2.109.0",
+    "flow-typed": "^2.6.1",
+    "has-binary2": "latest",
+    "mocha": "^6.2.1",
+    "pug": "^2.0.4",
+    "rollbar": "^2.13.0",
+    "should": "^13.2.3",
+    "socket.io": "^2.3.0",
+    "socket.io-parser": "latest",
+    "webpack": "^4.41.1"
+  },
+  "devDependencies": {
+    "cookie-parser": "^1.4.4",
+    "webpack-cli": "^3.3.9"
+  }
+}

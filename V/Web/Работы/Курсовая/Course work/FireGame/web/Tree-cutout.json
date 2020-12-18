@@ -1,0 +1,14 @@
+{ "columns":1,
+ "image":"image\/Tree-cutout.png",
+ "imageheight":77,
+ "imagewidth":63,
+ "margin":0,
+ "name":"Tree-cutout",
+ "spacing":0,
+ "tilecount":2,
+ "tiledversion":"1.4.3",
+ "tileheight":32,
+ "tilewidth":32,
+ "type":"tileset",
+ "version":1.4
+}
