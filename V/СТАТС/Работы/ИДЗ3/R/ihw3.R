@@ -88,7 +88,7 @@ sqrt(ff/zn[1]); sqrt(ff/zn[2])
 
 #d----------------------------------------------------
 
-f <- (b1^2)/BVar[2, 2]/s; f
+f <- (b1^2)/BVar[1, 1]/s; f
 xFal<-qf(1-alpha1, 1, n-2); xFal
 pv.f<-pf(f,1,n-2,lower.tail=FALSE); pv.f
 f < xFal
@@ -187,7 +187,7 @@ sqrt(ff/zn[1]); sqrt(ff/zn[2]); sqrt(ff/zn[3])
 
 #h----------------------------------------------------
 
-f <- (b1^2)/(BVar[3, 3]*s); f
+f <- (b1^2)/(BVar[1, 1]*s); f
 xFal<-qf(1-alpha1, 1, n-3); xFal
 f < xFal
 pv.f<-pf(f,1,n-3,lower.tail=FALSE); pv.f
