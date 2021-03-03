@@ -21,7 +21,7 @@
     "flow-typed": "^2.6.1",
     "has-binary2": "latest",
     "mocha": "^6.2.1",
-    "pug": "^2.0.4",
+    "pug": "^3.0.1",
     "rollbar": "^2.13.0",
     "should": "^13.2.3",
     "socket.io": "^2.3.0",
