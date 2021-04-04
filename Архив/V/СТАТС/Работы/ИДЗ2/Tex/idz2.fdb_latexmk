@@ -1,11 +1,11 @@
 # Fdb version 3
-["xdvipdfmx"] 1612772679 "idz1.xdv" "idz1.pdf" "idz1" 1615895251
-  "idz1.xdv" 1612772679 29256 ec53f63c7e16597859fe352f6a999d3c "xelatex"
+["xdvipdfmx"] 1616836942 "idz2.xdv" "idz2.pdf" "idz2" 1616836946
+  "idz2.xdv" 1616836941 187148 642fc36055884347413a890959ba9044 "xelatex"
   (generated)
-  "idz1.pdf"
-["xelatex"] 1612772677 "c:/Users/gandh/OneDrive/Рабочий стол/Projects/ETU/Архив/V/СТАТС/Работы/ИДЗ1/idz1.tex" "idz1.xdv" "idz1" 1615895251
+  "idz2.pdf"
+["xelatex"] 1616836936 "c:/Users/gandh/OneDrive/Рабочий стол/Projects/ETU/Архив/V/СТАТС/Работы/ИДЗ2/Tex/idz2.tex" "idz2.xdv" "idz2" 1616836946
   "c:/Users/gandh/.texlive2020/texmf-var/fonts/tfm/lh/lh-t2a/larm1200.tfm" 1601240863 3240 c2435f2b5cd66d4930bc29b8df87967e ""
-  "c:/Users/gandh/OneDrive/Рабочий стол/Projects/ETU/Архив/V/СТАТС/Работы/ИДЗ1/idz1.tex" 1601372265 713 48bd3f7c6a84fa5ef26130b58cf251f8 ""
+  "c:/Users/gandh/OneDrive/Рабочий стол/Projects/ETU/Архив/V/СТАТС/Работы/ИДЗ2/Tex/idz2.tex" 1607197737 901 7764d2ed55fd30d0778965f8af931166 ""
   "d:/texlive/2020/texmf-dist/fonts/map/fontname/texfonts.map" 1612445418 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "d:/texlive/2020/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1612441167 1004 54797486969f23fa377b128694d548df ""
   "d:/texlive/2020/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1612441167 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
@@ -20,7 +20,6 @@
   "d:/texlive/2020/texmf-dist/fonts/tfm/public/cm/cmmi6.tfm" 1612443024 1512 f21f83efb36853c0b70002322c1ab3ad ""
   "d:/texlive/2020/texmf-dist/fonts/tfm/public/cm/cmmi8.tfm" 1612443024 1520 eccf95517727cb11801f4f1aee3a21b4 ""
   "d:/texlive/2020/texmf-dist/fonts/tfm/public/cm/cmr12.tfm" 1612443024 1288 655e228510b4c2a1abe905c368440826 ""
-  "d:/texlive/2020/texmf-dist/fonts/tfm/public/cm/cmr17.tfm" 1612443024 1292 296a67155bdbfc32aa9c636f21e91433 ""
   "d:/texlive/2020/texmf-dist/fonts/tfm/public/cm/cmr6.tfm" 1612443024 1300 b62933e007d01cfd073f79b963c01526 ""
   "d:/texlive/2020/texmf-dist/fonts/tfm/public/cm/cmr8.tfm" 1612443024 1292 21c1c5bfeaebccffdb478fd231a0997d ""
   "d:/texlive/2020/texmf-dist/fonts/tfm/public/cm/cmsy10.tfm" 1612443024 1124 6c73e740cf17375f03eec0ee63599741 ""
@@ -71,6 +70,9 @@
   "d:/texlive/2020/texmf-dist/tex/latex/l3packages/xparse/xparse-2020-10-01.sty" 1612447169 6195 8bc989fdf3bb45de5ab646a95bf3352b ""
   "d:/texlive/2020/texmf-dist/tex/latex/l3packages/xparse/xparse-generic.tex" 1612447169 80141 dd4859747b9d959c1acfee24fd462951 ""
   "d:/texlive/2020/texmf-dist/tex/latex/l3packages/xparse/xparse.sty" 1612447169 6121 8c5f13caf90fa53347158ba0224f9fd7 ""
+  "d:/texlive/2020/texmf-dist/tex/latex/listings/listings.cfg" 1612447776 1830 e31effa752c61538383451ae21332364 ""
+  "d:/texlive/2020/texmf-dist/tex/latex/listings/listings.sty" 1612447776 80964 64e57373f36316e4a09b517cbf1aba2e ""
+  "d:/texlive/2020/texmf-dist/tex/latex/listings/lstmisc.sty" 1612447776 77022 ee25ce086f4a79d8cf73bac6f94c02a5 ""
   "d:/texlive/2020/texmf-dist/tex/latex/mathtools/mathtools.sty" 1612448376 55731 4347f70fb23a75dbacb3c5fd21dd2675 ""
   "d:/texlive/2020/texmf-dist/tex/latex/mathtools/mhsetup.sty" 1612448376 5437 39f2bba90502a381bd48d78339c1a5f0 ""
   "d:/texlive/2020/texmf-dist/tex/latex/preprint/fullpage.sty" 1612450314 2789 05b418f78b224ec872f5b11081138605 ""
@@ -80,10 +82,15 @@
   "d:/texlive/2020/texmf-dist/web2c/texmf.cnf" 1612447058 39451 15a3ebee027466ecb89701aa91dfebaf ""
   "d:/texlive/2020/texmf-var/web2c/xetex/xelatex.fmt" 1612454970 4941929 008f72a029bcc1f4e733cf3b7eef6751 ""
   "d:/texlive/2020/texmf.cnf" 1612454627 713 e69b156964470283e0530f5060668171 ""
-  "h.tex" 1612522602 211 6522317f07fd84c68f6d6670f0d9b08c ""
-  "idz1-data.tex" 1612772675 9373 3dee80104bb5a8858bc4d0437e8d3e98 ""
-  "idz1.aux" 1612772679 268 9d2af3c417e4d3498a505074e364461e "xelatex"
+  "h.tex" 1601242289 211 6522317f07fd84c68f6d6670f0d9b08c ""
+  "idz2-data.tex" 1607543965 49353 d4fa71a5c98307ea5b4b4a23d6287d12 ""
+  "idz2.aux" 1616836941 926 70585076581aaca3cec12b2399b17638 "xelatex"
+  "pictures//Emp.png" 1605871633 5418 83c39ab4c4bc129b6c5e8bcf46e32830 ""
+  "pictures//Emp2.png" 1607083974 5388 2dab024e9ee5cc93e9f49b0abcad2e8e ""
+  "pictures//Hist.png" 1605873226 4508 4faa09062633987d1316b8123346e476 ""
+  "pictures//Hist2.png" 1607084669 5916 c5509e0adcd2f3c1061c48fcb2a63206 ""
+  "pictures//Hist3.png" 1607190836 5025 7496906d4ff6aff697a6840b315f48d9 ""
   (generated)
-  "idz1.xdv"
-  "idz1.log"
-  "idz1.aux"
+  "idz2.xdv"
+  "idz2.aux"
+  "idz2.log"

@@ -1,81 +1,75 @@
-This is XeTeX, Version 3.14159265-2.6-0.999992 (TeX Live 2020/W32TeX) (preloaded format=xelatex 2020.9.26)  9 DEC 2020 22:59
+This is XeTeX, Version 3.14159265-2.6-0.999992 (TeX Live 2020/W32TeX) (preloaded format=xelatex 2021.2.5)  27 MAR 2021 12:22
 entering extended mode
  restricted \write18 enabled.
+ file:line:error style messages enabled.
  %&-line parsing enabled.
-**idz2.tex
-(./idz2.tex
-LaTeX2e <2020-02-02> patch level 5
-L3 programming layer <2020-09-24>
-(d:/texlive/2020/texmf-dist/tex/latex/amscls/amsart.cls
+**"c:/Users/gandh/OneDrive/Рабочий стол/Projects/ETU/Архив/V/СТАТС/Работы/ИДЗ2/Tex/idz2.tex"
+(c:/Users/gandh/OneDrive/Рабочий стол/Projects/ETU/Архив/V/СТАТС/Работы/ИДЗ2/Tex/idz2.tex
+LaTeX2e <2020-10-01> patch level 4
+L3 programming layer <2021-02-02> (d:/texlive/2020/texmf-dist/tex/latex/amscls/amsart.cls
 Document Class: amsart 2020/05/29 v2.20.6
-\linespacing=\dimen134
-\normalparindent=\dimen135
+\linespacing=\dimen138
+\normalparindent=\dimen139
 \normaltopskip=\skip47
 (d:/texlive/2020/texmf-dist/tex/latex/amsmath/amsmath.sty
-Package: amsmath 2020/01/20 v2.17e AMS math features
+Package: amsmath 2020/09/23 v2.17i AMS math features
 \@mathmargin=\skip48
 
 For additional information on amsmath, use the `?' option.
 (d:/texlive/2020/texmf-dist/tex/latex/amsmath/amstext.sty
 Package: amstext 2000/06/29 v2.01 AMS text
-
-(d:/texlive/2020/texmf-dist/tex/latex/amsmath/amsgen.sty
+ (d:/texlive/2020/texmf-dist/tex/latex/amsmath/amsgen.sty
 File: amsgen.sty 1999/11/30 v2.0 generic functions
 \@emptytoks=\toks15
-\ex@=\dimen136
-))
-(d:/texlive/2020/texmf-dist/tex/latex/amsmath/amsbsy.sty
+\ex@=\dimen140
+)) (d:/texlive/2020/texmf-dist/tex/latex/amsmath/amsbsy.sty
 Package: amsbsy 1999/11/29 v1.2d Bold Symbols
-\pmbraise@=\dimen137
-)
-(d:/texlive/2020/texmf-dist/tex/latex/amsmath/amsopn.sty
+\pmbraise@=\dimen141
+) (d:/texlive/2020/texmf-dist/tex/latex/amsmath/amsopn.sty
 Package: amsopn 2016/03/08 v2.02 operator names
 )
-\inf@bad=\count164
-LaTeX Info: Redefining \frac on input line 227.
-\uproot@=\count165
-\leftroot@=\count166
-LaTeX Info: Redefining \overline on input line 389.
-\classnum@=\count167
-\DOTSCASE@=\count168
-LaTeX Info: Redefining \ldots on input line 486.
-LaTeX Info: Redefining \dots on input line 489.
-LaTeX Info: Redefining \cdots on input line 610.
-\Mathstrutbox@=\box45
-\strutbox@=\box46
-\big@size=\dimen138
-LaTeX Font Info:    Redeclaring font encoding OML on input line 733.
-LaTeX Font Info:    Redeclaring font encoding OMS on input line 734.
-\macc@depth=\count169
-\c@MaxMatrixCols=\count170
+\inf@bad=\count173
+LaTeX Info: Redefining \frac on input line 234.
+\uproot@=\count174
+\leftroot@=\count175
+LaTeX Info: Redefining \overline on input line 399.
+\classnum@=\count176
+\DOTSCASE@=\count177
+LaTeX Info: Redefining \ldots on input line 496.
+LaTeX Info: Redefining \dots on input line 499.
+LaTeX Info: Redefining \cdots on input line 620.
+\Mathstrutbox@=\box47
+\strutbox@=\box48
+\big@size=\dimen142
+LaTeX Font Info:    Redeclaring font encoding OML on input line 743.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 744.
+\macc@depth=\count178
+\c@MaxMatrixCols=\count179
 \dotsspace@=\muskip16
-\c@parentequation=\count171
-\dspbrk@lvl=\count172
+\c@parentequation=\count180
+\dspbrk@lvl=\count181
 \tag@help=\toks16
-\row@=\count173
-\column@=\count174
-\maxfields@=\count175
+\row@=\count182
+\column@=\count183
+\maxfields@=\count184
 \andhelp@=\toks17
-\eqnshift@=\dimen139
-\alignsep@=\dimen140
-\tagshift@=\dimen141
-\tagwidth@=\dimen142
-\totwidth@=\dimen143
-\lineht@=\dimen144
+\eqnshift@=\dimen143
+\alignsep@=\dimen144
+\tagshift@=\dimen145
+\tagwidth@=\dimen146
+\totwidth@=\dimen147
+\lineht@=\dimen148
 \@envbody=\toks18
 \multlinegap=\skip49
 \multlinetaggap=\skip50
 \mathdisplay@stack=\toks19
-LaTeX Info: Redefining \[ on input line 2859.
-LaTeX Info: Redefining \] on input line 2860.
+LaTeX Info: Redefining \[ on input line 2923.
+LaTeX Info: Redefining \] on input line 2924.
 )
-LaTeX Font Info:    Trying to load font information for U+msa on input line 397
-.
-
-(d:/texlive/2020/texmf-dist/tex/latex/amsfonts/umsa.fd
+LaTeX Font Info:    Trying to load font information for U+msa on input line 397.
+ (d:/texlive/2020/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
-)
-(d:/texlive/2020/texmf-dist/tex/latex/amsfonts/amsfonts.sty
+) (d:/texlive/2020/texmf-dist/tex/latex/amsfonts/amsfonts.sty
 Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
 \symAMSa=\mathgroup4
 \symAMSb=\mathgroup5
@@ -84,19 +78,19 @@ LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 (Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
 )
 \copyins=\insert199
-\abstractbox=\box47
+\abstractbox=\box49
 \listisep=\skip51
-\c@part=\count176
-\c@section=\count177
-\c@subsection=\count178
-\c@subsubsection=\count179
-\c@paragraph=\count180
-\c@subparagraph=\count181
-\c@figure=\count182
-\c@table=\count183
+\c@part=\count185
+\c@section=\count186
+\c@subsection=\count187
+\c@subsubsection=\count188
+\c@paragraph=\count189
+\c@subparagraph=\count190
+\c@figure=\count191
+\c@table=\count192
 \abovecaptionskip=\skip52
 \belowcaptionskip=\skip53
-\captionindent=\dimen145
+\captionindent=\dimen149
 \thm@style=\toks20
 \thm@bodyfont=\toks21
 \thm@headfont=\toks22
@@ -106,9 +100,8 @@ LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 \thm@postskip=\skip55
 \thm@headsep=\skip56
 \dth@everypar=\toks25
-)
-(d:/texlive/2020/texmf-dist/tex/latex/base/inputenc.sty
-Package: inputenc 2018/08/11 v1.3c Input encoding file
+) (d:/texlive/2020/texmf-dist/tex/latex/base/inputenc.sty
+Package: inputenc 2020/08/01 v1.3d Input encoding file
 \inpenc@prehook=\toks26
 \inpenc@posthook=\toks27
 
@@ -116,18 +109,14 @@ Package: inputenc 2018/08/11 v1.3c Input encoding file
 Package inputenc Warning: inputenc package ignored with utf8 based engines.
 
 ) (d:/texlive/2020/texmf-dist/tex/latex/base/fontenc.sty
-Package: fontenc 2020/02/11 v2.0o Standard LaTeX package
-
-(d:/texlive/2020/texmf-dist/tex/latex/cyrillic/t2aenc.def
+Package: fontenc 2020/08/10 v2.0s Standard LaTeX package
+ (d:/texlive/2020/texmf-dist/tex/latex/cyrillic/t2aenc.def
 File: t2aenc.def 2005/09/27 v1.0i Cyrillic encoding definition file
 )
-LaTeX Font Info:    Trying to load font information for T2A+lmr on input line 1
-12.
+LaTeX Font Info:    Trying to load font information for T2A+lmr on input line 112.
 LaTeX Font Info:    No file T2Almr.fd. on input line 112.
-LaTeX Font Info:    Trying to load font information for T2A+cmr on input line 1
-12.
-
-(d:/texlive/2020/texmf-dist/tex/latex/cyrillic/t2acmr.fd
+LaTeX Font Info:    Trying to load font information for T2A+cmr on input line 112.
+ (d:/texlive/2020/texmf-dist/tex/latex/cyrillic/t2acmr.fd
 File: t2acmr.fd 2001/08/11 v1.0a Computer Modern Cyrillic font definitions
 )
 
@@ -135,21 +124,17 @@ LaTeX Font Warning: Font shape `T2A/lmr/m/n' undefined
 (Font)              using `T2A/cmr/m/n' instead on input line 112.
 
 ) (d:/texlive/2020/texmf-dist/tex/generic/babel/babel.sty
-Package: babel 2020/09/01 3.48 The Babel package
-
-(d:/texlive/2020/texmf-dist/tex/generic/babel/babel.def
-File: babel.def 2020/09/01 3.48 Babel common definitions
-\babel@savecnt=\count184
-\U@D=\dimen146
+Package: babel 2021/01/26 3.53 The Babel package
+ (d:/texlive/2020/texmf-dist/tex/generic/babel/babel.def
+File: babel.def 2021/01/26 3.53 Babel common definitions
+\babel@savecnt=\count193
+\U@D=\dimen150
 \l@babelnohyphens=\language86
-
-(d:/texlive/2020/texmf-dist/tex/generic/babel/xebabel.def
-(d:/texlive/2020/texmf-dist/tex/generic/babel/txtbabel.def))
+ (d:/texlive/2020/texmf-dist/tex/generic/babel/xebabel.def (d:/texlive/2020/texmf-dist/tex/generic/babel/txtbabel.def))
 \bbl@readstream=\read2
 )
-\bbl@dirlevel=\count185
-
-(d:/texlive/2020/texmf-dist/tex/generic/babel-english/english.ldf
+\bbl@dirlevel=\count194
+ (d:/texlive/2020/texmf-dist/tex/generic/babel-english/english.ldf
 Language: english 2017/06/06 v3.3r English support from the babel system
 Package babel Info: \l@canadian = using hyphenrules for english
 (babel)             (\language0) on input line 102.
@@ -157,56 +142,45 @@ Package babel Info: \l@australian = using hyphenrules for ukenglish
 (babel)             (\language21) on input line 105.
 Package babel Info: \l@newzealand = using hyphenrules for ukenglish
 (babel)             (\language21) on input line 108.
-)
-(d:/texlive/2020/texmf-dist/tex/generic/babel-russian/russianb.ldf
-Language: russian 2017/08/12 1.3j Russian support for the Babel system
-Package babel Info: Making " an active character on input line 120.
-Package babel Info: Default for \cyrdash is provided on input line 157.
-))
-(d:/texlive/2020/texmf-dist/tex/latex/fontspec/fontspec.sty
-(d:/texlive/2020/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
-(d:/texlive/2020/texmf-dist/tex/latex/l3kernel/expl3.sty
-Package: expl3 2020-09-24 L3 programming layer (loader) 
-
-(d:/texlive/2020/texmf-dist/tex/latex/l3backend/l3backend-xetex.def
-File: l3backend-xetex.def 2020-09-24 L3 backend support: XeTeX
-\g__graphics_track_int=\count186
-\l__pdf_internal_box=\box48
-\g__pdf_backend_object_int=\count187
-\g__pdf_backend_annotation_int=\count188
-))
-Package: xparse 2020-05-15 L3 Experimental document command parser
-
-(d:/texlive/2020/texmf-dist/tex/latex/l3packages/xparse/xparse-generic.tex
-\l__xparse_current_arg_int=\count189
-\g__xparse_grabber_int=\count190
-\l__xparse_m_args_int=\count191
-\l__xparse_v_nesting_int=\count192
-))
+) (d:/texlive/2020/texmf-dist/tex/generic/babel-russian/russianb.ldf
+File: russianb.ldf 2021/01/10 1.3m Russian support for the Babel system
+Language: russian 2020/09/09 1.3k Russian support for the Babel system
+Package babel Info: Making " an active character on input line 124.
+Package babel Info: Default for \cyrdash is provided on input line 163.
+)) (d:/texlive/2020/texmf-dist/tex/latex/fontspec/fontspec.sty (d:/texlive/2020/texmf-dist/tex/latex/l3packages/xparse/xparse.sty (d:/texlive/2020/texmf-dist/tex/latex/l3kernel/expl3.sty
+Package: expl3 2021-02-02 L3 programming layer (loader) 
+ (d:/texlive/2020/texmf-dist/tex/latex/l3backend/l3backend-xetex.def
+File: l3backend-xetex.def 2020-01-29 L3 backend support: XeTeX
+ (|extractbb --version)
+\c__kernel_sys_dvipdfmx_version_int=\count195
+\l__color_backend_stack_int=\count196
+\g__color_backend_stack_int=\count197
+\g__graphics_track_int=\count198
+\l__pdf_internal_box=\box50
+\g__pdf_backend_object_int=\count266
+\g__pdf_backend_annotation_int=\count267
+\g__pdf_backend_link_int=\count268
+)) (d:/texlive/2020/texmf-dist/tex/latex/l3packages/xparse/xparse-2020-10-01.sty (d:/texlive/2020/texmf-dist/tex/latex/l3packages/xparse/xparse-generic.tex)))
 Package: fontspec 2020/02/21 v2.7i Font selection for XeLaTeX and LuaLaTeX
-
-(d:/texlive/2020/texmf-dist/tex/latex/fontspec/fontspec-xetex.sty
-Package: fontspec-xetex 2020/02/21 v2.7i Font selection for XeLaTeX and LuaLaTe
-X
-\l__fontspec_script_int=\count193
-\l__fontspec_language_int=\count194
-\l__fontspec_strnum_int=\count195
-\l__fontspec_tmp_int=\count196
-\l__fontspec_tmpa_int=\count197
-\l__fontspec_tmpb_int=\count198
-\l__fontspec_tmpc_int=\count266
-\l__fontspec_em_int=\count267
-\l__fontspec_emdef_int=\count268
-\l__fontspec_strong_int=\count269
-\l__fontspec_strongdef_int=\count270
-\l__fontspec_tmpa_dim=\dimen147
-\l__fontspec_tmpb_dim=\dimen148
-\l__fontspec_tmpc_dim=\dimen149
-
-(d:/texlive/2020/texmf-dist/tex/latex/base/fontenc.sty
-Package: fontenc 2020/02/11 v2.0o Standard LaTeX package
-)
-(d:/texlive/2020/texmf-dist/tex/latex/fontspec/fontspec.cfg)))
+ (d:/texlive/2020/texmf-dist/tex/latex/fontspec/fontspec-xetex.sty
+Package: fontspec-xetex 2020/02/21 v2.7i Font selection for XeLaTeX and LuaLaTeX
+\l__fontspec_script_int=\count269
+\l__fontspec_language_int=\count270
+\l__fontspec_strnum_int=\count271
+\l__fontspec_tmp_int=\count272
+\l__fontspec_tmpa_int=\count273
+\l__fontspec_tmpb_int=\count274
+\l__fontspec_tmpc_int=\count275
+\l__fontspec_em_int=\count276
+\l__fontspec_emdef_int=\count277
+\l__fontspec_strong_int=\count278
+\l__fontspec_strongdef_int=\count279
+\l__fontspec_tmpa_dim=\dimen151
+\l__fontspec_tmpb_dim=\dimen152
+\l__fontspec_tmpc_dim=\dimen153
+ (d:/texlive/2020/texmf-dist/tex/latex/base/fontenc.sty
+Package: fontenc 2020/08/10 v2.0s Standard LaTeX package
+) (d:/texlive/2020/texmf-dist/tex/latex/fontspec/fontspec.cfg)))
 
 Package fontspec Warning: OpenType feature 'Ligatures=TeX,Historic' (hlig) not
 (fontspec)                available for font 'Times New Roman' with script
@@ -263,146 +237,123 @@ Package fontspec Info: Font family 'TimesNewRoman(0)' created for font 'Times
 (fontspec)             - 'normal' (m/n) with NFSS spec.: <->"Times New
 (fontspec)             Roman/OT:script=latn;language=dflt;mapping=tex-text;"
 (fontspec)             - 'small caps'  (m/sc) with NFSS spec.: <->"Times New
-(fontspec)             Roman/OT:script=latn;language=dflt;+smcp;mapping=tex-tex
-t;"
+(fontspec)             Roman/OT:script=latn;language=dflt;+smcp;mapping=tex-text;"
 (fontspec)             - 'bold' (b/n) with NFSS spec.: <->"Times New
 (fontspec)             Roman/B/OT:script=latn;language=dflt;mapping=tex-text;"
 (fontspec)             - 'bold small caps'  (b/sc) with NFSS spec.: <->"Times
 (fontspec)             New
-(fontspec)             Roman/B/OT:script=latn;language=dflt;+smcp;mapping=tex-t
-ext;"
+(fontspec)             Roman/B/OT:script=latn;language=dflt;+smcp;mapping=tex-text;"
 (fontspec)             - 'italic' (m/it) with NFSS spec.: <->"Times New
 (fontspec)             Roman/I/OT:script=latn;language=dflt;mapping=tex-text;"
 (fontspec)             - 'italic small caps'  (m/scit) with NFSS spec.:
 (fontspec)             <->"Times New
-(fontspec)             Roman/I/OT:script=latn;language=dflt;+smcp;mapping=tex-t
-ext;"
+(fontspec)             Roman/I/OT:script=latn;language=dflt;+smcp;mapping=tex-text;"
 (fontspec)             - 'bold italic' (b/it) with NFSS spec.: <->"Times New
 (fontspec)             Roman/BI/OT:script=latn;language=dflt;mapping=tex-text;"
-
 (fontspec)             - 'bold italic small caps'  (b/scit) with NFSS spec.:
 (fontspec)             <->"Times New
-(fontspec)             Roman/BI/OT:script=latn;language=dflt;+smcp;mapping=tex-
-text;"
+(fontspec)             Roman/BI/OT:script=latn;language=dflt;+smcp;mapping=tex-text;"
 
 (d:/texlive/2020/texmf-dist/tex/latex/amsfonts/amssymb.sty
 Package: amssymb 2013/01/14 v3.01 AMS font symbols
-)
-(d:/texlive/2020/texmf-dist/tex/latex/mathtools/mathtools.sty
+) (d:/texlive/2020/texmf-dist/tex/latex/mathtools/mathtools.sty
 Package: mathtools 2020/03/24 v1.24 mathematical typesetting tools
-
-(d:/texlive/2020/texmf-dist/tex/latex/graphics/keyval.sty
+ (d:/texlive/2020/texmf-dist/tex/latex/graphics/keyval.sty
 Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
 \KV@toks@=\toks28
-)
-(d:/texlive/2020/texmf-dist/tex/latex/tools/calc.sty
+) (d:/texlive/2020/texmf-dist/tex/latex/tools/calc.sty
 Package: calc 2017/05/25 v4.3 Infix arithmetic (KKT,FJ)
-\calc@Acount=\count271
-\calc@Bcount=\count272
-\calc@Adimen=\dimen150
-\calc@Bdimen=\dimen151
+\calc@Acount=\count280
+\calc@Bcount=\count281
+\calc@Adimen=\dimen154
+\calc@Bdimen=\dimen155
 \calc@Askip=\skip57
 \calc@Bskip=\skip58
 LaTeX Info: Redefining \setlength on input line 80.
 LaTeX Info: Redefining \addtolength on input line 81.
-\calc@Ccount=\count273
+\calc@Ccount=\count282
 \calc@Cskip=\skip59
-)
-(d:/texlive/2020/texmf-dist/tex/latex/mathtools/mhsetup.sty
+) (d:/texlive/2020/texmf-dist/tex/latex/mathtools/mhsetup.sty
 Package: mhsetup 2017/03/31 v1.3 programming setup (MH)
 )
 LaTeX Info: Thecontrolsequence`\('isalreadyrobust on input line 130.
 LaTeX Info: Thecontrolsequence`\)'isalreadyrobust on input line 130.
 LaTeX Info: Thecontrolsequence`\['isalreadyrobust on input line 130.
 LaTeX Info: Thecontrolsequence`\]'isalreadyrobust on input line 130.
-\g_MT_multlinerow_int=\count274
-\l_MT_multwidth_dim=\dimen152
+\g_MT_multlinerow_int=\count283
+\l_MT_multwidth_dim=\dimen156
 \origjot=\skip60
-\l_MT_shortvdotswithinadjustabove_dim=\dimen153
-\l_MT_shortvdotswithinadjustbelow_dim=\dimen154
-\l_MT_above_intertext_sep=\dimen155
-\l_MT_below_intertext_sep=\dimen156
-\l_MT_above_shortintertext_sep=\dimen157
-\l_MT_below_shortintertext_sep=\dimen158
-\xmathstrut@box=\box49
-\xmathstrut@dim=\dimen159
-)
-(d:/texlive/2020/texmf-dist/tex/latex/jknapltx/mathrsfs.sty
+\l_MT_shortvdotswithinadjustabove_dim=\dimen157
+\l_MT_shortvdotswithinadjustbelow_dim=\dimen158
+\l_MT_above_intertext_sep=\dimen159
+\l_MT_below_intertext_sep=\dimen160
+\l_MT_above_shortintertext_sep=\dimen161
+\l_MT_below_shortintertext_sep=\dimen162
+\xmathstrut@box=\box51
+\xmathstrut@dim=\dimen163
+) (d:/texlive/2020/texmf-dist/tex/latex/jknapltx/mathrsfs.sty
 Package: mathrsfs 1996/01/01 Math RSFS package v1.0 (jk)
 \symrsfs=\mathgroup6
-)
-(d:/texlive/2020/texmf-dist/tex/latex/was/icomma.sty
+) (d:/texlive/2020/texmf-dist/tex/latex/was/icomma.sty
 Package: icomma 2002/03/10 v2.0 (WaS)
-)
-(d:/texlive/2020/texmf-dist/tex/latex/graphics/graphicx.sty
-Package: graphicx 2019/11/30 v1.2a Enhanced LaTeX Graphics (DPC,SPQR)
-
-(d:/texlive/2020/texmf-dist/tex/latex/graphics/graphics.sty
-Package: graphics 2019/11/30 v1.4a Standard LaTeX Graphics (DPC,SPQR)
-
-(d:/texlive/2020/texmf-dist/tex/latex/graphics/trig.sty
+) (d:/texlive/2020/texmf-dist/tex/latex/graphics/graphicx.sty
+Package: graphicx 2020/09/09 v1.2b Enhanced LaTeX Graphics (DPC,SPQR)
+ (d:/texlive/2020/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2020/08/30 v1.4c Standard LaTeX Graphics (DPC,SPQR)
+ (d:/texlive/2020/texmf-dist/tex/latex/graphics/trig.sty
 Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
-)
-(d:/texlive/2020/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
+) (d:/texlive/2020/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
 File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
 )
 Package graphics Info: Driver file: xetex.def on input line 105.
-
-(d:/texlive/2020/texmf-dist/tex/latex/graphics-def/xetex.def
+ (d:/texlive/2020/texmf-dist/tex/latex/graphics-def/xetex.def
 File: xetex.def 2020/08/26 v5.0i Graphics/color driver for xetex
 ))
-\Gin@req@height=\dimen160
-\Gin@req@width=\dimen161
-)
-(d:/texlive/2020/texmf-dist/tex/latex/preprint/fullpage.sty
+\Gin@req@height=\dimen164
+\Gin@req@width=\dimen165
+) (d:/texlive/2020/texmf-dist/tex/latex/preprint/fullpage.sty
 Package: fullpage 1999/02/23 1.1 (PWD)
 \FP@margin=\skip61
-)
-(d:/texlive/2020/texmf-dist/tex/generic/ulem/ulem.sty
-\UL@box=\box50
-\UL@hyphenbox=\box51
+) (d:/texlive/2020/texmf-dist/tex/generic/ulem/ulem.sty
+\UL@box=\box52
+\UL@hyphenbox=\box53
 \UL@skip=\skip62
 \UL@hook=\toks29
-\UL@height=\dimen162
-\UL@pe=\count275
-\UL@pixel=\dimen163
-\ULC@box=\box52
+\UL@height=\dimen166
+\UL@pe=\count284
+\UL@pixel=\dimen167
+\ULC@box=\box54
 Package: ulem 2019/11/18
-\ULdepth=\dimen164
-)
-(d:/texlive/2020/texmf-dist/tex/latex/amsfonts/eufrak.sty
+\ULdepth=\dimen168
+) (d:/texlive/2020/texmf-dist/tex/latex/amsfonts/eufrak.sty
 
-Package eufrak Warning: The eufrak package is redundant if the amsfonts package
- is used on input line 36.
+Package eufrak Warning: The eufrak package is redundant if the amsfonts package is used on input line 36.
 
 ) (d:/texlive/2020/texmf-dist/tex/latex/setspace/setspace.sty
 Package: setspace 2011/12/19 v6.7a set line spacing
-)
-(d:/texlive/2020/texmf-dist/tex/latex/listings/listings.sty
-\lst@mode=\count276
-\lst@gtempboxa=\box53
+) (d:/texlive/2020/texmf-dist/tex/latex/listings/listings.sty
+\lst@mode=\count285
+\lst@gtempboxa=\box55
 \lst@token=\toks30
-\lst@length=\count277
-\lst@currlwidth=\dimen165
-\lst@column=\count278
-\lst@pos=\count279
-\lst@lostspace=\dimen166
-\lst@width=\dimen167
-\lst@newlines=\count280
-\lst@lineno=\count281
-\lst@maxwidth=\dimen168
-
-(d:/texlive/2020/texmf-dist/tex/latex/listings/lstmisc.sty
+\lst@length=\count286
+\lst@currlwidth=\dimen169
+\lst@column=\count287
+\lst@pos=\count288
+\lst@lostspace=\dimen170
+\lst@width=\dimen171
+\lst@newlines=\count289
+\lst@lineno=\count290
+\lst@maxwidth=\dimen172
+ (d:/texlive/2020/texmf-dist/tex/latex/listings/lstmisc.sty
 File: lstmisc.sty 2020/03/24 1.8d (Carsten Heinz)
-\c@lstnumber=\count282
-\lst@skipnumbers=\count283
-\lst@framebox=\box54
-)
-(d:/texlive/2020/texmf-dist/tex/latex/listings/listings.cfg
+\c@lstnumber=\count291
+\lst@skipnumbers=\count292
+\lst@framebox=\box56
+) (d:/texlive/2020/texmf-dist/tex/latex/listings/listings.cfg
 File: listings.cfg 2020/03/24 1.8d listings configuration
 ))
 Package: listings 2020/03/24 1.8d (Carsten Heinz)
-\c@problem=\count284
+\c@problem=\count293
  (./idz2.aux)
 \openout1 = `idz2.aux'.
 
@@ -415,10 +366,8 @@ LaTeX Font Info:    ... okay on input line 26.
 LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 26.
 LaTeX Font Info:    ... okay on input line 26.
 LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 26.
-LaTeX Font Info:    Trying to load font information for TS1+cmr on input line 2
-6.
-
-(d:/texlive/2020/texmf-dist/tex/latex/base/ts1cmr.fd
+LaTeX Font Info:    Trying to load font information for TS1+cmr on input line 26.
+ (d:/texlive/2020/texmf-dist/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 2019/12/16 v2.5j Standard LaTeX font definitions
 )
 LaTeX Font Info:    ... okay on input line 26.
@@ -431,23 +380,18 @@ LaTeX Font Info:    ... okay on input line 26.
 LaTeX Font Info:    Checking defaults for T2A/cmr/m/n on input line 26.
 LaTeX Font Info:    ... okay on input line 26.
 LaTeX Font Info:    Trying to load font information for U+msa on input line 26.
-
-
-(d:/texlive/2020/texmf-dist/tex/latex/amsfonts/umsa.fd
+ (d:/texlive/2020/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
 LaTeX Font Info:    Trying to load font information for U+msb on input line 26.
-
-
-(d:/texlive/2020/texmf-dist/tex/latex/amsfonts/umsb.fd
+ (d:/texlive/2020/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Trying to load font information for U+rsfs on input line 26
-.
-
-(d:/texlive/2020/texmf-dist/tex/latex/jknapltx/ursfs.fd
+LaTeX Font Info:    Trying to load font information for U+rsfs on input line 26.
+ (d:/texlive/2020/texmf-dist/tex/latex/jknapltx/ursfs.fd
 File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
 )
+LaTeX Info: Redefining \th on input line 26.
 
 Package fontspec Info: Adjusting the maths setup (use [no-math] to avoid
 (fontspec)             this).
@@ -481,39 +425,31 @@ LaTeX Font Info:    Redeclaring symbol font `operators' on input line 26.
 LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
 (Font)              `operators' in the math version `normal' on input line 26.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
-(Font)                  OT1/cmr/m/n --> TU/TimesNewRoman(0)/m/n on input line 2
-6.
+(Font)                  OT1/cmr/m/n --> TU/TimesNewRoman(0)/m/n on input line 26.
 LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
 (Font)              `operators' in the math version `bold' on input line 26.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
-(Font)                  OT1/cmr/bx/n --> TU/TimesNewRoman(0)/m/n on input line 
-26.
+(Font)                  OT1/cmr/bx/n --> TU/TimesNewRoman(0)/m/n on input line 26.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
-(Font)                  TU/TimesNewRoman(0)/m/n --> TU/TimesNewRoman(0)/m/n on 
-input line 26.
+(Font)                  TU/TimesNewRoman(0)/m/n --> TU/TimesNewRoman(0)/m/n on input line 26.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
-(Font)                  OT1/cmr/m/it --> TU/TimesNewRoman(0)/m/it on input line
- 26.
+(Font)                  OT1/cmr/m/it --> TU/TimesNewRoman(0)/m/it on input line 26.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
-(Font)                  OT1/cmr/bx/n --> TU/TimesNewRoman(0)/b/n on input line 
-26.
+(Font)                  OT1/cmr/bx/n --> TU/TimesNewRoman(0)/b/n on input line 26.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
 (Font)                  OT1/cmss/m/n --> TU/lmss/m/n on input line 26.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
 (Font)                  OT1/cmtt/m/n --> TU/lmtt/m/n on input line 26.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
-(Font)                  TU/TimesNewRoman(0)/m/n --> TU/TimesNewRoman(0)/b/n on 
-input line 26.
+(Font)                  TU/TimesNewRoman(0)/m/n --> TU/TimesNewRoman(0)/b/n on input line 26.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
-(Font)                  OT1/cmr/bx/it --> TU/TimesNewRoman(0)/b/it on input lin
-e 26.
+(Font)                  OT1/cmr/bx/it --> TU/TimesNewRoman(0)/b/it on input line 26.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
 (Font)                  OT1/cmss/bx/n --> TU/lmss/b/n on input line 26.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
 (Font)                  OT1/cmtt/m/n --> TU/lmtt/b/n on input line 26.
-\c@lstlisting=\count285
- (./h.tex)
-(./idz2-data.tex
+\c@lstlisting=\count294
+ (./h.tex) (./idz2-data.tex
 Underfull \hbox (badness 10000) in paragraph at lines 7--8
 
  []
@@ -538,10 +474,10 @@ Underfull \hbox (badness 10000) in paragraph at lines 45--46
 
  []
 
-File: pictures/Emp.png Graphic file (type bmp)
-<pictures/Emp.png>
-File: pictures/Hist.png Graphic file (type bmp)
-<pictures/Hist.png>
+File: pictures//Emp.png Graphic file (type bmp)
+<pictures//Emp.png>
+File: pictures//Hist.png Graphic file (type bmp)
+<pictures//Hist.png>
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
@@ -554,12 +490,7 @@ LaTeX Warning: Text page 2 contains only floats.
 
 [2]
 Overfull \hbox (36.7404pt too wide) detected at line 126
- []$[] [] \OML/cmm/m/it/12 l\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 x; ^^U\OT1/cmr/m/
-n/12 ) = [] \OMS/cmsy/m/n/12 ) \OML/cmm/m/it/12 ll\OT1/cmr/m/n/12 ([]\OML/cmm/m
-/it/12 ; ^^U\OT1/cmr/m/n/12 ) = [] \OML/cmm/m/it/12 x[]ln^^U \OMS/cmsy/m/n/12 ^
-^@ \OML/cmm/m/it/12 n^^U \OMS/cmsy/m/n/12 ^^@ [] \OML/cmm/m/it/12 lnx[]\OT1/cmr
-/m/n/12 ! \OMS/cmsy/m/n/12 ) [] \OT1/cmr/m/n/12 = [] [] \OML/cmm/m/it/12 x[] \O
-MS/cmsy/m/n/12 ^^@ \OML/cmm/m/it/12 n \OT1/cmr/m/n/12 = 0 \OMS/cmsy/m/n/12 )$ 
+ []$[] [] \OML/cmm/m/it/12 l\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 x; ^^U\OT1/cmr/m/n/12 ) = [] \OMS/cmsy/m/n/12 ) \OML/cmm/m/it/12 ll\OT1/cmr/m/n/12 ([]\OML/cmm/m/it/12 ; ^^U\OT1/cmr/m/n/12 ) = [] \OML/cmm/m/it/12 x[]ln^^U \OMS/cmsy/m/n/12 ^^@ \OML/cmm/m/it/12 n^^U \OMS/cmsy/m/n/12 ^^@ [] \OML/cmm/m/it/12 lnx[]\OT1/cmr/m/n/12 ! \OMS/cmsy/m/n/12 ) [] \OT1/cmr/m/n/12 = [] [] \OML/cmm/m/it/12 x[] \OMS/cmsy/m/n/12 ^^@ \OML/cmm/m/it/12 n \OT1/cmr/m/n/12 = 0 \OMS/cmsy/m/n/12 )$ 
  []
 
 [3] [4]
@@ -626,9 +557,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 312--319
 
 [9]
 Overfull \hbox (2.70236pt too wide) in paragraph at lines 385--386
-\TU/TimesNewRoman(0)/b/n/12 Задача 10. \TU/TimesNewRoman(0)/m/it/12 Построить а
-симптотический доверительный интервал уровня значимости $\OML/cmm/m/it/12 ^^K[]
- \OT1/cmr/m/n/12 =
+\TU/TimesNewRoman(0)/b/n/12 Задача 10. \TU/TimesNewRoman(0)/m/it/12 Построить асимптотический доверительный интервал уровня значимости $\OML/cmm/m/it/12 ^^K[] \OT1/cmr/m/n/12 =
  []
 
 [10]
@@ -692,10 +621,10 @@ Underfull \hbox (badness 10000) in paragraph at lines 509--516
 
  []
 
-File: pictures/Emp2.png Graphic file (type bmp)
-<pictures/Emp2.png>
-File: pictures/Hist2.png Graphic file (type bmp)
-<pictures/Hist2.png>
+File: pictures//Emp2.png Graphic file (type bmp)
+<pictures//Emp2.png>
+File: pictures//Hist2.png Graphic file (type bmp)
+<pictures//Hist2.png>
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
@@ -722,10 +651,9 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 Underfull \vbox (badness 3601) has occurred while \output is active []
 
  [18]
-File: pictures/Hist3.png Graphic file (type bmp)
-<pictures/Hist3.png>
-
-[19]
+File: pictures//Hist3.png Graphic file (type bmp)
+<pictures//Hist3.png>
+ [19]
 Underfull \hbox (badness 10000) in paragraph at lines 743--745
 
  []
@@ -788,8 +716,8 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [25]
-File: pictures/Hist3.png Graphic file (type bmp)
-<pictures/Hist3.png>
+File: pictures//Hist3.png Graphic file (type bmp)
+<pictures//Hist3.png>
 
 Overfull \hbox (20.34106pt too wide) in paragraph at lines 971--984
 [] 
@@ -806,12 +734,12 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
  ) 
 Here is how much of TeX's memory you used:
- 8456 strings out of 479681
- 179102 string characters out of 5891991
- 494873 words of memory out of 5000000
- 25410 multiletter control sequences out of 15000+600000
- 543513 words of font info for 86 fonts, out of 8000000 for 9000
+ 8057 strings out of 477219
+ 166874 string characters out of 5834002
+ 536024 words of memory out of 5000000
+ 27459 multiletter control sequences out of 15000+600000
+ 411855 words of font info for 84 fonts, out of 8000000 for 9000
  1509 hyphenation exceptions out of 8191
- 45i,15n,95p,431b,288s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 82i,15n,99p,513b,299s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on idz2.pdf (27 pages).
+Output written on idz2.xdv (27 pages, 187148 bytes).
