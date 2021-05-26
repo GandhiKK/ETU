@@ -1,0 +1,996 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="windowModality">
+   <enum>Qt::ApplicationModal</enum>
+  </property>
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1085</width>
+    <height>763</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Примитивы OpenGL</string>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <widget class="GLWidget" name="MyGLWidget" native="true">
+    <property name="geometry">
+     <rect>
+      <x>450</x>
+      <y>20</y>
+      <width>611</width>
+      <height>511</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>20000</width>
+      <height>3000</height>
+     </size>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="comboBox">
+    <property name="geometry">
+     <rect>
+      <x>210</x>
+      <y>470</y>
+      <width>181</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>SF UI Display</family>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <item>
+     <property name="text">
+      <string>GL_POINTS</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>GL_LINES</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>GL_LINE_STRIP</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>GL_LINE_LOOP</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>GL_TRIANGLES</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>GL_TRIANGLE_STRIP</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>GL_TRIANGLE_FAN</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>GL_QUADS</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>GL_QUAD_STRIP</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>GL_POLYGON</string>
+     </property>
+    </item>
+   </widget>
+   <widget class="QLabel" name="label_5">
+    <property name="geometry">
+     <rect>
+      <x>50</x>
+      <y>570</y>
+      <width>191</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>16777215</width>
+      <height>20</height>
+     </size>
+    </property>
+    <property name="font">
+     <font>
+      <family>SF UI Display</family>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Тест прозрачности</string>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="comboBoxFunc">
+    <property name="geometry">
+     <rect>
+      <x>60</x>
+      <y>660</y>
+      <width>161</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>SF UI Display</family>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="currentText">
+     <string>GL_ALWAYS</string>
+    </property>
+    <property name="currentIndex">
+     <number>7</number>
+    </property>
+    <item>
+     <property name="text">
+      <string>GL_NEVER</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>GL_LESS</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>GL_EQUAL</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>GL_LEQUAL</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>GL_GREATER</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>GL_NOTEQUAL</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>GL_GEQUAL</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>GL_ALWAYS</string>
+     </property>
+    </item>
+   </widget>
+   <widget class="QSlider" name="ref">
+    <property name="geometry">
+     <rect>
+      <x>69</x>
+      <y>720</y>
+      <width>171</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="maximum">
+     <number>100</number>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Horizontal</enum>
+    </property>
+   </widget>
+   <widget class="QSlider" name="ScissorX">
+    <property name="geometry">
+     <rect>
+      <x>320</x>
+      <y>640</y>
+      <width>200</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>92</width>
+      <height>22</height>
+     </size>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>8</pointsize>
+     </font>
+    </property>
+    <property name="maximum">
+     <number>100</number>
+    </property>
+    <property name="singleStep">
+     <number>1</number>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Horizontal</enum>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>350</x>
+      <y>570</y>
+      <width>151</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>16777215</width>
+      <height>20</height>
+     </size>
+    </property>
+    <property name="font">
+     <font>
+      <family>SF UI Display</family>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Тест отсечения</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_2">
+    <property name="geometry">
+     <rect>
+      <x>290</x>
+      <y>640</y>
+      <width>21</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>16777215</width>
+      <height>20</height>
+     </size>
+    </property>
+    <property name="font">
+     <font>
+      <family>SF UI Display</family>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>X</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_3">
+    <property name="geometry">
+     <rect>
+      <x>610</x>
+      <y>600</y>
+      <width>16</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>16777215</width>
+      <height>20</height>
+     </size>
+    </property>
+    <property name="font">
+     <font>
+      <family>SF UI Display</family>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Y</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_6">
+    <property name="geometry">
+     <rect>
+      <x>290</x>
+      <y>690</y>
+      <width>21</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>16777215</width>
+      <height>20</height>
+     </size>
+    </property>
+    <property name="font">
+     <font>
+      <family>SF UI Display</family>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>N</string>
+    </property>
+   </widget>
+   <widget class="QSlider" name="ScissorWidth">
+    <property name="geometry">
+     <rect>
+      <x>320</x>
+      <y>690</y>
+      <width>200</width>
+      <height>18</height>
+     </rect>
+    </property>
+    <property name="maximum">
+     <number>100</number>
+    </property>
+    <property name="value">
+     <number>100</number>
+    </property>
+    <property name="sliderPosition">
+     <number>100</number>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Horizontal</enum>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_7">
+    <property name="geometry">
+     <rect>
+      <x>650</x>
+      <y>600</y>
+      <width>21</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>16777215</width>
+      <height>20</height>
+     </size>
+    </property>
+    <property name="font">
+     <font>
+      <family>SF UI Display</family>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>M </string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_10">
+    <property name="geometry">
+     <rect>
+      <x>770</x>
+      <y>570</y>
+      <width>221</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>16777215</width>
+      <height>20</height>
+     </size>
+    </property>
+    <property name="font">
+     <font>
+      <family>SF UI Display</family>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Тест смешения цветов</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_11">
+    <property name="geometry">
+     <rect>
+      <x>740</x>
+      <y>660</y>
+      <width>71</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>16777215</width>
+      <height>20</height>
+     </size>
+    </property>
+    <property name="font">
+     <font>
+      <family>SF UI Display</family>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>sfactor </string>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="sfactor">
+    <property name="geometry">
+     <rect>
+      <x>820</x>
+      <y>660</y>
+      <width>221</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>SF UI Display</family>
+      <pointsize>9</pointsize>
+     </font>
+    </property>
+    <property name="currentIndex">
+     <number>4</number>
+    </property>
+    <item>
+     <property name="text">
+      <string>GL_ZERO</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>GL_ONE</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>GL_DST_COLOR</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>GL_ONE_MINUS_DST_COLOR</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>GL_SRC_ALPHA</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>GL_ONE_MINUS_SRC_ALPHA</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>GL_DST_ALPHA</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>GL_ONE_MINUS_DST_ALPHA</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>GL_SRC_ALPHA_SATURATE</string>
+     </property>
+    </item>
+   </widget>
+   <widget class="QLabel" name="label_12">
+    <property name="geometry">
+     <rect>
+      <x>740</x>
+      <y>710</y>
+      <width>71</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>16777215</width>
+      <height>21</height>
+     </size>
+    </property>
+    <property name="font">
+     <font>
+      <family>SF UI Display</family>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>dfactor </string>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="dfactor">
+    <property name="geometry">
+     <rect>
+      <x>820</x>
+      <y>710</y>
+      <width>221</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>SF UI Display</family>
+      <pointsize>9</pointsize>
+     </font>
+    </property>
+    <property name="currentIndex">
+     <number>5</number>
+    </property>
+    <item>
+     <property name="text">
+      <string>GL_ZERO</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>GL_ONE</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>GL_DST_COLOR</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>GL_ONE_MINUS_DST_COLOR</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>GL_SRC_ALPHA</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>GL_ONE_MINUS_SRC_ALPHA</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>GL_DST_ALPHA</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>GL_ONE_MINUS_DST_ALPHA</string>
+     </property>
+    </item>
+   </widget>
+   <widget class="QPushButton" name="pushButton">
+    <property name="geometry">
+     <rect>
+      <x>50</x>
+      <y>470</y>
+      <width>141</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>SF UI Display</family>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Помощь</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_4">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>80</y>
+      <width>411</width>
+      <height>361</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_8">
+    <property name="geometry">
+     <rect>
+      <x>110</x>
+      <y>20</y>
+      <width>231</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>SF UI Display</family>
+      <pointsize>14</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Примитивы OpenGL</string>
+    </property>
+   </widget>
+   <widget class="Line" name="line">
+    <property name="geometry">
+     <rect>
+      <x>430</x>
+      <y>80</y>
+      <width>20</width>
+      <height>371</height>
+     </rect>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Vertical</enum>
+    </property>
+   </widget>
+   <widget class="Line" name="line_2">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>440</y>
+      <width>421</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Horizontal</enum>
+    </property>
+   </widget>
+   <widget class="Line" name="line_3">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>540</y>
+      <width>1041</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Horizontal</enum>
+    </property>
+   </widget>
+   <widget class="Line" name="line_4">
+    <property name="geometry">
+     <rect>
+      <x>550</x>
+      <y>620</y>
+      <width>20</width>
+      <height>101</height>
+     </rect>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Vertical</enum>
+    </property>
+   </widget>
+   <widget class="Line" name="line_5">
+    <property name="geometry">
+     <rect>
+      <x>260</x>
+      <y>570</y>
+      <width>20</width>
+      <height>171</height>
+     </rect>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Vertical</enum>
+    </property>
+   </widget>
+   <widget class="Line" name="line_6">
+    <property name="geometry">
+     <rect>
+      <x>700</x>
+      <y>570</y>
+      <width>20</width>
+      <height>171</height>
+     </rect>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Vertical</enum>
+    </property>
+   </widget>
+   <widget class="QSlider" name="ScissorY">
+    <property name="geometry">
+     <rect>
+      <x>610</x>
+      <y>630</y>
+      <width>20</width>
+      <height>111</height>
+     </rect>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Vertical</enum>
+    </property>
+   </widget>
+   <widget class="QSlider" name="ScissorHeight">
+    <property name="geometry">
+     <rect>
+      <x>650</x>
+      <y>630</y>
+      <width>20</width>
+      <height>111</height>
+     </rect>
+    </property>
+    <property name="value">
+     <number>99</number>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Vertical</enum>
+    </property>
+   </widget>
+   <widget class="QCheckBox" name="checkBox">
+    <property name="geometry">
+     <rect>
+      <x>70</x>
+      <y>610</y>
+      <width>141</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>SF UI Display</family>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Активировать</string>
+    </property>
+   </widget>
+   <widget class="QCheckBox" name="checkBox_2">
+    <property name="geometry">
+     <rect>
+      <x>560</x>
+      <y>570</y>
+      <width>141</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>SF UI Display</family>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Активировать</string>
+    </property>
+   </widget>
+   <widget class="QCheckBox" name="checkBox_3">
+    <property name="geometry">
+     <rect>
+      <x>800</x>
+      <y>610</y>
+      <width>141</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>SF UI Display</family>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Активировать</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_13">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>720</y>
+      <width>31</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>16777215</width>
+      <height>20</height>
+     </size>
+    </property>
+    <property name="font">
+     <font>
+      <family>SF UI Display</family>
+      <pointsize>14</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>ref</string>
+    </property>
+   </widget>
+  </widget>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <customwidgets>
+  <customwidget>
+   <class>GLWidget</class>
+   <extends>QWidget</extends>
+   <header>glwidget.h</header>
+   <container>1</container>
+   <slots>
+    <slot>changeType(QString)</slot>
+    <slot>changeShapePicture(QString)</slot>
+    <slot>changeX(int)</slot>
+    <slot>changeY(int)</slot>
+    <slot>changeWidth(int)</slot>
+    <slot>changeHeight(int)</slot>
+    <slot>changeFunc(int)</slot>
+    <slot>changeRef(int)</slot>
+    <slot>changeSfactor(QString)</slot>
+    <slot>changeDfactor(QString)</slot>
+   </slots>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>ScissorX</sender>
+   <signal>sliderMoved(int)</signal>
+   <receiver>MyGLWidget</receiver>
+   <slot>changeX(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>210</x>
+     <y>71</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>214</x>
+     <y>208</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>comboBox</sender>
+   <signal>currentIndexChanged(QString)</signal>
+   <receiver>MyGLWidget</receiver>
+   <slot>changeShapePicture(QString)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>60</x>
+     <y>39</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>114</x>
+     <y>197</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>ScissorWidth</sender>
+   <signal>sliderMoved(int)</signal>
+   <receiver>MyGLWidget</receiver>
+   <slot>changeWidth(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>303</x>
+     <y>65</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>297</x>
+     <y>152</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>ref</sender>
+   <signal>sliderMoved(int)</signal>
+   <receiver>MyGLWidget</receiver>
+   <slot>changeRef(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>529</x>
+     <y>116</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>552</x>
+     <y>202</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>comboBoxFunc</sender>
+   <signal>currentIndexChanged(int)</signal>
+   <receiver>MyGLWidget</receiver>
+   <slot>changeFunc(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>496</x>
+     <y>67</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>468</x>
+     <y>261</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>sfactor</sender>
+   <signal>currentIndexChanged(QString)</signal>
+   <receiver>MyGLWidget</receiver>
+   <slot>changeSfactor(QString)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>647</x>
+     <y>73</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>659</x>
+     <y>200</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>dfactor</sender>
+   <signal>currentIndexChanged(QString)</signal>
+   <receiver>MyGLWidget</receiver>
+   <slot>changeDfactor(QString)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>740</x>
+     <y>117</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>765</x>
+     <y>250</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>ScissorY</sender>
+   <signal>sliderMoved(int)</signal>
+   <receiver>MyGLWidget</receiver>
+   <slot>changeY(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1158</x>
+     <y>549</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>785</x>
+     <y>275</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>ScissorHeight</sender>
+   <signal>sliderMoved(int)</signal>
+   <receiver>MyGLWidget</receiver>
+   <slot>changeHeight(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1188</x>
+     <y>579</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>785</x>
+     <y>275</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>

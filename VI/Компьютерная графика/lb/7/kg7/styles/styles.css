@@ -1,0 +1,82 @@
+
+
+
+QMainWindow{
+	background: #303b44;
+}
+
+QGroupBox{
+	color:white;
+	
+}
+
+QLabel {
+    border: 2px solid gray;
+    border-radius: 4px;
+    padding: 2px;
+	color:white;
+}
+
+QPushButton {
+    border: 2px solid gray;
+    border-radius: 4px;
+    padding: 2px;
+	color:white;
+	background: gray;
+}
+QPushButton:hover{
+	background: lightgray;
+}
+
+QCheckBox {
+    border: 2px solid gray;
+    border-radius: 4px;
+    padding: 2px;
+	color:white;
+	
+}
+
+QComboBox {
+    border: 1px solid gray;
+    border-radius: 3px;
+    padding: 1px 18px 1px 3px;
+    min-width: 6em;
+}
+
+QComboBox:editable {
+    background: gray;
+}
+
+
+QComboBox:on { /* shift the text when the popup opens */
+    padding-top: 3px;
+    padding-left: 4px;
+}
+
+/*QComboBox::drop-down {
+    /*subcontrol-origin: padding;
+    subcontrol-position: top right;
+    width: 15px;
+
+    border-left-width: 1px;
+    border-left-color: darkgray;
+    border-left-style: solid; 
+    border-top-right-radius: 3px; 
+    border-bottom-right-radius: 3px;
+}
+
+*/
+QSlider::groove:horizontal {
+    border: 1px solid #999999;
+    height: 8px; /* the groove expands to the size of the slider by default. by giving it a height, it has a fixed size */
+    background: qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0 #B1B1B1, stop:1 #c4c4c4);
+    margin: 2px 0;
+}
+
+QSlider::handle:horizontal {
+    background: qlineargradient(x1:0, y1:0, x2:1, y2:1, stop:0 #b4b4b4, stop:1 #8f8f8f);
+    border: 1px solid #5c5c5c;
+    width: 18px;
+    margin: -2px 0; /* handle is placed by default on the contents rect of the groove. Expand outside the groove */
+    border-radius: 3px;
+}

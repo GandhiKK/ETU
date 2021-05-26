@@ -1,0 +1,37 @@
+void Widget::paintGL()
+{
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); // Очистка буферов цвета и глубины  
+    drawAxises(); // Рисование осей координат
+
+    // Расположение света
+    glMatrixMode(GL_MODELVIEW); // Включение режима работы с модельно-видовой матрицей
+    glPushMatrix(); // Записываем текущую матрицу в стек (для модельно-видовой матрицы его глубина равна как минимум 32)
+    glLoadIdentity(); // Заменяем текущую матрицу на единичную
+    GLfloat position[] = {0.0, 2.5, 3.0, 1.0}; // Устанавливаем параметры источника света
+    glLightfv(GL_LIGHT1, GL_POSITION, position); // Задаем источник света
+    glPopMatrix(); // Достаем из стека матрицу преобразований
+
+    // Положение фигуры
+    glMatrixMode(GL_MODELVIEW); // Включение режима работы с модельно-видовой матрицей
+    glPushMatrix(); // Записываем текущую матрицу в стек
+    glLoadIdentity(); // Заменяем текущую матрицу на единичную
+    glRotatef(angleX, 1.0, 0.0, 0.0); // Производит поворот объекта против часовой стрелки на угол angleX (измеряется в градусах) вокруг вектора (x,y,z)
+    glRotatef(angleY, 0.0, 1.0, 0.0); // Производит поворот объекта против часовой стрелки на угол angleY (измеряется в градусах) вокруг вектора (x,y,z)
+    glRotatef(angleZ, 0.0, 0.0, 1.0); // Производит поворот объекта против часовой стрелки на угол angleZ (измеряется в градусах) вокруг вектора (x,y,z)
+    glTranslatef(figurePosition->x(), figurePosition->y(), figurePosition->z()); // Осуществляет перенос объекта на расстояние х по оси Х, на расстояние у по оси У и на z по оси Z
+    glScalef(figureScale->x(), figureScale->y(), figureScale->z()); // Производит масштабирование объекта (сжатие или растяжение) вдоль вектора (x,y,z), умножая соответствующие координаты его вершин на значения своих параметров.
+
+    // Рисование объекта 
+    if (showWireframe){
+        drawWireframe(wireframe);
+        drawWireframe(wireframe2);
+        drawWireframe(wireframe3);
+        drawWireframe(wireframe4);
+        drawWireframe(wireframe5);
+        drawWireframe(wireframe6);
+        drawWireframe(wireframe7);
+        drawWireframe(wireframe8);
+        drawWireframe(wireframe9);
+    }
+    glPopMatrix(); // Достаем из стека матрицу преобразований
+}

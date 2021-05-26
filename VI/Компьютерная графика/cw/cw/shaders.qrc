@@ -1,0 +1,9 @@
+<RCC>
+    <qresource prefix="/res">
+        <file>base.vert</file>
+        <file>base.frag</file>
+    </qresource>
+    <qresource prefix="/styles"/>
+    <qresource prefix="/styles" lang="css"/>
+    <qresource prefix="/styles" lang="russian"/>
+</RCC>
