@@ -1,0 +1,166 @@
+\documentclass[12pt,a4paper]{article}%
+\usepackage{amsthm}
+\usepackage{amsmath}%
+\usepackage{amsfonts}%
+\usepackage{amssymb}%
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english,russian]{babel}
+%-------------------------------------------
+\setlength{\textwidth}{7.0in}
+\setlength{\oddsidemargin}{-0.35in}
+\setlength{\topmargin}{-0.5in}
+\setlength{\textheight}{9.0in}
+\setlength{\parindent}{0.3in}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{task}[theorem]{Задача}
+\addto\captionsrussian{\renewcommand*{\proofname}{Решение}}
+
+
+\newcommand{\abovemath}[2]{\ensuremath{\stackrel{\text{#1}}{#2}}}
+\newcommand{\aboveeq}[1]{\abovemath{#1}{=}}
+\newcommand\bydef{\aboveeq{def}}
+\begin{document}
+
+
+\begin{flushright}
+\textbf{Константин Киреев 8383 \\
+\today}
+\end{flushright}
+
+\begin{center}
+\textbf{Формальные языки\\
+HW02} \\
+\end{center}
+
+\task{
+  Привести полный минимальный детерминированный конечный автомат для следующих языков
+
+  \begin{enumerate}
+    \item $\{\omega \in \{0, 1, \dots, 9\}^* \mid \omega \text{ делится нацело на } 5 \}$
+    \item Язык положительных чисел с плавающей точкой. Целая часть может отсутствовать, дробная часть может отсутствовать, но не одновременно. Перед точкой может не быть ничего. Лидирующих нулей быть не должно
+    \begin{itemize}
+      \item $123.45, .45, 123$ -- числа
+      \item $\varepsilon, ., abc, 123., 1.2.3.4, 007$ -- не числа
+    \end{itemize}
+    \item $\{\omega \in \{a, b\}^* \mid |\omega|_a \leq 3, |\omega|_b > 2\}$
+  \end{enumerate}
+}
+
+%http://madebyevan.com/fsm/
+
+\proof{
+  $ $
+
+  \begin{enumerate}
+    \item 
+      $ $
+
+      $Q = \{q_0, q_1\}, \sum=\{0..9\}, q_0=q_0, F=q_1$
+      \begin{center}
+        \begin{tikzpicture}[scale=0.2]
+        \tikzstyle{every node}+=[inner sep=0pt]
+        \draw [black] (30.2,-22.6) circle (3);
+        \draw (30.2,-22.6) node {$q_0$};
+        \draw [black] (48.4,-21.9) circle (3);
+        \draw (48.4,-21.9) node {$q_1$};
+        \draw [black] (48.4,-21.9) circle (2.4);
+        \draw [black] (32.621,-20.838) arc (120.00224:64.40296:14.194);
+        \fill [black] (45.85,-20.33) -- (45.35,-19.53) -- (44.91,-20.43);
+        \draw (39.12,-18.38) node [above] {$0,5$};
+        \draw [black] (22.9,-21.1) -- (27.26,-22);
+        \fill [black] (27.26,-22) -- (26.58,-21.35) -- (26.38,-22.32);
+        \draw [black] (28.098,-20.476) arc (252.43495:-35.56505:2.25);
+        \draw (24.73,-15.56) node [above] {$1..4,6..9$};
+        \fill [black] (30.61,-19.64) -- (31.33,-19.03) -- (30.37,-18.73);
+        \draw [black] (45.665,-23.127) arc (-69.98992:-105.60488:20.688);
+        \fill [black] (33.02,-23.61) -- (33.66,-24.31) -- (33.93,-23.35);
+        \draw (39.44,-24.94) node [below] {$0..9$};
+        \end{tikzpicture}
+        \end{center}
+
+      \item 
+      -
+
+      \item 
+      $ $
+      
+      $Q = \{q_0, q_1, q_2, q_3, q_4, q_5, q_6\}, \sum=\{a,b\}, q_0=q_0, F=\{q_1, q_3, q_4, q_6\}$
+      \begin{center}
+        \begin{tikzpicture}[scale=0.2]
+        \tikzstyle{every node}+=[inner sep=0pt]
+        \draw [black] (15.1,-27.2) circle (3);
+        \draw (15.1,-27.2) node {$q_0$};
+        \draw [black] (27.9,-18.2) circle (3);
+        \draw (27.9,-18.2) node {$q_1$};
+        \draw [black] (27.9,-18.2) circle (2.4);
+        \draw [black] (52.6,-31) circle (3);
+        \draw (52.6,-31) node {$q_4$};
+        \draw [black] (52.6,-31) circle (2.4);
+        \draw [black] (20.6,-37.9) circle (3);
+        \draw (20.6,-37.9) node {$q_2$};
+        \draw [black] (20.6,-51.9) circle (3);
+        \draw (20.6,-51.9) node {$q_5$};
+        \draw [black] (49.4,-46) circle (3);
+        \draw (49.4,-46) node {$q_6$};
+        \draw [black] (49.4,-46) circle (2.4);
+        \draw [black] (33.4,-41.3) circle (3);
+        \draw (33.4,-41.3) node {$D$};
+        \draw [black] (47.7,-20.2) circle (3);
+        \draw (47.7,-20.2) node {$q_3$};
+        \draw [black] (47.7,-20.2) circle (2.4);
+        \draw [black] (7.6,-27.2) -- (12.1,-27.2);
+        \fill [black] (12.1,-27.2) -- (11.3,-26.7) -- (11.3,-27.7);
+        \draw [black] (16.47,-29.87) -- (19.23,-35.23);
+        \fill [black] (19.23,-35.23) -- (19.31,-34.29) -- (18.42,-34.75);
+        \draw (18.54,-31.42) node [right] {$b$};
+        \draw [black] (46.635,-44.866) arc (275.42744:-12.57256:2.25);
+        \draw (43.92,-40.45) node [above] {$b$};
+        \fill [black] (48.62,-43.12) -- (49.04,-42.27) -- (48.05,-42.37);
+        \draw [black] (47.206,-48.043) arc (-50.37576:-106.46926:25.818);
+        \fill [black] (47.21,-48.04) -- (46.27,-48.17) -- (46.91,-48.94);
+        \draw (36.5,-54.04) node [below] {$b$};
+        \draw [black] (22.91,-49.99) -- (31.09,-43.21);
+        \fill [black] (31.09,-43.21) -- (30.15,-43.34) -- (30.79,-44.11);
+        \draw (27.95,-47.09) node [below] {$a$};
+        \draw [black] (26.86,-21.01) -- (21.64,-35.09);
+        \fill [black] (21.64,-35.09) -- (22.39,-34.51) -- (21.45,-34.16);
+        \draw (23.49,-27.24) node [left] {$b$};
+        \draw [black] (23.5,-38.67) -- (30.5,-40.53);
+        \fill [black] (30.5,-40.53) -- (29.86,-39.84) -- (29.6,-40.81);
+        \draw (27.72,-39.04) node [above] {$a$};
+        \draw [black] (49.96,-32.42) -- (36.04,-39.88);
+        \fill [black] (36.04,-39.88) -- (36.98,-39.94) -- (36.51,-39.06);
+        \draw (42.06,-35.65) node [above] {$a$};
+        \draw [black] (30.089,-16.154) arc (128.24618:-52.81079:17.852);
+        \fill [black] (30.09,-16.15) -- (31.03,-16.05) -- (30.41,-15.27);
+        \draw (55.83,-17.84) node [right] {$a$};
+        \draw [black] (49.67,-31.63) -- (23.53,-37.27);
+        \fill [black] (23.53,-37.27) -- (24.42,-37.59) -- (24.21,-36.61);
+        \draw (37.21,-35.03) node [below] {$b$};
+        \draw [black] (17.55,-25.47) -- (25.45,-19.93);
+        \fill [black] (25.45,-19.93) -- (24.5,-19.98) -- (25.08,-20.79);
+        \draw (20.55,-22.2) node [above] {$a$};
+        \draw [black] (20.6,-40.9) -- (20.6,-48.9);
+        \fill [black] (20.6,-48.9) -- (21.1,-48.1) -- (20.1,-48.1);
+        \draw (20.1,-44.9) node [left] {$b$};
+        \draw [black] (35.425,-43.497) arc (70.39587:-217.60413:2.25);
+        \draw (36.7,-48.36) node [below] {$a,b$};
+        \fill [black] (32.89,-44.24) -- (32.15,-44.83) -- (33.09,-45.17);
+        \draw [black] (30.88,-18.5) -- (44.72,-19.9);
+        \fill [black] (44.72,-19.9) -- (43.97,-19.32) -- (43.87,-20.32);
+        \draw (37.62,-19.78) node [below] {$a$};
+        \draw [black] (48.94,-22.93) -- (51.36,-28.27);
+        \fill [black] (51.36,-28.27) -- (51.49,-27.33) -- (50.57,-27.75);
+        \draw (49.43,-26.61) node [left] {$a$};
+        \draw [black] (45.19,-21.84) -- (23.11,-36.26);
+        \fill [black] (23.11,-36.26) -- (24.05,-36.24) -- (23.51,-35.4);
+        \draw (33.15,-28.55) node [above] {$b$};
+        \end{tikzpicture}
+        \end{center}
+  \end{enumerate}
+}
+\end{document}

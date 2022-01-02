@@ -1,0 +1,118 @@
+\documentclass[12pt,a4paper]{article}%
+\usepackage{amsthm}
+\usepackage{amsmath}%
+\usepackage{amsfonts}%
+\usepackage{amssymb}%
+\usepackage{graphicx}
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english,russian]{babel}
+%-------------------------------------------
+\setlength{\textwidth}{7.0in}
+\setlength{\oddsidemargin}{-0.35in}
+\setlength{\topmargin}{-0.5in}
+\setlength{\textheight}{9.0in}
+\setlength{\parindent}{0.3in}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{task}[theorem]{Задача}
+\addto\captionsrussian{\renewcommand*{\proofname}{Решение}}
+
+
+\newcommand{\abovemath}[2]{\ensuremath{\stackrel{\text{#1}}{#2}}}
+\newcommand{\aboveeq}[1]{\abovemath{#1}{=}}
+\newcommand\bydef{\aboveeq{def}}
+\begin{document}
+
+
+\begin{flushright}
+\textbf{Константин Киреев 8383 \\
+\today}
+\end{flushright}
+
+\begin{center}
+\textbf{Формальные языки\\
+HW03 \\
+Дедлайн: 23:59 15 ноября 2021} \\
+\end{center}
+
+\task{
+    Привести однозначную контекстно-свободную грамматику для языка арифметических выражений над положительными целыми \emph{числами} с операциями \verb!+!, \verb!-!, \verb!*!, \verb!/!, \verb!^!, \verb!==!,\verb!<>!, \verb!<!, \verb!<=!, \verb!>!, \verb!>=! со следующими приоритетами и ассоциативностью:
+
+  \begin{center}
+    \begin{tabular}{ c | c }
+      Наибольший приоритет & Ассоциативность  \\ \hline \hline
+      \verb!^! & Правоассоциативна \\
+     \verb!*!,\verb!/! & Левоассоциативна \\
+     \verb!+!,\verb!-! & Левоассоциативна \\
+     \verb!==!,\verb!<>!, \verb!<!,\verb!<=!, \verb!>!,\verb!>=! & Неассоциативна \\ \hline \hline
+     Наименьший приоритет & Ассоциативность
+    \end{tabular}
+    \end{center}
+
+
+    Неассоциативные операции встречаются только один раз: \verb!1 == 2! -- корректная строка, \verb!1 == 2 == 3!, \verb!(1 == 2) == 3!, \verb!1 < 2 > 3! --- некорректные строки
+  }
+
+\begin{proof}
+  
+  \begin{align}
+    G=<\{N,P,K,R,S\},\{0..9\},P,S>
+  \end{align}
+
+  \begin{center}
+    \begin{align*}
+      S  &\to P==P \mid P\neq P \mid P<P \mid P \leq P \mid P > P \mid P \geq P \\
+      P  &\to P+K \mid P-K \mid K \\
+      K  &\to K \cdot R \mid K/R \mid R \\
+      R  &\to R\string^N \mid N \\
+      N  &\to 0\mid ..\mid 9
+    \end{align*}
+  \end{center}
+
+\end{proof}
+
+\task {Привести грамматику из 1 задания в нормальную форму Хомского.}
+
+\begin{proof}
+
+    \begin{align*}
+      S  &\to C_0 P \mid C_1 P \mid C_2 P \mid C_3 P \mid C_4 P \mid C_5 P \\
+      P  &\to C_6 K \mid C_7 K \mid C_8 R \mid C_9 R \mid C_{10} N \mid 0 \mid 1 \mid 2 \mid 3 \mid 4 \mid 5 \mid 6 \mid 7 \mid 8 \mid 9 \\
+      K  &\to C_8 R \mid C_9 R \mid C_{10} N \mid 0 \mid 1 \mid 2 \mid 3 \mid 4 \mid 5 \mid 6 \mid 7 \mid 8 \mid 9 \\
+      R  &\to C_{10} N \mid 0 \mid 1 \mid 2 \mid 3 \mid 4 \mid 5 \mid 6 \mid 7 \mid 8 \mid 9 \\
+      N  &\to 0 \mid 1 \mid 2 \mid 3 \mid 4 \mid 5 \mid 6 \mid 7 \mid 8 \mid 9 \\
+      C_0  &\to P C_{11} \\
+      C_1  &\to P C_{12} \\
+      C_2  &\to P C_{13} \\
+      C_3  &\to P C_{14} \\
+      C_4  &\to P C_{15} \\
+      C_5  &\to P C_{16} \\
+      C_6  &\to P C_{17} \\
+      C_7  &\to P C_{18} \\
+      C_8  &\to K C_{19} \\
+      C_9  &\to K C_{20} \\
+      C_{10}  &\to R C_{21} \\
+      C_{11}  &\to == \\
+      C_{12}  &\to \neq \\ 
+      C_{13}  &\to < \\
+      C_{14}  &\to \leq \\`'
+      C_{15}  &\to > \\ 
+      C_{16} &\to \geq \\
+      C_{17}  &\to + \\
+      C_{18}  &\to - \\
+      C_{19}  &\to * \\
+      C_{20}  &\to / \\
+      C_{21}  &\to \string^
+    \end{align*}
+
+\end{proof}
+
+
+\task {Промоделировать работу алгоритма CYK на грамматике из 2 задания на трех корректных строках не короче 7 символов и на трех некорректных строках. (Привести таблицы и деревья вывода)}
+
+\begin{proof}
+  -
+\end{proof}
+
+\end{document}

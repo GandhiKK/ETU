@@ -1,0 +1,86 @@
+\documentclass[12pt]{article}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm,bindingoffset=0cm]{geometry}
+\usepackage[utf8x]{inputenc}
+\usepackage[english,russian]{babel}
+\usepackage{cmap}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{url}
+\usepackage{pifont}
+\usepackage{tikz}
+\usepackage{verbatim}
+
+\usetikzlibrary{shapes,arrows}
+\usetikzlibrary{positioning,automata}
+\tikzset{every state/.style={minimum size=0.2cm},
+initial text={}
+}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{task}[theorem]{Задача}
+\addto\captionsrussian{\renewcommand*{\proofname}{Решение}}
+
+\begin{document}
+
+\begin{flushright}
+\textbf{Константин Киреев 8383 \\
+\today}
+\end{flushright}
+
+\begin{center} {\LARGE Формальные языки} \end{center}
+
+\begin{center} \Large домашнее задание до 23:59 23.11 \end{center}
+\bigskip
+
+
+\task{
+  Построить LL(1) таблицу по грамматике списков (грамматика ниже).
+
+  \begin{itemize}
+    \item Если в одной ячейке таблицы оказалось больше одной ячейки, значит, вы что-то сделали неправильно.
+    \item Добавьте в отчет таблицу LL(1), а также посчитанные для нетерминалов множества FIRST и FOLLOW.
+  \end{itemize}
+  }
+
+\begin{proof}
+  dfds
+\end{proof}
+
+\begin{enumerate}
+  \item
+  {
+    Осуществить синтаксический анализ алгоритмом LL(1) для 2 списков, содержащих не меньше 7 терминалов: один список должно быть корректным, другой --- нет. Для корректного списка приведите дерево вывода. Используйте грамматику, полученную в прошлом задании.
+    \begin{itemize}
+      \item Добавьте в отчет ``историю'' стека --- то, в каком порядке в стек помещались символы грамматики (как мы делали на паре).
+    \end{itemize}
+  }
+\end{enumerate}
+
+\bigskip
+
+\begin{center} Грамматика списков \end{center}
+
+    $$
+    \begin{array}{cccccccccc}
+       &S & \rightarrow & L S' \\
+       &S'& \rightarrow & ; L S' & \mid & \varepsilon \\
+       &L & \rightarrow &  [S] & \mid & a
+    \end{array}
+    $$
+
+    \bigskip
+
+    \begin{center} Заготовка для LL(1) таблицы
+
+    (чтобы с версткой не мучиться)
+    \end{center}
+    \begin{center}
+    \begin{tabular}{ l || c | c || c | c | c }
+      N & FIRST & FOLLOW &  &  & $ \$ $ \\ \hline
+        &       &        &  &  & \\
+        &       &        &  &  &
+
+    \end{tabular}
+    \end{center}
+
+\end{document}
