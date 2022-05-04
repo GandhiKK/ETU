@@ -1,0 +1,332 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="e6e8f60f-e6e4-4102-8cc9-95f064190407" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand />
+    <select />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="JupyterTrust" id="2e3be1d4-826b-4229-a749-422eb4999c17" />
+  <component name="ProjectId" id="1okfyDVVqsbGPQuf8OhZGkiPpvo" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/lab7" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\green\PycharmProjects\smoed\lab1" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\green\PycharmProjects\smoed\lab7" />
+      <recent name="C:\Users\green\PycharmProjects\smoed\lab6" />
+      <recent name="C:\Users\green\PycharmProjects\smoed\lab5" />
+      <recent name="C:\Users\green\PycharmProjects\smoed\lab2" />
+      <recent name="C:\Users\green\PycharmProjects\smoed\lab1" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Python.lab3">
+    <configuration default="true" type="PythonConfigurationType" factoryName="Python">
+      <module name="smoed" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="true" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="lab1_y" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="smoed" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/lab1" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/lab1/lab1_y.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="true" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="lab3" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="smoed" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/lab3" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/lab3/lab3.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="true" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="lab4" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="smoed" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/lab4" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/lab4/lab4.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="true" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="lab6" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="smoed" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/lab6" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/lab6/lab6.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="true" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="lab7" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="smoed" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/lab7" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/lab7/lab7.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="true" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="system" type="PythonConfigurationType" factoryName="Python">
+      <module name="smoed" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="C:\Program Files\Python39\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/lab1" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/lab1/lab1.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="true" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Python.lab1_y" />
+      <item itemvalue="Python.lab3" />
+      <item itemvalue="Python.lab4" />
+      <item itemvalue="Python.lab6" />
+      <item itemvalue="Python.lab7" />
+      <item itemvalue="Python.system" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.lab3" />
+        <item itemvalue="Python.lab1_y" />
+        <item itemvalue="Python.lab4" />
+        <item itemvalue="Python.lab7" />
+        <item itemvalue="Python.lab6" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="e6e8f60f-e6e4-4102-8cc9-95f064190407" name="Default Changelist" comment="" />
+      <created>1613835760894</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1613835760894</updated>
+      <workItem from="1613835762247" duration="11366000" />
+      <workItem from="1614010956005" duration="337000" />
+      <workItem from="1614012610749" duration="356000" />
+      <workItem from="1614465779944" duration="12776000" />
+      <workItem from="1614889088763" duration="182000" />
+      <workItem from="1615065993111" duration="12256000" />
+      <workItem from="1616203143246" duration="16276000" />
+      <workItem from="1616228950778" duration="12943000" />
+      <workItem from="1616410922465" duration="1670000" />
+      <workItem from="1616424103336" duration="3743000" />
+      <workItem from="1616433844825" duration="46000" />
+      <workItem from="1616650127905" duration="5207000" />
+      <workItem from="1616964750875" duration="5142000" />
+      <workItem from="1616979358945" duration="629000" />
+      <workItem from="1617000103295" duration="492000" />
+      <workItem from="1617000833991" duration="56000" />
+      <workItem from="1617002053181" duration="731000" />
+      <workItem from="1617006659065" duration="574000" />
+      <workItem from="1617009019661" duration="673000" />
+      <workItem from="1617089249679" duration="84000" />
+      <workItem from="1617516023708" duration="7261000" />
+      <workItem from="1617547756614" duration="3823000" />
+      <workItem from="1617551750440" duration="3937000" />
+      <workItem from="1617599213051" duration="23000" />
+      <workItem from="1617620937250" duration="710000" />
+      <workItem from="1617623438901" duration="11000" />
+      <workItem from="1617630232918" duration="4000" />
+      <workItem from="1617705710676" duration="4480000" />
+      <workItem from="1617800307358" duration="3559000" />
+      <workItem from="1618182917230" duration="11000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="2054" y="27" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1614524939588">
+      <screen x="1920" y="8" width="1360" height="728" />
+    </state>
+    <state x="2054" y="27" key="#com.intellij.execution.impl.EditConfigurationsDialog/1920.8.1360.728/0.0.1920.1040@1920.8.1360.728" timestamp="1614524939588" />
+    <state x="2380" y="127" key="FileChooserDialogImpl" timestamp="1613836175673">
+      <screen x="1920" y="8" width="1360" height="728" />
+    </state>
+    <state x="2380" y="127" key="FileChooserDialogImpl/1920.8.1360.728/0.0.1920.1040@1920.8.1360.728" timestamp="1613836175673" />
+    <state width="1317" height="179" key="GridCell.Tab.0.bottom" timestamp="1614524924183">
+      <screen x="1920" y="8" width="1360" height="728" />
+    </state>
+    <state width="1317" height="179" key="GridCell.Tab.0.bottom/1920.8.1360.728/0.0.1920.1040@1920.8.1360.728" timestamp="1614524924183" />
+    <state width="1317" height="179" key="GridCell.Tab.0.center" timestamp="1614524924183">
+      <screen x="1920" y="8" width="1360" height="728" />
+    </state>
+    <state width="1317" height="179" key="GridCell.Tab.0.center/1920.8.1360.728/0.0.1920.1040@1920.8.1360.728" timestamp="1614524924183" />
+    <state width="1317" height="179" key="GridCell.Tab.0.left" timestamp="1614524924182">
+      <screen x="1920" y="8" width="1360" height="728" />
+    </state>
+    <state width="1317" height="179" key="GridCell.Tab.0.left/1920.8.1360.728/0.0.1920.1040@1920.8.1360.728" timestamp="1614524924182" />
+    <state width="1317" height="179" key="GridCell.Tab.0.right" timestamp="1614524924183">
+      <screen x="1920" y="8" width="1360" height="728" />
+    </state>
+    <state width="1317" height="179" key="GridCell.Tab.0.right/1920.8.1360.728/0.0.1920.1040@1920.8.1360.728" timestamp="1614524924183" />
+    <state x="2101" y="14" key="SettingsEditor" timestamp="1613836120481">
+      <screen x="1920" y="8" width="1360" height="728" />
+    </state>
+    <state x="2101" y="14" key="SettingsEditor/1920.8.1360.728/0.0.1920.1040@1920.8.1360.728" timestamp="1613836120481" />
+    <state width="688" height="372" key="XDebugger.FullValuePopup" timestamp="1617552723764">
+      <screen x="1920" y="8" width="1360" height="728" />
+    </state>
+    <state width="688" height="372" key="XDebugger.FullValuePopup/1920.8.1360.728/0.0.1920.1040@1920.8.1360.728" timestamp="1617552723764" />
+    <state x="2296" y="196" key="com.intellij.ide.util.TipDialog" timestamp="1617623438720">
+      <screen x="1920" y="8" width="1360" height="728" />
+    </state>
+    <state x="2296" y="196" key="com.intellij.ide.util.TipDialog/1920.8.1360.728/0.0.1920.1040@1920.8.1360.728" timestamp="1617623438720" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/lab1/lab1_y.py</url>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/smoed$lab2.coverage" NAME="lab2 Coverage Results" MODIFIED="1614524905552" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/lab2" />
+  </component>
+</project>

@@ -1,0 +1,1 @@
+g++ -std=c++11 Coco.cpp APC_VecMat3D.cpp APC_Math.cpp APC_PrecNut.cpp APC_Spheric.cpp APC_Sun.cpp APC_Time.cpp

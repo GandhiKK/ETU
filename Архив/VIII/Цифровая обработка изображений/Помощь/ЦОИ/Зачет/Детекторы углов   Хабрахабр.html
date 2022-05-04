@@ -1,0 +1,2851 @@
+<!DOCTYPE html>
+<!-- saved from url=(0032)http://habrahabr.ru/post/244541/ -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><script type="text/javascript" async="" src="./Детекторы углов   Хабрахабр_files/watch.js"></script><script async="" src="./Детекторы углов   Хабрахабр_files/analytics.js"></script>
+    
+    <meta content="width=1024" name="viewport">
+
+
+    <title>Детекторы углов / Хабрахабр</title>
+
+    <meta name="yandex-verification" content="67d46b975fa41645"> <!-- яндекс вебмастер - верификация -->
+
+    <meta name="description" content=" Мне интересна обработка изображений, в особенности работа с особыми точками. Ища информацию по детекторам углов, я не нашел достаточно большого обзора этих алгоритмов на русском языке. Поэтому я...">
+    <meta name="keywords" content="особая точка, угол, детектор">
+
+    	<meta property="fb:app_id" content="444736788986613"> 
+<meta property="og:type" content="article"> 
+<meta property="og:url" content="http://habrahabr.ru/post/244541/"> 
+<meta property="og:title" content="Детекторы углов"> 
+	<meta property="og:image" content="https://habrastorage.org/files/223/0aa/554/2230aa5547674590b5410071da4bb24a.jpg">
+	<link rel="image_src" href="https://habrastorage.org/files/223/0aa/554/2230aa5547674590b5410071da4bb24a.jpg"><meta property="og:image" content="http://habrastorage.org/files/c94/15d/2c5/c9415d2c51294b91b89be607b00f6507.jpg">
+	<link rel="image_src" href="./Детекторы углов   Хабрахабр_files/c9415d2c51294b91b89be607b00f6507.jpg"><meta property="og:image" content="http://habrastorage.org/files/77c/edb/b9f/77cedbb9fc124704865a4bd69f984b9d.png">
+	<link rel="image_src" href="./Детекторы углов   Хабрахабр_files/77cedbb9fc124704865a4bd69f984b9d.png"><meta property="og:image" content="http://habrastorage.org/files/dab/018/c16/dab018c16dc94b6d8b3dbcade5107d3a.png">
+	<link rel="image_src" href="./Детекторы углов   Хабрахабр_files/dab018c16dc94b6d8b3dbcade5107d3a.png"><meta property="og:image" content="http://habrastorage.org/files/2b3/161/1a1/2b31611a1f444ad4b410f901c2ea1cd3.png">
+	<link rel="image_src" href="./Детекторы углов   Хабрахабр_files/2b31611a1f444ad4b410f901c2ea1cd3.png"><meta property="og:image" content="http://habrastorage.org/files/d52/897/5ce/d528975cefa5498fb18957bba41cf0e8.png">
+	<link rel="image_src" href="./Детекторы углов   Хабрахабр_files/d528975cefa5498fb18957bba41cf0e8.png"><meta property="og:image" content="http://habrastorage.org/files/68b/9ce/118/68b9ce1189b34b698309a7d70414a913.png">
+	<link rel="image_src" href="./Детекторы углов   Хабрахабр_files/68b9ce1189b34b698309a7d70414a913.png"><meta property="og:image" content="http://habrastorage.org/files/b06/ae8/34c/b06ae834c0c34fa588961baa95fa8610.png">
+	<link rel="image_src" href="./Детекторы углов   Хабрахабр_files/b06ae834c0c34fa588961baa95fa8610.png"><meta property="og:image" content="http://habrastorage.org/files/a29/58a/acb/a2958aacbe3b49feae98047cf8f9cd69.png">
+	<link rel="image_src" href="./Детекторы углов   Хабрахабр_files/a2958aacbe3b49feae98047cf8f9cd69.png"><meta property="og:image" content="http://habrastorage.org/files/487/859/f3d/487859f3d0e6455cb2b62baad30220c1.png">
+	<link rel="image_src" href="./Детекторы углов   Хабрахабр_files/487859f3d0e6455cb2b62baad30220c1.png"><meta property="og:image" content="http://habrastorage.org/files/fe8/119/9a8/fe81199a88d1413b98123860db3d37a9.png">
+	<link rel="image_src" href="./Детекторы углов   Хабрахабр_files/fe81199a88d1413b98123860db3d37a9.png"><meta property="og:image" content="http://habrastorage.org/files/0bb/4e2/9df/0bb4e29dfed948d6bab28aee61fc366a.png">
+	<link rel="image_src" href="./Детекторы углов   Хабрахабр_files/0bb4e29dfed948d6bab28aee61fc366a.png"><meta property="og:image" content="http://habrastorage.org/files/193/961/072/193961072a124716ae6551f81288979c.png">
+	<link rel="image_src" href="./Детекторы углов   Хабрахабр_files/193961072a124716ae6551f81288979c.png"><meta property="og:image" content="http://habrastorage.org/files/8f8/41d/afc/8f841dafcb5a4f0cb2fb1b697c93808f.png">
+	<link rel="image_src" href="./Детекторы углов   Хабрахабр_files/8f841dafcb5a4f0cb2fb1b697c93808f.png"><meta property="og:image" content="http://habrastorage.org/files/5dd/9fb/190/5dd9fb190c6b4d2c88c5c0a20e5fa41f.png">
+	<link rel="image_src" href="./Детекторы углов   Хабрахабр_files/5dd9fb190c6b4d2c88c5c0a20e5fa41f.png"><meta property="og:image" content="http://habrastorage.org/files/71d/87d/d46/71d87dd464994ee58d18dae2f8293423.png">
+	<link rel="image_src" href="./Детекторы углов   Хабрахабр_files/71d87dd464994ee58d18dae2f8293423.png"><meta property="og:image" content="http://habrastorage.org/files/5e8/771/708/5e87717084824ebc8d405cc8a8067669.png">
+	<link rel="image_src" href="./Детекторы углов   Хабрахабр_files/5e87717084824ebc8d405cc8a8067669.png"><meta property="og:image" content="http://habrastorage.org/files/854/ac4/677/854ac46775254752bc7e707f1be737e4.png">
+	<link rel="image_src" href="./Детекторы углов   Хабрахабр_files/854ac46775254752bc7e707f1be737e4.png"><meta property="og:image" content="http://habrastorage.org/files/8a5/3cc/800/8a53cc80019a4673b59260b279c7e657.png">
+	<link rel="image_src" href="./Детекторы углов   Хабрахабр_files/8a53cc80019a4673b59260b279c7e657.png"><meta property="og:image" content="http://habrastorage.org/files/2c7/a55/340/2c7a55340ddb48f597fd2609c1c320a8.png">
+	<link rel="image_src" href="./Детекторы углов   Хабрахабр_files/2c7a55340ddb48f597fd2609c1c320a8.png"><meta property="og:image" content="http://habrastorage.org/files/854/ac4/677/854ac46775254752bc7e707f1be737e4.png">
+	<link rel="image_src" href="./Детекторы углов   Хабрахабр_files/854ac46775254752bc7e707f1be737e4.png"><meta property="og:image" content="http://habrastorage.org/files/688/248/90c/68824890c74f4c20bf0642a4f197dd52.png">
+	<link rel="image_src" href="./Детекторы углов   Хабрахабр_files/68824890c74f4c20bf0642a4f197dd52.png"><meta property="og:image" content="http://habrastorage.org/files/7bc/b60/3c4/7bcb603c4ccc4da392c7339e475d4518.png">
+	<link rel="image_src" href="./Детекторы углов   Хабрахабр_files/7bcb603c4ccc4da392c7339e475d4518.png"><meta property="og:image" content="http://habrastorage.org/files/672/f35/9da/672f359da0e24e4cb0a1f5b83955405d.png">
+	<link rel="image_src" href="./Детекторы углов   Хабрахабр_files/672f359da0e24e4cb0a1f5b83955405d.png"><meta property="og:image" content="http://habrastorage.org/files/b80/138/528/b80138528a71433bb244473330e3522f.png">
+	<link rel="image_src" href="./Детекторы углов   Хабрахабр_files/b80138528a71433bb244473330e3522f.png"><meta property="og:image" content="http://habrastorage.org/files/c5c/495/392/c5c49539271044e6bd23be5e0c439b57.png">
+	<link rel="image_src" href="./Детекторы углов   Хабрахабр_files/c5c49539271044e6bd23be5e0c439b57.png"><meta property="og:image" content="http://habrastorage.org/files/46b/ca8/b18/46bca8b18cff4f7c82c1ea056bf4cdb0.png">
+	<link rel="image_src" href="./Детекторы углов   Хабрахабр_files/46bca8b18cff4f7c82c1ea056bf4cdb0.png"><meta property="og:image" content="http://habrastorage.org/files/9bf/224/2c5/9bf2242c54704d3a8638dce396316b40.png">
+	<link rel="image_src" href="./Детекторы углов   Хабрахабр_files/9bf2242c54704d3a8638dce396316b40.png"><meta property="og:image" content="http://habrastorage.org/files/e65/b47/481/e65b474814794eacb41220c563be2feb.png">
+	<link rel="image_src" href="./Детекторы углов   Хабрахабр_files/e65b474814794eacb41220c563be2feb.png"><meta property="og:image" content="http://habrastorage.org/files/c34/8d4/e1f/c348d4e1f40e426ab58d86c205421450.png">
+	<link rel="image_src" href="./Детекторы углов   Хабрахабр_files/c348d4e1f40e426ab58d86c205421450.png"><meta property="og:image" content="http://habrastorage.org/files/37f/582/ff8/37f582ff8b654d5dbc5f732fc028727b.png">
+	<link rel="image_src" href="./Детекторы углов   Хабрахабр_files/37f582ff8b654d5dbc5f732fc028727b.png"><meta property="og:image" content="http://habrastorage.org/files/061/e23/4d4/061e234d433d47c78243906d6b2706a9.png">
+	<link rel="image_src" href="./Детекторы углов   Хабрахабр_files/061e234d433d47c78243906d6b2706a9.png"><meta property="og:image" content="http://habrastorage.org/files/d92/b0a/ed9/d92b0aed930c4dfa8ce442d142686d45.png">
+	<link rel="image_src" href="./Детекторы углов   Хабрахабр_files/d92b0aed930c4dfa8ce442d142686d45.png"><meta property="og:image" content="http://habrastorage.org/files/caa/4f0/c08/caa4f0c085be4259a7a27243c29f06fb.png">
+	<link rel="image_src" href="./Детекторы углов   Хабрахабр_files/caa4f0c085be4259a7a27243c29f06fb.png"><meta property="og:image" content="http://habrastorage.org/files/747/c24/b35/747c24b35dab4af28019c1cddd348a07.png">
+	<link rel="image_src" href="./Детекторы углов   Хабрахабр_files/747c24b35dab4af28019c1cddd348a07.png"><meta property="og:image" content="http://habrastorage.org/files/1df/977/6b1/1df9776b1ba143fd999255f920eb4b9e.png">
+	<link rel="image_src" href="./Детекторы углов   Хабрахабр_files/1df9776b1ba143fd999255f920eb4b9e.png"><meta property="og:image" content="http://habrastorage.org/files/6a5/ef3/6a2/6a5ef36a24fb4382a898bcdb9b4ea9d3.png">
+	<link rel="image_src" href="./Детекторы углов   Хабрахабр_files/6a5ef36a24fb4382a898bcdb9b4ea9d3.png"><meta property="og:image" content="http://habrastorage.org/files/a76/b88/950/a76b88950f90429b824f7d810c64007f.png">
+	<link rel="image_src" href="./Детекторы углов   Хабрахабр_files/a76b88950f90429b824f7d810c64007f.png"><meta property="og:image" content="http://habrastorage.org/files/0a6/0c2/ccf/0a60c2ccff424146a51d252482bbb815.png">
+	<link rel="image_src" href="./Детекторы углов   Хабрахабр_files/0a60c2ccff424146a51d252482bbb815.png"><meta property="og:image" content="http://habrastorage.org/files/0f3/9f7/484/0f39f7484cc945afb93c2cfdac6aedb1.png">
+	<link rel="image_src" href="./Детекторы углов   Хабрахабр_files/0f39f7484cc945afb93c2cfdac6aedb1.png"><meta property="og:image" content="http://habrastorage.org/files/047/783/8dc/0477838dc05549749529f34c1f631f6b.png">
+	<link rel="image_src" href="./Детекторы углов   Хабрахабр_files/0477838dc05549749529f34c1f631f6b.png"><meta property="og:image" content="http://habrastorage.org/files/b57/e21/46c/b57e2146cdc84fb38c88331bf7469d52.png">
+	<link rel="image_src" href="./Детекторы углов   Хабрахабр_files/b57e2146cdc84fb38c88331bf7469d52.png"><meta property="og:image" content="http://habrastorage.org/files/3f2/97f/568/3f297f5686104e2da49a98249909f691.png">
+	<link rel="image_src" href="./Детекторы углов   Хабрахабр_files/3f297f5686104e2da49a98249909f691.png"><meta property="og:image" content="http://habrastorage.org/files/6a7/ff8/e6e/6a7ff8e6e10446daa211832e4ec71026.png">
+	<link rel="image_src" href="./Детекторы углов   Хабрахабр_files/6a7ff8e6e10446daa211832e4ec71026.png"><meta property="og:image" content="http://habrastorage.org/files/9eb/fbc/b15/9ebfbcb153ef46d78464dc7f59cc8943.png">
+	<link rel="image_src" href="./Детекторы углов   Хабрахабр_files/9ebfbcb153ef46d78464dc7f59cc8943.png"><meta property="og:image" content="http://habrastorage.org/files/970/c91/1d6/970c911d62a94010b308aec46a08f6e7.png">
+	<link rel="image_src" href="./Детекторы углов   Хабрахабр_files/970c911d62a94010b308aec46a08f6e7.png"><meta property="og:image" content="http://habrastorage.org/files/7e2/e6f/299/7e2e6f29917b49ddb2885657bc078eff.png">
+	<link rel="image_src" href="./Детекторы углов   Хабрахабр_files/7e2e6f29917b49ddb2885657bc078eff.png"><meta property="og:image" content="http://habrastorage.org/files/b07/88f/f10/b0788ff106d44f40b6f7ca7b8582d863.png">
+	<link rel="image_src" href="./Детекторы углов   Хабрахабр_files/b0788ff106d44f40b6f7ca7b8582d863.png"><meta property="og:image" content="http://habrastorage.org/files/61b/be1/a78/61bbe1a788764c4c86487798a849089e.png">
+	<link rel="image_src" href="./Детекторы углов   Хабрахабр_files/61bbe1a788764c4c86487798a849089e.png"><meta property="og:image" content="http://habrastorage.org/files/658/29f/b86/65829fb86fc44b5da82c49a68a0d6902.png">
+	<link rel="image_src" href="./Детекторы углов   Хабрахабр_files/65829fb86fc44b5da82c49a68a0d6902.png"><meta property="og:image" content="http://habrastorage.org/files/d20/b46/706/d20b467068db43449ef6cdc6bd76cf44.png">
+	<link rel="image_src" href="./Детекторы углов   Хабрахабр_files/d20b467068db43449ef6cdc6bd76cf44.png"><meta property="og:image" content="http://habrastorage.org/files/268/13c/71a/26813c71a81541b69e8b1d13de2067d6.png">
+	<link rel="image_src" href="./Детекторы углов   Хабрахабр_files/26813c71a81541b69e8b1d13de2067d6.png">
+	
+<meta property="og:description" content="Мне интересна обработка изображений, в особенности работа с особыми точками. Ища информацию по детекторам углов, я не нашел достаточно большого обзора этих...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="@habrahabr">
+	<meta property="al:ios:url" content="habrahabr://post/244541">
+<meta property="al:ios:app_store_id" content="778613673">
+<meta property="al:ios:app_name" content="Habrahabr">
+<meta property="al:android:url" content="habrahabr://post/244541">
+<meta property="al:android:app_name" content="Habrahabr">
+<meta property="al:android:package" content="ru.habrahabr">
+<meta property="al:windows_phone:url" content="habrahabr://post/244541">
+<meta property="al:windows_phone:app_name" content="Habrahabr">
+<meta property="al:windows_phone:app_id" content="460a6bd6-8955-470f-935e-9ea1726a6060">
+	<link rel="canonical" href="./Детекторы углов   Хабрахабр_files/Детекторы углов   Хабрахабр.html">
+    <link rel="alternate" media="only screen and (max-width: 640px)" href="http://m.habrahabr.ru/post/244541/">
+
+
+
+
+    <link href="http://habrahabr.ru/styles/1424872488/assets/global_main.css" rel="stylesheet" media="all">
+    <script type="text/javascript" src="./Детекторы углов   Хабрахабр_files/global_main.js"></script>
+      <link href="http://habrahabr.ru/styles/1424872488/assets/post_common_css.css" rel="stylesheet" media="all">
+
+    <link href="http://habrahabr.ru/styles/1424872488/printer.css" rel="stylesheet" media="print">
+
+    
+    
+
+
+
+
+      <script type="text/javascript" src="./Детекторы углов   Хабрахабр_files/post_common_js.js"></script>
+
+
+      <!-- www.criteo.com/ru -->
+<script type="text/javascript">
+  var crtg_nid="2580";
+  var crtg_cookiename="cto_rtt";
+  var crtg_varname="crtg_content";
+  function crtg_getCookie(c_name){
+    var i,x,y,ARRCookies=document.cookie.split(";");
+    for(i=0;i<ARRCookies.length;i++){
+      x=ARRCookies[i].substr(0,ARRCookies[i].indexOf("="));
+      y=ARRCookies[i].substr(ARRCookies[i].indexOf("=")+1);
+      x=x.replace(/^\s+|\s+$/g,"");
+      if(x==c_name){return unescape(y);}
+    }
+    return'';
+  }
+  var crtg_content = crtg_getCookie(crtg_cookiename);var crtg_rnd=Math.floor(Math.random()*99999999999);
+  var crtg_url=location.protocol+'//rtax.criteo.com/delivery/rta/rta.js?netId='+escape(crtg_nid);crtg_url+='&cookieName='+escape(crtg_cookiename);crtg_url+='&rnd='+crtg_rnd;crtg_url+='&varName=' + escape(crtg_varname);
+  var crtg_script=document.createElement('script');crtg_script.type='text/javascript';crtg_script.src=crtg_url;crtg_script.async=true;
+  if(document.getElementsByTagName("head").length>0)document.getElementsByTagName("head")[0].appendChild(crtg_script);
+  else
+  if(document.getElementsByTagName("body").length>0)document.getElementsByTagName("body")[0].appendChild(crtg_script);
+</script><script type="text/javascript" src="./Детекторы углов   Хабрахабр_files/rta.js" async=""></script>
+      <script>
+        var N = 5;
+        var ar_duo1 = Math.floor(Math.random()*N+1);
+      </script>
+      <script type="text/javascript" src="./Детекторы углов   Хабрахабр_files/adriver.core.2.js"></script>
+
+    <link title="Хабрахабр / Комментарии к публикации «Детекторы углов»" type="application/rss+xml" rel="alternate" href="http://habrahabr.ru/rss/post/244541/">
+
+    
+<script type="text/javascript">
+
+    var user_type = "guest";
+
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-726094-1',  'auto' );
+    ga('create', 'UA-726094-24', 'auto', {'name': 'HGM'});
+
+  ga('require', 'displayfeatures');
+  ga('set', 'dimension1', user_type); // user type - guest/readonly/habrauser
+  //ga('set', 'dimension2', username); // username
+
+
+
+  ga('HGM.send', 'pageview');
+  ga('HGM.set', 'dimension1', user_type);
+  ga('HGM.set', 'dimension2', "habrahabr");
+  ga('send', 'pageview', { 'hitCallback': removeUtms });
+
+</script>
+
+
+    <meta content="Хабрахабр" name="apple-mobile-web-app-title">
+<link href="http://habrahabr.ru/images/apple-touch-icon_142x142.png" rel="apple-touch-icon" type="image/png">
+  </head>
+
+  <body><style type="text/css">#navbar .nav_panel .tab.tab_print:hover path,#navbar .nav_panel .tab.tab_print:hover text { fill: #4fb1de; } </style>
+    <div id="TMpanel">
+  <div class="container">
+    <div class="menu">
+      <a href="http://tmfeed.ru/?utm_source=tm_habrahabr&utm_medium=tm_top_panel&utm_campaign=tm_promo">TM Feed</a>
+      <a href="http://habrahabr.ru/?utm_source=tm_habrahabr&utm_medium=tm_top_panel&utm_campaign=tm_promo" class="current">Хабрахабр</a>
+      <a href="http://megamozg.ru/?utm_source=tm_habrahabr&utm_medium=tm_top_panel&utm_campaign=tm_promo">Мегамозг</a>
+      <a href="http://geektimes.ru/?utm_source=tm_habrahabr&utm_medium=tm_top_panel&utm_campaign=tm_promo">Geektimes</a>
+      <a href="http://toster.ru/?utm_source=tm_habrahabr&utm_medium=tm_top_panel&utm_campaign=tm_promo">Тостер</a>
+      <a href="http://brainstorage.me/?utm_source=tm_habrahabr&utm_medium=tm_top_panel&utm_campaign=tm_promo">Brainstorage</a>
+      <a href="http://freelansim.ru/?utm_source=habrahabr&utm_medium=referral&utm_campaign=mainpage&utm_content=head_link">Фрилансим</a>
+    </div>
+      <div class="menu special"><a href="http://ad.adriver.ru/cgi-bin/click.cgi?sid=1&ad=511994&bt=21&pid=1890375&bid=3750260&bn=3750260&rnd=494237654" target="_blank" style="color: #8DC63F">Деньги стартаперам</a><a href="http://ad.adriver.ru/cgi-bin/click.cgi?sid=1&ad=510239&bt=21&pid=1878438&bid=3747107&bn=3747107&rnd=2121637683" target="_blank" style="color: #4fb1de">Конкурс Aviasales</a></div>
+  </div>
+</div>
+
+
+    <div id="layout">
+      <div id="navbar_overlay" class="hidden"></div>
+<div id="navbar" class="fixed" style="bottom: 0px;">
+    <div class="nav_panel">
+        <a href="http://habrahabr.ru/" class="logo"></a>
+
+            <a href="http://habrahabr.ru/posts/" class="tab tab_menu" data-tab="menu_tab" title="Меню"><span class="g-icon g-icon-burger"></span></a>
+            <a href="https://habrahabr.ru/auth/login/" class="tab tab_login" id="login" title="Войти"><span class="g-icon g-icon-lock"></span></a>
+
+        <a href="http://ad.adriver.ru/cgi-bin/click.cgi?sid=1&ad=510239&bt=21&pid=1878438&bid=3750556&bn=3750556&rnd=656434373" class="tab tab_print" id="print_tab" target="_blank" data-post-id="244541"><svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 600 600" enable-background="new 0 0 600 600" xml:space="preserve">
+<g>
+	<path fill="#C0C0C0" d="M94.8,472.4H73.7l-5.1,13.3H55.4l24.5-63h9.7l24.6,63h-14L94.8,472.4z M77.4,462h14.3l-4.8-13l-2.1-9.9
+		h-0.4l-2.1,10L77.4,462z"></path>
+	<path fill="#C0C0C0" d="M141,459.3l1.8,10.6h0.4l2-10.7l13-36h13.9l-25.3,63h-9.5l-25.5-63h15.4L141,459.3z"></path>
+	<path fill="#C0C0C0" d="M187.3,430.4h-7.1v-7.1h27.5v7.1h-7.1v48.2h7.1v7.1h-27.5v-7.1h7.1V430.4z"></path>
+	<path fill="#C0C0C0" d="M256,472.4h-21.1l-5.1,13.3h-13.2l24.5-63h9.7l24.6,63h-14L256,472.4z M238.6,462h14.3l-4.8-13l-2.1-9.9
+		h-0.4l-2.1,10L238.6,462z"></path>
+	<path fill="#C0C0C0" d="M315.8,468.6c0-1.8-0.8-3.3-2.3-4.4c-1.6-1.1-3.5-2.1-5.8-2.9c-2.3-0.9-4.8-1.8-7.5-2.7s-5.2-2.1-7.5-3.6
+		c-2.3-1.5-4.2-3.4-5.8-5.6c-1.5-2.3-2.3-5.2-2.3-8.8c0-3.1,0.6-5.8,1.7-8.2c1.1-2.4,2.6-4.3,4.6-5.8c2-1.5,4.4-2.7,7.2-3.4
+		c2.8-0.8,5.9-1.2,9.3-1.2c3.9,0,7.7,0.3,11.2,1c3.5,0.7,6.4,1.7,8.7,2.9l-4.2,11.1c-0.7-0.4-1.6-0.8-2.7-1.3
+		c-1.1-0.4-2.4-0.8-3.8-1.2c-1.4-0.3-2.9-0.6-4.6-0.8c-1.6-0.2-3.2-0.3-4.9-0.3c-3,0-5.3,0.5-6.9,1.6c-1.6,1-2.5,2.5-2.5,4.3
+		c0,1.8,0.8,3.3,2.3,4.4c1.5,1.1,3.5,2.1,5.8,3c2.3,0.9,4.8,1.8,7.5,2.8c2.7,0.9,5.2,2.1,7.5,3.6c2.3,1.5,4.2,3.3,5.8,5.5
+		c1.5,2.2,2.3,5,2.3,8.5c0,3.5-0.6,6.4-1.8,8.9c-1.2,2.5-2.9,4.6-5,6.2c-2.2,1.6-4.8,2.8-7.8,3.6c-3,0.8-6.4,1.2-10,1.2
+		c-2.4,0-4.7-0.1-6.9-0.4c-2.2-0.3-4.2-0.6-6-1c-1.8-0.4-3.5-0.8-4.9-1.2c-1.4-0.4-2.5-0.9-3.3-1.3l4.4-11.2
+		c0.7,0.4,1.6,0.7,2.7,1.2c1.2,0.4,2.5,0.8,3.9,1.2c1.4,0.4,3,0.7,4.6,0.9c1.6,0.2,3.3,0.4,5,0.4c3.9,0,6.9-0.6,9-1.7
+		C314.8,472.7,315.8,471,315.8,468.6z"></path>
+	<path fill="#C0C0C0" d="M376.8,472.4h-21.1l-5.1,13.3h-13.2l24.5-63h9.7l24.6,63h-14L376.8,472.4z M359.4,462h14.3l-4.8-13
+		l-2.1-9.9h-0.4l-2.1,10L359.4,462z"></path>
+	<path fill="#C0C0C0" d="M450.4,485.7h-43v-62.5h13.2v50.9h29.8V485.7z"></path>
+	<path fill="#C0C0C0" d="M462.5,423.2h40.3v11.6h-27.1v13.6h24.6V460h-24.6v14.1h27.5v11.6h-40.7V423.2z"></path>
+	<path fill="#C0C0C0" d="M547.7,468.6c0-1.8-0.8-3.3-2.3-4.4c-1.5-1.1-3.5-2.1-5.8-2.9c-2.3-0.9-4.8-1.8-7.5-2.7
+		c-2.7-0.9-5.2-2.1-7.5-3.6c-2.3-1.5-4.2-3.4-5.8-5.6c-1.5-2.3-2.3-5.2-2.3-8.8c0-3.1,0.5-5.8,1.7-8.2c1.1-2.4,2.6-4.3,4.6-5.8
+		c2-1.5,4.4-2.7,7.2-3.4c2.8-0.8,5.9-1.2,9.3-1.2c3.9,0,7.7,0.3,11.2,1c3.5,0.7,6.4,1.7,8.7,2.9l-4.2,11.1c-0.7-0.4-1.6-0.8-2.7-1.3
+		c-1.1-0.4-2.4-0.8-3.8-1.2c-1.4-0.3-2.9-0.6-4.6-0.8c-1.6-0.2-3.2-0.3-4.9-0.3c-3,0-5.3,0.5-6.9,1.6c-1.6,1-2.5,2.5-2.5,4.3
+		c0,1.8,0.8,3.3,2.3,4.4c1.5,1.1,3.5,2.1,5.8,3c2.3,0.9,4.8,1.8,7.5,2.8c2.7,0.9,5.2,2.1,7.5,3.6c2.3,1.5,4.2,3.3,5.8,5.5
+		c1.5,2.2,2.3,5,2.3,8.5c0,3.5-0.6,6.4-1.8,8.9c-1.2,2.5-2.9,4.6-5,6.2c-2.2,1.6-4.8,2.8-7.8,3.6c-3,0.8-6.4,1.2-10,1.2
+		c-2.4,0-4.7-0.1-6.9-0.4c-2.2-0.3-4.2-0.6-6-1c-1.8-0.4-3.5-0.8-4.9-1.2c-1.4-0.4-2.5-0.9-3.3-1.3l4.4-11.2
+		c0.7,0.4,1.6,0.7,2.7,1.2c1.2,0.4,2.5,0.8,3.9,1.2c1.4,0.4,3,0.7,4.6,0.9c1.6,0.2,3.3,0.4,5,0.4c3.9,0,6.9-0.6,9-1.7
+		C546.7,472.7,547.7,471,547.7,468.6z"></path>
+</g>
+<g>
+	<path fill-rule="evenodd" clip-rule="evenodd" fill="#C0C0C0" d="M227.4,322c-0.1-0.1-0.1-0.1-0.1-0.1l0,0l0,0
+		c-1.2-1.2,0.4-5.3,4.4-11.8c1.5-2.5,0.5-4.2-1.6-5.1l-44.1-18.4l19-13.8l49.7,6.1c15.1-18.6,35.6-42,59.7-67.5
+		c4.1-4.3,2.9-9.4-1.3-10.5l-126.7-51.8l21.1-17.5l43.8,6.7l16.3-16.3c3.7-3.7,9.8-3.7,13.5,0l0,0c3.7,3.7,3.7,9.8,0,13.5l-6.3,6.3
+		l23,3.5l15.2-15.1c3.7-3.7,9.8-3.7,13.5,0l0,0c3.7,3.7,3.7,9.8,0,13.5l-5.2,5.1l47.6,7.2c13.9-13.4,50.8-54.9,65-40.6
+		c14.2,14.3-27.4,51.4-40.7,65l7.2,47.6l5.2-5.2c3.7-3.7,9.8-3.7,13.5,0l0,0c3.7,3.7,3.7,9.8,0,13.5l-15.2,15.1l3.5,23l6.3-6.3
+		c3.7-3.7,9.8-3.7,13.5,0l0,0c3.7,3.7,3.7,9.8,0,13.5l-16.3,16.3l6.6,43.8l-17.6,21.1l-51.6-126.8c-1.1-4.2-6.2-5.3-10.5-1.3
+		c-25.5,24-48.9,44.5-67.5,59.6l6.1,49.7l-13.8,19l-18.4-44.1c-0.8-2.1-2.6-3.1-5.1-1.6c-6.5,4-10.6,5.6-11.8,4.4c0,0,0,0,0,0l0,0
+		C227.5,322.1,227.5,322,227.4,322L227.4,322z"></path>
+</g>
+</svg></a>
+
+        <a href="http://habrahabr.ru/post/244541/#" class="scroll_to_up scroll_to_up_for_guest" id="scroll_to_top" title="Наверх"></a>
+    </div>
+    <div class="nav_tabs_content ">
+
+        <div class="nav_tab hidden" id="menu_tab">
+            <div class="title">Разделы</div>
+            <form action="http://habrahabr.ru/search/" method="get" class="global_search_form">
+                <div>
+                    <input type="text" name="q" placeholder="Поиск">
+                </div>
+            </form>
+            <div class="menu">
+                <a href="http://habrahabr.ru/posts/top/">Публикации</a>
+                <a href="http://habrahabr.ru/hubs/">Хабы</a>
+                <a href="http://habrahabr.ru/companies/">Компании</a>
+                <a href="http://habrahabr.ru/users/">Пользователи</a>
+                <a href="http://toster.ru/" class="new_window">Q&amp;A</a>
+                <a href="http://habrahabr.ru/sandbox/">Песочница</a>
+                <a href="http://habrahabr.ru/exchange/">Биржа авторов</a>
+
+
+
+            </div>
+
+                
+
+                        <div class="line"></div>
+                        <div class="title">Спецпроекты</div>
+                        <div class="menu">
+
+                        <a href="http://ad.adriver.ru/cgi-bin/click.cgi?sid=1&ad=482836&bt=21&pid=1730497&bid=3502321&bn=3502321&rnd=124687018" target="_blank">AZURE бесплатно</a>
+
+                        <a href="http://ad.adriver.ru/cgi-bin/click.cgi?sid=1&ad=510239&bt=21&pid=1878438&bid=3747115&bn=3747115&rnd=1608845826" target="_blank">Приз 150000 рублей</a>
+
+                        <a href="http://ad.adriver.ru/cgi-bin/click.cgi?sid=1&ad=511994&bt=21&pid=1890375&bid=3750260&bn=3750260&rnd=494237654" target="_blank">Деньги стартаперам</a>
+                        </div>
+
+
+        </div>
+
+
+    </div>
+</div>
+
+      <div class="inner">
+        
+
+        
+
+          <div class="content_left">
+  	
+
+
+
+
+
+    <div class="post_show">
+  	  
+  <div class="post shortcuts_item" id="post_244541">
+  	<div class="published">11 декабря 2014 в 23:24</div>
+    <h1 class="title">
+	    
+        <span class="post_title">Детекторы углов</span>
+      
+			
+  	</h1>
+  	
+  	<div class="hubs">
+		<a href="http://habrahabr.ru/hub/image_processing/" class="hub " title="Вы не подписаны на этот хаб">Обработка изображений</a><span class="profiled_hub" title="Профильный хаб">*</span>, 
+		<a href="http://habrahabr.ru/hub/algorithms/" class="hub " title="Вы не подписаны на этот хаб">Алгоритмы</a><span class="profiled_hub" title="Профильный хаб">*</span>
+</div>
+
+  	
+  	<div class="content html_format">
+    	 Мне интересна обработка изображений, в особенности работа с особыми точками. Ища информацию по детекторам углов, я не нашел достаточно большого обзора этих алгоритмов на русском языке. Поэтому я решил исправить ситуацию, написав эту статью. План статьи следующий:<br>
+<br>
+<ul>
+<li>Введение</li>
+<li>Свойства особых точек</li>
+<li>Детекторы углов<br>
+ <ul>
+<li>Moravec</li>
+<li>Harris</li>
+<li>Shi-Tomasi</li>
+<li>Förstner</li>
+<li>SUSAN</li>
+<li>Trajkovic</li>
+<li>FAST</li>
+<li>CSS</li>
+<li>Детектор, основанный на глобальных и локальных свойствах кривизны</li>
+<li>CPDA</li>
+</ul></li>
+<li>Выводы</li>
+</ul><br>
+ <img src="./Детекторы углов   Хабрахабр_files/2230aa5547674590b5410071da4bb24a.jpg"><br>
+<br>
+<a name="habracut"></a><br>
+<h3>Введение</h3><br>
+<br>
+ Для выделения из изображения некоторой интерпретируемой информации необходимо привязаться к локальным особенностям изображения. На изображении возможно выделить особые точки. <i>Особая точка m</i>, или точечная особенность (англ. point feature, key point, feature), изображения – это точка изображения, окрестность которой <i>o(m)</i> можно отличить от окрестности любой другой точки изображения <i>o(n)</i> в некоторой другой окрестности особой точки <i>o<sub>2</sub>(m)</i>. В качестве окрестности точки изображения для большинства алгоритмов берётся прямоугольное окно, составляющее размер 5x5 пикселей. Процесс определения особых точек достигается путём использования детектора и дескриптора.<br>
+<br>
+ <i>Детектор</i> – это метод извлечения особых точек из изображения. Детектор обеспечивает инвариантность нахождения одних и тех же особых точек относительно преобразований изображений.<br>
+<br>
+ <i>Дескриптор</i> – идентификатор особой точки, выделяющий её из остального множества особых точек. В свою очередь, дескрипторы должны обеспечивать инвариантность нахождения соответствия между особыми точками относительно преобразований изображений [1].<br>
+<br>
+<br>
+<h3>Свойства особых точек</h3><br>
+<br>
+В 1992 Haralick и Shapir [10] выделили следующие требования к особым точкам в виде следующих свойств:<br>
+<ul>
+<li><i>Отличимость (distinctness)</i> – особая точка должна явно выделяться на фоне и быть отличимой (уникальной) в своей окрестности.</li>
+<li><i>Инвариантность (invariance)</i> – определение особой точки должно быть независимо к аффинным преобразованиям.</li>
+<li><i>Стабильность (stability)</i> – определение особой точки должно быть устойчиво к шумам и ошибкам.</li>
+<li><i>Уникальность (uniqueness)</i> – кроме локальной отличимости, особая точка должна обладать глобальной уникальностью для улучшения различимости повторяющихся паттернов.</li>
+<li><i>Интерпретируемость (interpretability)</i> – особые точки должны определяться так, чтобы их можно было использовать для анализа соответствий и выявления интерпретируемой информации из изображения.</li>
+</ul><br>
+Интересно, что в [5] Tuytelaars и Mikolajczyk (2006) выделили следующие свойства, которыми должны обладать особые точки:<br>
+<ul>
+<li><i>Повторяемость (repeatability)</i> – особая точка находится в одном и том же месте сцены или объекта изображения, несмотря на изменения точки обзора и освещённости.</li>
+<li><i>Отличительность / информативность (distinctiveness/informativeness)</i> – окрестности особых точек должны иметь большие отличия друг от друга, так, чтобы возможно было выделить и сопоставить особые точки.</li>
+<li><i>Локальность (locality)</i> – особая точка должна занимать небольшую область изображения, чтобы быть уменьшить вероятность чувствительности к геометрическим и фотометрическим искажениям между двумя изображениями, снятых в различных точках обзора.</li>
+<li><i>Количество (quantity)</i> – число обнаруженных особых точек должно быть достаточно большим, так чтобы их хватило для обнаружения даже небольших объектов. Однако оптимальное количество особых точек зависит от предметной области. В идеале количество обнаруженных особых точек должно адаптивно определяться с использованием простого и интуитивного порога. Плотность расположения особых точек должна отражать информационное содержимое изображения, чтобы обеспечить его компактное представление.</li>
+<li><i>Точность (accuracy)</i> – обнаруженные особые точки должны точно локализовываться, как в исходном изображении, так и взятом в другом масштабе.</li>
+<li><i>Эффективность (efficiency)</i> – время обнаружения особых точек на изображении должно быть допустимым в критичных по времени приложениях.</li>
+</ul><br>
+В целом, эти свойства пересекаются с [10], но по-разному интерпретируются.<br>
+<br>
+<br>
+<h3>Детекторы углов</h3><br>
+<br>
+ Существуют множество алгоритмов определения особых точек, предназначенных для разных областей применения. В этой статье я уделяю внимание детекторам углов (или как еще их называют уголковым детекторам).<br>
+<br>
+ <i>Углы (corners)</i> – особые точки, которые формируются из двух или более граней, и грани обычно определяют границу между различными объектами и / или частями одного и того же объекта. [2] По-другому можно сказать, что углы – это точка, у которой в окрестности интенсивность изменяется относительно центра <i>(x,y)</i>. Углы определяются по координатам и изменениям яркости окрестных точек изображения. Главное свойство таких точек заключается в том, что в области вокруг угла у градиента изображения преобладают два доминирующих направления, что делает их различимыми. Градиент – векторная величина, показывающая направление наискорейшего возрастания функции интенсивности изображения <i>I(x,y)</i>. Так как изображение дискретно, то вектор градиента определяется через частные производные по оси <i>x</i> и <i>y</i> через изменения интенсивностей соседних точек изображения. Большинство методов рассматривают угловатость, зависящую от производной 2-го порядка, поэтому в общем методы чувствительны к шуму.<br>
+<br>
+ В зависимости от количества пересекаемых граней существуют разные виды уголков: L-, Y- (или T-), и X- связные [3] (некоторые выделяют еще стреловидно связные углы [2]). Различные уголковые детекторы по-разному реагируют на каждый из таких видов уголков.<br>
+<br>
+<img src="./Детекторы углов   Хабрахабр_files/c9415d2c51294b91b89be607b00f6507.jpg" alt="image"><br>
+<br>
+Подходы к определению особых точек могут быть разделены на 3 категории [10]:<br>
+<ol>
+<li>Основанные на интенсивности изображения: особые точки вычисляются напрямую из значений интенсивности пикселей изображения.</li>
+<li>Использующие контуры изображения: методы извлекают контуры и ищут места с максимальным значением кривизны или делают полигональную аппроксимацию контуров и определяют пересечения. Эти методы чувствительны к окрестностям пересечений, поскольку извлечение часто может быть неправильным в тех местах, где пересекаются 3 или более краев.</li>
+<li>На основе использования модели: используются модели с интенсивностью в качестве параметров, которые подстраиваются к изображениям-шаблонам до субпиксельной точности. Имеют ограниченное применение с особыми точками специальных видов (например, L-связными углами), зависят от используемых шаблонов.</li>
+</ol><br>
+На практике для широкого применения наиболее распространены методы, основанные на интенсивности изображения.<br>
+ Далее я рассмотрю описания основных детекторов особых точек, определяющих углы. Затем будет представлена сравнительная таблица детекторов с выводами об их применимости к различным ситуациям и, наконец, изображения с примененными к ним уголковыми детекторами.<br>
+<br>
+<br>
+<h4>Moravec</h4><br>
+<br>
+ Работа в исследовании привязки изображений с использованием особых точек началась детектора Моравеца (Moravec, 1977). Детектор Моравеца – самый простой из существующих. Автор рассматривает изменение яркости квадратного окна <i>W</i> (обычно размера 3х3, 5х5, 7х7 пикселей) относительно интересующей точки при сдвиге окна <i>W</i> на 1 пиксель в 8-ми направлениях (горизонтальных, вертикальных и диагональных) [4]. Алгоритм:<br>
+<br>
+<ol>
+<li>Для каждого пикселя <i>(x,y)</i> в изображении вычислить изменение интенсивности<br>
+ <img src="./Детекторы углов   Хабрахабр_files/77cedbb9fc124704865a4bd69f984b9d.png"><br>
+ <img src="./Детекторы углов   Хабрахабр_files/dab018c16dc94b6d8b3dbcade5107d3a.png"><br>
+ </li>
+<li>Построить карту вероятности нахождения углов в каждом пикселе <i>(x,y)</i> изображения посредством вычисления оценочной функции <img src="./Детекторы углов   Хабрахабр_files/2b31611a1f444ad4b410f901c2ea1cd3.png">. То есть определяется направление, которому соответствует наименьшее изменение интенсивности, т.к. угол должен иметь смежные ребра.</li>
+<li>Отсечь пиксели, в которых значения <i>C(x,y)</i> ниже порогового значения <i>T</i>.</li>
+<li>Удалить повторяющиеся углы с помощью применения процедуры поиска локальных максимумов функции отклика (non-maximal suppression). Все полученные ненулевые элементы карты соответствуют углам на изображении.</li>
+</ol><br>
+ Детектор Моравеца обладает свойством анизотропии в 8 направлениях смещения окна. Основными недостатками рассматриваемого детектора являются отсутствие инвариантности к преобразованию поворота и возникновение ошибок детектирования при наличии большого количества диагональных ребер [2].<br>
+<br>
+<br>
+<h4>Harris</h4><br>
+<br>
+ Как показали исследования, наиболее оптимальным детектором L-связных углов является широко известный детектор Харриса (также его называют оператором Плессея, детектором Харриса и Стефенса, Plessey operator, Harris and Stephens detector, 1988) [5] [6].<br>
+<br>
+ Харрис и Стефенс улучшили детектор Моравеца (Moravec), введя анизотропию по всем направлениям, т.е. рассматривают производные яркости изображения для исследования изменений яркости по множеству направлений. Они вводят в рассмотрение производные по некоторым принципиальным направлениям.<br>
+<br>
+ Для данного изображения <i>I</i> рассмотрим окно <i>W</i> (обычно размер окна равен 5x5 пикселей, но может зависеть от размера изображения) в центре <i>(x,y)</i>, а также его сдвиг на <i>(u,v)</i>.<br>
+<br>
+ <img src="./Детекторы углов   Хабрахабр_files/d528975cefa5498fb18957bba41cf0e8.png"><br>
+<br>
+ Тогда взвешенная сумма квадрата разностей (sum of squared differences (SSD)) между сдвинутым и исходным окном (т.е. изменение окрестности точки <i>(x,y)</i> при сдвиге на <i>(u,v)</i>) равна:<br>
+<br>
+ <img src="./Детекторы углов   Хабрахабр_files/68b9ce1189b34b698309a7d70414a913.png"><br>
+ где <i>w(x,y)</i> – весовая функция (обычно используется функция Гаусса или бинарное окно). <br>
+<br>
+ <img src="./Детекторы углов   Хабрахабр_files/b06ae834c0c34fa588961baa95fa8610.png"><br>
+ <i>M</i> – автокорреляционная матрица:<br>
+<br>
+ <img src="./Детекторы углов   Хабрахабр_files/a2958aacbe3b49feae98047cf8f9cd69.png"><br>
+<br>
+ Угол характеризуется большими изменениями функции <i>E(x,y)</i> по всем возможным направлениям <i>(x,y)</i>, что эквивалентно большим по модулю собственным значениям матрицы <i>M</i>. Расположение собственных значений приведено на следующем рисунке.<br>
+<br>
+ <img src="./Детекторы углов   Хабрахабр_files/487859f3d0e6455cb2b62baad30220c1.png"><br>
+ Поскольку напрямую считать собственные значения является трудоёмкой задачей, Харрисом и Стефеном была предложена мера отклика [7]:<br>
+<img src="./Детекторы углов   Хабрахабр_files/fe81199a88d1413b98123860db3d37a9.png"><br>
+ где <i>k</i> – эмпирическая константа, <img src="./Детекторы углов   Хабрахабр_files/0bb4e29dfed948d6bab28aee61fc366a.png">.<br>
+ Таким образом, значение <i>R</i> положительно для угловых особых точек. Затем производится отсечение точек по найденному порогу <i>R</i> (т.е. те точки, у которых значение <i>R</i> меньше некоторого порога, исключаются из рассмотрения). Далее находятся локальные максимумы функции отклика (non-maximal suppression) по окрестности заданного радиуса и выбираются в качестве уголковых особых точек.<br>
+<br>
+ Детектор Харриса инвариантен к поворотам, частично инвариантен к аффинным изменениям интенсивности. К недостаткам стоит отнести чувствительность к шуму и зависимость детектора от масштаба изображения (для устранения этого недостатка используют многомасштабный детектор Харриса (multi-scale Harris detector)). <br>
+<br>
+<br>
+<h4>Shi-Tomasi</h4><br>
+<br>
+ Угловой детектор Ши-Томаси (Shi-Tomasi или Kanade-Tomasi, 1993) во многом совпадает с детектором Харриса, но различается в вычислении меры отклика: алгоритм напрямую вычисляет значение <img src="./Детекторы углов   Хабрахабр_files/193961072a124716ae6551f81288979c.png">, поскольку делается предположение, что поиск углов будет более стабильным. Авторы используют это же уравнение для анализа оптического потока Лукаса и Канаде (Lucas and Kanade). Подробности алгоритма даны в статьях [8] и [9].<br>
+<br>
+<br>
+<h4>Förstner</h4><br>
+<br>
+ Фёрстнер и Гёлч (Förstner and Gülch, 1987) первыми описали метод, который использует ту же самую меру угловатости, что и детектор Харриса. Они использовали более сложную в вычислительном плане реализацию [8]. В отличие от детектора Харриса собственные значения вычисляются явно. Функция отклика угла Фёрстнера определяется следующим образом:<br>
+<br>
+<img src="./Детекторы углов   Хабрахабр_files/8f841dafcb5a4f0cb2fb1b697c93808f.png"><br>
+<br>
+ Также для правильности определения считается мера округлости угла, равная: <img src="./Детекторы углов   Хабрахабр_files/5dd9fb190c6b4d2c88c5c0a20e5fa41f.png">.<br>
+<br>
+ Детектор Фёрстнера на практике часто используется для расширения возможностей детектора Харриса – нахождению круговых особых точек вместе с углами. Также алгоритм обладает лучшим свойством локализации [2].<br>
+<br>
+ Более подробное описание алгоритма представлено в <a href="http://en.wikipedia.org/wiki/Corner_detection#The_F.C3.B6rstner_corner_detector">Wikipedia</a>, а также в [10], [11]. <br>
+<br>
+<br>
+<h4>SUSAN</h4><br>
+<br>
+ Алгоритм SUSAN (Smallest Univalue Segment Assimilation Nucleus) был предложен Смитом и Бреди (Smith и Brady, 1997) [5].<br>
+<br>
+ <img src="./Детекторы углов   Хабрахабр_files/71d87dd464994ee58d18dae2f8293423.png"><br>
+<br>
+ Углы определяются сегментацией круговых окрестностей в схожие (оранжевые) и непохожие (синие) участки. Углы находятся там, где относительная площадь схожих участков (similar USAN) достигает локального минимума ниже определенного порога.<br>
+<br>
+ Для каждого пикселя рассматривается круговая область фиксированного радиуса. Центр пикселя называется ядром, значение его интенсивности запоминается. Все остальные пиксели разделяются на 2 категории: в схожие (оранжевые) и непохожие (синие) участки в зависимости от того, схоже ли значение интенсивности ядра, или нет. Там, где присутствует участок изображения под круговой областью без изменений, схожие участки занимают почти всю площадь, на гранях это отношение падает до 50%, на углах еще уменьшается приблизительно до 25%. Таким образом, углы находятся там, где относительная площадь схожих участков (similar USAN) достигает локального минимума ниже определенного порога. Для повышения устойчивости работы алгоритма авторы присваивают ближайшим к ядру пикселям более высокие весовые коэффициенты. Шаги алгоритма следующие:<br>
+<br>
+<ol>
+<li>Поместить центр круговой маски в ядро.</li>
+<li>Внутри круговой маски вычислить количество пикселей, которые имеют схожую интенсивность с ядром по следующей формуле (найденные пиксели определяют USAN):<br>
+ <img src="./Детекторы углов   Хабрахабр_files/5e87717084824ebc8d405cc8a8067669.png"><br>
+<img src="./Детекторы углов   Хабрахабр_files/854ac46775254752bc7e707f1be737e4.png"> — точка внутри маски;<br>
+<img src="./Детекторы углов   Хабрахабр_files/8a53cc80019a4673b59260b279c7e657.png"> — центр ядра;<br>
+<img src="./Детекторы углов   Хабрахабр_files/2c7a55340ddb48f597fd2609c1c320a8.png"> — интенсивность точки <img src="./Детекторы углов   Хабрахабр_files/854ac46775254752bc7e707f1be737e4.png">;<br>
+<i>t</i> — разностный порог интенсивностей;<br>
+<img src="./Детекторы углов   Хабрахабр_files/68824890c74f4c20bf0642a4f197dd52.png"> — результат сравнения.<br>
+ </li>
+<li>Вычесть размер USAN из геометрического порога, чтобы получить изображение с углами, по следующей формуле:<br>
+ <img src="./Детекторы углов   Хабрахабр_files/7bcb603c4ccc4da392c7339e475d4518.png"><br>
+<img src="./Детекторы углов   Хабрахабр_files/672f359da0e24e4cb0a1f5b83955405d.png"> — начальное значение отклика края. Принцип SUSAN: чем меньше область USAN, тем больше отклик края.<br>
+<i>g</i> — геометрический порог.<br>
+<img src="./Детекторы углов   Хабрахабр_files/b80138528a71433bb244473330e3522f.png"> — количество пикселей в USAN, т.е. область USAN.<br>
+</li>
+<li>Найти центроиды областей USAN и их близость друг относительно друга и определить ложноположительные.</li>
+<li>Выбрать особые точки с помощью поиска локальных максимумов функции отклика (nonmaximum suppression).</li>
+</ol><br>
+ Алгоритм показывает хорошую точность ко всем видам углов, но неустойчив к размытию на изображениях. Подробности даны в [12].<br>
+<br>
+<br>
+<h4>Trajkovic</h4><br>
+<br>
+ Тряковиц и Хедли (Miroslav Trajkovic and Mark Hedley, 1998) в статье «Fast corner detection» ввели новый тип детектора — оператор Тряковица [8]. Изначально к нему авторы предъявили требования стать самым популярным детектором углов и обладать минимальной вычислительной стоимостью. Сперва был разработан 4-соседний алгоритм Trajkovic4. <br>
+<br>
+ Детектор проверяет область около пикселя путем изучения близлежащих пикселей: пусть <i>c</i> является пикселем, подлежащим рассмотрению, а <i>P</i> является точкой на окружности <i>S<sub>N</sub></i> в центре в точке <i>N</i>. Точка <i>P'</i> является точкой противоположной <i>P</i> по диаметру. <br>
+<br>
+ Функции отклика (авторы называют её CRN, Corner Request Function) определяется как:<br>
+<br>
+ <img src="./Детекторы углов   Хабрахабр_files/c5c49539271044e6bd23be5e0c439b57.png"><br>
+<br>
+ где <i>N</i> – центральная точка;<br>
+ <i>P</i> и <i>P'</i> – две противоположные по диаметру точки вокруг точки <i>N</i>;<br>
+ <i>S<sub>N</sub></i> – дискретизированная окружность на изображении радиусом 3, 5, 7 пикселей.<br>
+<br>
+ <img src="./Детекторы углов   Хабрахабр_files/46bca8b18cff4f7c82c1ea056bf4cdb0.png"><br>
+<br>
+ Значение CRN будет большим, когда нет направления, в котором центральный пиксель похож на два близлежащих пикселя по диаметру. Поскольку расчет в любом направлении дает верхнюю границу min, то горизонтальное и вертикальное направления проверяются в первую очередь для определения, имеет ли смысл переходить к полному вычислению <i>R<sub>N</sub></i>.<br>
+<br>
+ В сравнение с детектором Харриса частота повторяемости алгоритма Trajkovic4 хуже, однако локализация сравнима с определением L-связных углов и превосходит на других видах углов. <br>
+<br>
+ Также к недостаткам следует отнести то, что этот 4-соседний оператор ложно реагирует на диагональные края и чувствителен к шуму [2]. Поэтому используют 8-связную версию этого алгоритма Trajkovic8. Trajkovic8 отличается от Trajkovic4 тем, как он вычисляет угловатость. Однако Trajkovic8 всё еще находит ложные углы на некоторых диагональных гранях объекта (плохо проявляет себя на искусственных изображениях). Подробные описания алгоритмов приведены в [2] и [8].<br>
+<br>
+<br>
+<h4>FAST</h4><br>
+<br>
+ Ростен и Драммонд (Edward Rosten and Tom Drummond, 2005) ввели достаточно успешный алгоритм FAST (Features from Accelerated Segment Test) – особенности ускоренных испытаний сегмента.<br>
+<br>
+ В алгоритме рассматривается окружность из 16 пикселей (отрисованная алгоритмом Брезенхема) вокруг точки-кандидата <i>P</i>. Точка является угловой, если для текущей рассматриваемой точки <i>P</i> существуют <i>N</i> смежных пикселей на окружности, интенсивности которых больше <i>I<sub>P</sub>+t</i> или интенсивности всех меньше <i>I<sub>P</sub>-t</i>, где <i>I<sub>P</sub></i> – интенсивность точки <i>P</i>, <i>t</i> – пороговая величина. Далее необходимо сравнить интенсивность в вертикальных и горизонтальных точках на окружности под номерами 1, 5, 9 и 13 с интенсивностью в точке <i>P</i> (для того, чтобы как можно быстрее отсечь ложные кандидаты). Если для 3 из этих точек выполнится условие <i>I<sub>Pi</sub>&gt;I<sub>P</sub>+t</i> или <i>I<sub>Pi</sub>&lt;I<sub>P</sub>+t, i=1,..,4</i>, то проводится полный тест для всех 16 точек [13]. Эксперименты показали, что наименьшее значение <i>N</i>, при котором особые точки начинают стабильно обнаруживаться, равно <i>N=9</i>. <br>
+<br>
+ <img src="./Детекторы углов   Хабрахабр_files/9bf2242c54704d3a8638dce396316b40.png"><br>
+ Изначально оригинальным алгоритмом был <a href="http://www.edwardrosten.com/work/fast.html">FAST-12</a>. Существуют модификации алгоритма: древовидные FAST-9 и FAST-12 (the tree based FAST-9 and FAST-12).<br>
+<br>
+ Оригинальный алгоритм имеет ряд недостатков, например, вблизи некоторой окрестности может обнаружится несколько особых точек, эффективность алгоритма зависит от порядка обработки изображения и распределения пикселей.<br>
+<br>
+ В [14] авторы Edward Rosten, Reid Porter и Tom Drummond (2008) вводят улучшения для алгоритма FAST, заключающиеся в том, что они используют машинное обучение для определения особых точек.<br>
+<br>
+ Этот алгоритм они назвали FAST-ER (ER – Enhanced Repeatability, улучшенная повторяемость). Алгоритм стабилен к свойству повторяемости: на одной и той же сцене, рассматриваемой с разных ракурсов, присутствуют особые точки, принадлежащие одним и тем же объектам. <br>
+<br>
+ В этом алгоритме используется кольцо окружности более чем 1 пиксель, нежели чем в FAST (48 пикселей). Авторы используют алгоритм ID3 для классификации особых точек (является ли точка-кандидат особой) с помощью деревья решений. Алгоритм ID3 оптимизирует порядок, в котором обрабатываются пиксели, в результате чего получается наиболее вычислительно эффективный детектор.<br>
+<br>
+ <img src="./Детекторы углов   Хабрахабр_files/e65b474814794eacb41220c563be2feb.png"><br>
+<br>
+ Функция стоимости дерева решений рассчитывается следующим образом:<br>
+<br>
+ <img src="./Детекторы углов   Хабрахабр_files/c348d4e1f40e426ab58d86c205421450.png"><br>
+<br>
+ <i>R</i> – мера повторяемости;<br>
+ <i>N</i> – количество обнаруженных особых точек;<br>
+ <i>S</i> – количество узлов в дереве решений.<br>
+<br>
+ Подробности описаны в [14].<br>
+<br>
+ FAST-ER лучше, чем FAST, но медленнее по скорости выполнения. Авторы сделали вывод, что FAST-ER детектор является самым лучшем в отношение к свойству повторяемости.<br>
+<br>
+<br>
+<h4>CSS</h4><br>
+<br>
+ Rattarangsi and Chin (1992) [15] предложили алгоритм, основанный на кривизне масштабного пространства (curvature scale space, CSS), обнаруживающий углы на плоских кривых. CSS подходит для извлечения инвариантных геометрических особенностей на плоской кривой в различных масштабах.&nbsp; <br>
+<br>
+ Алгоритм определяет особые точки, используя несколько масштабов одного и того же изображения. Однако он является вычислительно сложным и обнаруживает ложные углы на круговых областях. [16]<br>
+<br>
+ Farzin Mokhtarian и Riku Suomela (1998) [17] улучшили алгоритм в устойчивости к шуму. Этот алгоритм применяется к черно-белому изображению и включает следующие шаги:<br>
+<br>
+<ol>
+<li>Применить детектор границ Канни (Canny) к изображению и получить бинарную карту границ.</li>
+<li>Выделить контуры границ из бинарной карты. Проверить концы контуров на смежность с другими, если это так, то дозаполнить границу до соединения. Отметить эту точку как T-связный угол, если конец контура соединяется с границей.</li>
+<li>Вычислить значения кривизны у каждого контура на наибольшем масштабе <i>σ<sub>high</sub></i>. Положить начальными значениями локальные максимумы кривизны, при условии что значение кривизны выше порога <i>t</i> и вдвое выше соседних локальных минимумов.</li>
+<li>Отсортировать углы по убыванию от самого наибольшего масштаба к меньшему с целью улучшения свойства локализации.</li>
+<li>Сравнить T-связные углы с остальными углами и, если они находятся близко друг у другу, удалить один из углов.</li>
+</ol><br>
+ На изображении показаны 2 случая промежутков грани: T-связный промежуток отмечается как угол (T-corner point), а промежуток между концами контуров (gap) дозаполняется.<br>
+<br>
+ <img src="./Детекторы углов   Хабрахабр_files/37f582ff8b654d5dbc5f732fc028727b.png" width="437" height="250"><br>
+<br>
+ В этом алгоритме есть следующие недостатки: изображение только в одном масштабе используется для определения числа углов (шаг 3), а изображения в нескольких масштабах – для локализации. В результате, алгоритм пропускает углы, когда <i>σ</i> большое, и обнаруживает ложные, когда <i>σ</i> малое. [16]<br>
+<br>
+ Были проведены ряд улучшений алгоритма: в 2001 F. Mokhtarian and R. Suomela в статье «Robust image corner detection through curvature scale space» (предложили улучшенный CSS) и в 2008 — He и Yung в статье «Corner detector based on global and local curvature properties», а также детектор CPDA.<br>
+<br>
+<br>
+<h4>Детектор, основанный на глобальных и локальных свойствах кривизны</h4><br>
+<br>
+ He и Yung (2008) в статье «Corner detector based on global and local curvature properties» предлагают улучшение алгоритма CSS. Они утверждают, что традиционные алгоритмы вычисления рассматривают локальные свойства изображения, зачастую ложно определяя шум за особые точки либо пропуская мелкие детали объекта. В данном алгоритме балансируют глобальные и локальные свойства уровня кривизны граней для извлечения углов. <br>
+<br>
+ В результате He и Yung предлагают следующее решение:<br>
+<br>
+<ol>
+<li>Обнаружить границы, например, детектором Канни Canny для получения бинарной карты границ.</li>
+<li>Выделить контуры как в алгоритме CSS.</li>
+<li>Вычислить значения кривизны для фиксированного малого масштаба (чтобы не пропустить истинные углы), рассмотреть локальные максимумы абсолютных значений кривизны, которые отметить как потенциальные уголковые кандидаты. </li>
+<li>Вычислить порог, исходя из среднего значения кривизны в рассматриваемой области. Удалить круговые углы путем сравнения значения кривизны угловых кандидатов с адаптивным порогом.</li>
+<li>Вычислить значения углов у оставшихся уголковых кандидатов с использованием адаптивной рассматриваемой области и удалить ложные кандидаты.</li>
+<li>Рассмотреть концы открытых контуров и отметить их как углы, если они не находятся близко друг к другу.</li>
+</ol><br>
+ Так, на изображении показывается пример определения кругового угла (round corner) (a) и тупого угла (obtuse corner) (b), который еще не является круговым. Для их определения вычисляются значения кривизны, графики которых показаны на рисунках (c ) и (d).<br>
+<br>
+ <img src="./Детекторы углов   Хабрахабр_files/061e234d433d47c78243906d6b2706a9.png"><br>
+ Детали алгоритма объясняются в статье [16].<br>
+<br>
+<br>
+<h4>CPDA</h4><br>
+<br>
+ Awrangjeb и Lu ввели новый детектор CPDA (Chord-to-Point Distance Accumulation, 2008) [18].<br>
+<br>
+ С одной стороны Гауссиана с большим <i>σ</i> уменьшает шум, но воздействует на локализацию, с другой – Гауссина с малой <i>σ</i> чувствительна к шуму. Для решения этих проблем Awrangjeb и Lu предложили метод chord-to-point distance accumulation (CPDA) с помощью адаптивного порога, основанного на идеи Han и Poston. Метод CPDA использует дискретную оценку кривизны, устойчивую к локальным изменениям. Авторы используют 3 хорды различной длины для оценки 3-х нормированных дискретных значений кривизны в каждой точке сглаженной кривой. [19]<br>
+<br>
+ <img src="./Детекторы углов   Хабрахабр_files/d92b0aed930c4dfa8ce442d142686d45.png"><br>
+<br>
+ Поскольку детектор использует большую окрестность, он менее чувствителен к шуму и локальным изменениям на кривой. Детектор CPDA является дальнейшим развитием детектора CSS. Шаги:<br>
+<br>
+<ol>
+<li>Найти границы на изображении, используя детектор границ Канни.</li>
+<li>Выделить контуры границ из бинарной карты.<br>
+ <ol>
+<li>Проверить концы контуров на смежность с другими, если это так, то дозаполнить границу до соединения. </li>
+<li>Найти T-соединения и отметить эту точку как T-связный угол.</li>
+<li>Определить состояние каждой границы как петля или линия.</li>
+</ol></li>
+<li>Размыть изображение, используя небольшое окно Гауссова ядра, чтобы удалить шум и незначительные части изображения.</li>
+<li>Для каждой точки размытой кривой вычислить 3 значения кривизны, используя 3 хорды различной длины.</li>
+<li>Вычислить 3 нормированных значения кривизны для каждой точки кривой и умножить друг на друга.</li>
+<li>Найти локальные максимумы модуля произведения значений кривизны соответствующих особых точек и исключить «слабые» путем сравнения с порогом.</li>
+<li>Для каждого кандидата на особую точку вычислить значения углов и исключить ложные сравнением с порогом.</li>
+<li>Найти углы между концами сглаженных петель (если таковые присутствуют) и обнаруженными углами, если они достаточно удалены от них.</li>
+<li>Каждый из найденных T-связных углов добавить к обнаруженным углам, если он достаточно удален от них. [18]</li>
+</ol><br>
+<br>
+<h3>Выводы</h3><br>
+<br>
+ Можно заметить, что современные алгоритмы стали более сложные. Однако детекторы Харриса и FAST являются самыми часто используемыми и вычислительно быстрыми алгоритмами для определения углов.<br>
+<br>
+ В статье не рассматриваются такие детекторы, как Harris-Laplace, Hessian-Laplace, DoG, LoG, Harris-Affine, Hessian-Affine, Salient Regions поскольку хоть они и позволяют определять углы, но в большей степени их стоит отнести к детекторам блобов (капель, blob). [5]<br>
+<br>
+ Также данная статья не исчерпывает всего множества алгоритмов определения углов, в силу их большого количества и специфики применения к предметным областям. Некоторые из алгоритмов больше представляют теоретический интерес, чем практический. В статье рассмотрены основные алгоритмы определения углов, которые чаще всего встречаются в литературе. <br>
+<br>
+ Например, также есть еще следующие алгоритмы (с указанием статей):<br>
+<br>
+<ol>
+<li>Поворотно-инвариантный оператор DET (вероятно, один из первых детекторов). P.R. Beaudet. Rotationally invariant image operators. In Proc. IAPR1978, pages 579–583, 1978.</li>
+<li>Детектор Kitchen-Rosenfeld. L. Kitchen and A. Rosenfeld. Gray Level Corner Detection. Pattern Recognition Letters, pp. 95-102, 1982.</li>
+<li>Детектор Wang-Brady. H. Wang and M. Brady. Real-time corner detection algorithm for motion estimation. Image and Vision Computing, vol. 13:9, pp. 695-703, 1995.</li>
+<li>Детектор SCD (Structure-based corner detector). Fei Shen, Han Wang. Real Time Gray Level Corner Detector. 2000.</li>
+<li>Детектор COP (Crosses as Oriented Pair). S.C. Bae, I.S. Kweon and C.D. Yoo. COP: a new corner detector. Pattern Recogn. Lett. 2002.</li>
+<li>Улучшенный детектор, основанный на детекторах Harris-Stephen и Shi-Tomasi. Lidia Forlenza, Patrick Carton, Domenico Accardo, Giancarmine Fasano and Antonio Moccia. Real Time Corner Detection for Miniaturized Electro-Optical Sensors Onboard Small Unmanned Aerial Systems. 2012.</li>
+<li>Детектор Zhang. Jun Zhang, Tingjin Luo, Gui Gao, and Lin Lian. Junction Point Detection Algorithm for SAR Image, 2013.</li>
+</ol><br>
+ Стоит отметить, что это не весь список.<br>
+<br>
+<div class="spoiler"><b class="spoiler_title">Замечание</b><div class="spoiler_text"> Интересно, что в некоторых статьях изображения с результатом применения алгоритма для получения угловых особых точек различаются. Вероятно, что использовались различные реализации соответствующих алгоритмов, либо применялись различные настроечные параметры. Так, например, для детектора Харриса (оператор Плессея) получаем 2 разных варианта.<br>
+ <img src="./Детекторы углов   Хабрахабр_files/caa4f0c085be4259a7a27243c29f06fb.png" width="255" height="255"> [16] <img src="./Детекторы углов   Хабрахабр_files/747c24b35dab4af28019c1cddd348a07.png"> [2]<br>
+</div></div><br>
+ Ниже приведена сравнительная таблица детекторов углов, взятая из [2].<br>
+<br>
+ Сравнение детекторов углов (1 – Очень плохо, 2 – плохо, 3 – удовлетворительно, 4 – хорошо, 5 – отлично).<br>
+<br>
+<table border="1">
+<tbody><tr>
+<th>Оператор (алгоритм)</th>
+<th>Эффективность обнаружения</th>
+<th>Локализация</th>
+<th>Частота повторяемости</th>
+<th>Устойчивость к шуму</th>
+<th>Скорость</th>
+</tr>
+<tr>
+<td>Beaudet</td>
+<td>3</td>
+<td>3</td>
+<td>4 для аффинных преобразований, 2 для масштабирования</td>
+<td>2</td>
+<td>4</td>
+</tr>
+<tr>
+<td>Moravec</td>
+<td>3</td>
+<td>4</td>
+<td>3</td>
+<td>3</td>
+<td>4</td>
+</tr>
+<tr>
+<td>Kitchen &amp; Rosenfeld</td>
+<td>3</td>
+<td>3</td>
+<td>3</td>
+<td>3</td>
+<td>3</td>
+</tr>
+<tr>
+<td>Förstner</td>
+<td>4</td>
+<td>4</td>
+<td>5 для аффинных преобразований, 3 для масштабирования</td>
+<td>4</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Plessey</td>
+<td>4</td>
+<td>4 для L-связных углов, 2 для остальных типов</td>
+<td>5 для аффинных преобразований, если вычисляется анизотропный градиент, 3 для масштабирования</td>
+<td>3</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Deriche</td>
+<td>3 (?)</td>
+<td>4</td>
+<td>4</td>
+<td>2</td>
+<td>4</td>
+</tr>
+<tr>
+<td> Wang &amp; Brady<br>
+ </td>
+<td>4</td>
+<td>4</td>
+<td>4</td>
+<td>3</td>
+<td>4</td>
+</tr>
+<tr>
+<td>SUSAN</td>
+<td>4</td>
+<td>1 для размытых изображений, 4+ иначе</td>
+<td>4 для масштабирования, 2 для аффинных преобразований</td>
+<td>5</td>
+<td>4</td>
+</tr>
+<tr>
+<td>CSS</td>
+<td>4</td>
+<td>4</td>
+<td>5</td>
+<td>4</td>
+<td>Сильно зависит от используемого детектора границ</td>
+</tr>
+<tr>
+<td>Trajkovic &amp; Hedley (4-neighbours)</td>
+<td>2</td>
+<td>4</td>
+<td>3 (не инвариантно к поворотам)</td>
+<td>2</td>
+<td>5</td>
+</tr>
+<tr>
+<td>Trajkovic &amp; Hedley (8-neighbours)</td>
+<td>3</td>
+<td>4</td>
+<td>3+ (не инвариантно к поворотам)</td>
+<td>4</td>
+<td>5</td>
+</tr>
+<tr>
+<td>Zheng &amp; Wang</td>
+<td>4</td>
+<td>4 для L-связных углов, 3 для остальных типов</td>
+<td>5 для аффинных преобразований, 3 для масштабирования</td>
+<td>3</td>
+<td>3</td>
+</tr>
+</tbody></table><br>
+<br>
+ Поведение уголковых детекторов на искусственном изображении Смита (The synthetic test pattern of Smith).<br>
+<br>
+<table border="1" cellpadding="1" cellspacing="1">
+<tbody><tr>
+<th>Оператор (алгоритм)</th>
+<th>Результат работы</th>
+</tr>
+<tr>
+<td>Moravec [2]</td>
+<td><img src="./Детекторы углов   Хабрахабр_files/1df9776b1ba143fd999255f920eb4b9e.png"></td>
+</tr>
+<tr>
+<td>Plessey</td>
+<td><img src="./Детекторы углов   Хабрахабр_files/6a5ef36a24fb4382a898bcdb9b4ea9d3.png"></td>
+</tr>
+<tr>
+<td>SUSAN</td>
+<td><img src="./Детекторы углов   Хабрахабр_files/a76b88950f90429b824f7d810c64007f.png"></td>
+</tr>
+<tr>
+<td>Förstner [10]</td>
+<td><img src="./Детекторы углов   Хабрахабр_files/0a60c2ccff424146a51d252482bbb815.png"></td>
+</tr>
+<tr>
+<td>Trajkovic4</td>
+<td><img src="./Детекторы углов   Хабрахабр_files/0f39f7484cc945afb93c2cfdac6aedb1.png"></td>
+</tr>
+<tr>
+<td>Trajkovic8</td>
+<td><img src="./Детекторы углов   Хабрахабр_files/0477838dc05549749529f34c1f631f6b.png"></td>
+</tr>
+<tr>
+<td>Shi-Tomasi [20]</td>
+<td><img src="./Детекторы углов   Хабрахабр_files/b57e2146cdc84fb38c88331bf7469d52.png"></td>
+</tr>
+</tbody></table><br>
+ Поведение уголковых детекторов на тестовом изображении дома (House Test Image).<br>
+<br>
+<table>
+<tbody><tr>
+<th>Оператор (алгоритм)</th>
+<th>Результат работы</th>
+</tr>
+<tr>
+<td>Moravec</td>
+<td><img src="./Детекторы углов   Хабрахабр_files/3f297f5686104e2da49a98249909f691.png" width="251"></td>
+</tr>
+<tr>
+<td>Plessey</td>
+<td><img src="./Детекторы углов   Хабрахабр_files/6a7ff8e6e10446daa211832e4ec71026.png" width="251"></td>
+</tr>
+<tr>
+<td>SUSAN [16]</td>
+<td><img src="./Детекторы углов   Хабрахабр_files/9ebfbcb153ef46d78464dc7f59cc8943.png" width="251"></td>
+</tr>
+<tr>
+<td>Förstner</td>
+<td><img src="./Детекторы углов   Хабрахабр_files/970c911d62a94010b308aec46a08f6e7.png" width="251"></td>
+</tr>
+<tr>
+<td>FAST [21]</td>
+<td><img src="./Детекторы углов   Хабрахабр_files/7e2e6f29917b49ddb2885657bc078eff.png" width="251"></td>
+</tr>
+<tr>
+<td>Original CSS [16]</td>
+<td><img src="./Детекторы углов   Хабрахабр_files/b0788ff106d44f40b6f7ca7b8582d863.png" width="251"></td>
+</tr>
+<tr>
+<td>Enhanced CSS [16]</td>
+<td><img src="./Детекторы углов   Хабрахабр_files/61bbe1a788764c4c86487798a849089e.png" width="251"></td>
+</tr>
+<tr>
+<td>Corner detector based<br>
+on global and local<br>
+curvature properties 2008 [16]</td>
+<td><img src="./Детекторы углов   Хабрахабр_files/65829fb86fc44b5da82c49a68a0d6902.png" width="251"></td>
+</tr>
+<tr>
+<td>Kitchen-Rosenfeld [22]</td>
+<td><img src="./Детекторы углов   Хабрахабр_files/d20b467068db43449ef6cdc6bd76cf44.png" width="251"></td>
+</tr>
+<tr>
+<td>COP [22]</td>
+<td><img src="./Детекторы углов   Хабрахабр_files/26813c71a81541b69e8b1d13de2067d6.png" width="251"></td>
+</tr>
+</tbody></table><br>
+ P.S.: Я старался провести обзор основных детекторов углов. Надеюсь, что у меня это получилось. Если в статье есть неточности, пожалуйста, отправляйте сообщения в личку. И, может быть, некоторые алгоритмы написаны слишком обобщенно, но если бы я писал все подробности, тогда бы статья разрослась до ещё больших размеров, потеряв бы нить повествования. <br>
+<br>
+<br>
+<h3>Список литературы</h3><br>
+<br>
+[1] <a href="http://cgm.computergraphics.ru/content/view/54">Конушин А. Слежение за точечными особенностями сцены (Point feature tracking). Компьютерная графика и мультимедиа. Выпуск №1(5)/2003</a>. <br>
+[2] Abhishak Yadav, Poonam Yadav. Digital Image Processing, 2009. <br>
+[3] <a href="https://hal.archives-ouvertes.fr/hal-00631609/document">Accurate Junction Detection and Characterization in Natural</a>. <br>
+[4] <a href="http://www.racurs.ru/wiki/index.php/%D0%9E%D0%B1%D0%B7%D0%BE%D1%80_%D0%BC%D0%B5%D1%82%D0%BE%D0%B4%D0%BE%D0%B2_%D0%BE%D0%B1%D0%BD%D0%B0%D1%80%D1%83%D0%B6%D0%B5%D0%BD%D0%B8%D1%8F_%D1%85%D0%B0%D1%80%D0%B0%D0%BA%D1%82%D0%B5%D1%80%D0%BD%D1%8B%D1%85_%D1%82%D0%B">Обзор методов обнаружения характерных точек</a>.<br>
+[5] Tinne Tuytelaars, Krystian Mikolajczyk. Local Invariant Feature Detectors: A Survey, 2008. <br>
+[6] <a href="http://www2.it.lut.fi/kurssit/07-08/CT20A6100/seminars/2009-2010/Harris.pdf">Harris Corner Detector</a>. <br>
+[7] <a href="http://www.cs.toronto.edu/~jepson/csc420/notes/imageFeaturesIIBinder.pdf">http://www.cs.toronto.edu/~jepson/csc420/notes/imageFeaturesIIBinder.pdf</a>.<br>
+[8] M. H. Miroslav Trajkovii. Fast corner detection, 1998. <br>
+[9] T. Shi. Good Features to Track, 1994. <br>
+[10] V. Rodehorst, A. Koschan. Comparison and evaluation of feature point detectors, 2006. <br>
+[11] <a href="https://cseweb.ucsd.edu/classes/sp04/cse252b/notes/lec13/lec13.pdf">Lecture 13. Interest Point Detection, 2004</a>. <br>
+[12] B. Smith. SUSAN — A new approach to low level, 1997. <br>
+[13] E. R. a. T. Drummond. Fusing Points and Lines for High Performance Tracking, 2005. <br>
+[14] R. P. a. T. D. Edward Rosten. Faster and better: a machine learning approach to corner detection, 2008. <br>
+[15] A. Rattarangsi, W. U. M. W. U. Dept. of Electr. &amp; Comput. Eng. и R. Chin, Scale-based detection of corners of planar curves, Pattern Analysis and Machine Intelligence, IEEE Transactions on (Volume:14, Issue: 4), 1992. <br>
+[16] <a href="http://hdl.handle.net/10722/57246">X. Chen He, N. Yung. Corner detector based on global and local curvature, 2008</a>. <br>
+[17] R. S. Farzin Mokhtarian. Robust Image Corner Detection Through Curvature Scale Space, 1998. <br>
+[18] <a href="http://www.mathworks.com/matlabcentral/fileexchange/22390-robust-image-corner-detection-based-on-the-chord-to-point-distance-accumulation-technique">M. Awrangjeb. CPDA, 2009</a>.<br>
+[19] S. M. M. Kahaki, Contour-Based Corner Detection and Classification by Using Mean Projection Transform, 2014. <br>
+[20] <a href="https://www.cs.auckland.ac.nz/courses/compsci773s1c/lectures/COMPSCI%20773%20feature%20point%20detection.pdf">COMPSCI 773 feature point detection</a>.<br>
+[21] Andres Solis Montero, Milos Stojmenović, Amiya Nayak. Robust Detection of Corners and Corner-line links in images. 10th IEEE International Conference on Computer and Information Technology (CIT 2010), 2010.<br>
+[22] S.C. Bae, I.S. Kweon and C.D. Yoo. COP: a new corner detector. Pattern Recogn. Lett., 2002.<br>
+ 
+    	<div class="clear"></div> 	
+  	</div>
+    
+<ul class="tags">
+	<li><a href="http://habrahabr.ru/search/?q=%5B%D0%BE%D1%81%D0%BE%D0%B1%D0%B0%D1%8F%20%D1%82%D0%BE%D1%87%D0%BA%D0%B0%5D&target_type=posts" rel="tag">особая точка</a></li><li>, <a href="http://habrahabr.ru/search/?q=%5B%D1%83%D0%B3%D0%BE%D0%BB%5D&target_type=posts" rel="tag">угол</a></li><li>, <a href="http://habrahabr.ru/search/?q=%5B%D0%B4%D0%B5%D1%82%D0%B5%D0%BA%D1%82%D0%BE%D1%80%5D&target_type=posts" rel="tag">детектор</a></li>
+</ul>
+
+    <div class="infopanel_wrapper">
+	<div class="infopanel " id="infopanel_post_244541">
+
+				<div class="voting   ">
+	
+						<span class="plus" title="Голосовать могут только зарегистрированные пользователи."></span>
+	
+					<div class="mark positive ">
+							<span class="score" title="Всего 118: ↑116 и ↓2">+114</span>
+					</div>
+					
+						<span class="minus" title="Голосовать могут только зарегистрированные пользователи."></span>
+		
+				</div>
+	
+		<div class="pageviews" title="Просмотры публикации">35295</div>
+			
+		<div class="favorite">
+				<a class="guest" href="http://habrahabr.ru/post/244541/#" onclick="return false;" title="Только зарегистрированные пользователи могут добавлять публикации в избранное"></a>
+		</div>
+		<div class="favs_count" title="Количество пользователей, добавивших публикацию в избранное">500</div>
+		
+		
+		
+	
+	
+	
+	
+				<div class="author">
+					<a title="Автор текста" href="http://habrahabr.ru/users/lightsource/">lightsource</a>
+					<span class="rating" title="рейтинг пользователя">4,2</span>
+				</div>
+		
+	
+
+			<div class="share">
+				<div class="twitter">
+					<a href="http://twitter.com/intent/tweet?text=%D0%94%D0%B5%D1%82%D0%B5%D0%BA%D1%82%D0%BE%D1%80%D1%8B+%D1%83%D0%B3%D0%BB%D0%BE%D0%B2+http://habr.ru/p/244541/+via+%40habrahabr+%23habr" title="Опубликовать ссылку в Twitter" target="_blank"></a>
+				</div>
+				<div class="vkontakte">
+					<a href="http://vk.com/share.php?url=http://habrahabr.ru/post/244541/" title="Опубликовать ссылку во ВКонтакте" onclick="window.open(this.href, &#39;Опубликовать ссылку во Вконтакте&#39;, &#39;width=800,height=300&#39;); return false"></a>
+				</div>
+				<div class="facebook">
+					<a href="https://www.facebook.com/sharer/sharer.php?u=http://habrahabr.ru/post/244541/" title="Опубликовать ссылку в Facebook" onclick="window.open(this.href, &#39;Опубликовать ссылку в Facebook&#39;, &#39;width=640,height=436,toolbar=0,status=0&#39;); return false"></a>
+				</div>
+				<div class="googleplus">
+					<a href="https://plus.google.com/share?url=http://habrahabr.ru/post/244541/" title="Опубликовать ссылку в Google Plus" onclick="window.open(this.href, &#39;Опубликовать ссылку в Google Plus&#39;, &#39;width=800,height=300&#39;); return false"></a>
+				</div>
+			</div>
+	
+	</div>
+	<div class="clear"></div>
+</div>
+
+
+
+
+    
+    
+	</div>
+
+    </div>
+
+  	    
+  <div id="adriver_banner_132032996" title=""><style type="text/css">
+    .post_inner_banner.seopult_inner_banner { overflow:hidden;text-align:center;height:70px;border:1px solid #d4d4d4;border-radius:15px; }
+    .post_inner_banner.seopult_inner_banner a { text-decoration:none;color:#000;overflow:hidden;display:block;height:70px; }
+    .post_inner_banner.seopult_inner_banner div { display:block;float:left;text-align:left;font-size:12px; }
+    .post_inner_banner.seopult_inner_banner .logo { background: url(http://special.habrahabr.ru/img/1424861105/htmlblock/seopult/logo.png) no-repeat center;width:153px;height:70px; }
+    .post_inner_banner.seopult_inner_banner .zig { background: url(http://special.habrahabr.ru/img/1424861105/htmlblock/seopult/zig.png) no-repeat center;width:7px;height:70px; }
+    .post_inner_banner.seopult_inner_banner .zig1 { margin-left: 20px }
+    .post_inner_banner.seopult_inner_banner .target { margin:0 40px;background: url(http://special.habrahabr.ru/img/1424861105/htmlblock/seopult/target.png) no-repeat 0 5px;width:200px;padding-left:55px;padding-top:12px;height:53px;font:18px/22px Verdana, Arial;color:#000; }
+    .post_inner_banner.seopult_inner_banner .list ul { margin:10px 30px; }
+    .post_inner_banner.seopult_inner_banner .list ul li { background: url(http://special.habrahabr.ru/img/1424861105/htmlblock/seopult/li.png) no-repeat 0 2px;padding-left:15px;font:12px/16px Verdana, Arial;color:#000; }
+    .post_inner_banner.seopult_inner_banner .mline { float:right;background: url(http://special.habrahabr.ru/img/1424861105/htmlblock/seopult/right.png) no-repeat;width:6px;height:70px; }
+    .post_inner_banner.seopult_inner_banner .mmore { float:right;background:#ea9d4a;text-align:center;height:70px;width:172px;font:18px/70px Verdana, Arial;color:#fff; }
+    .post_inner_banner.seopult_inner_banner .mmore span { border-bottom:1px solid #fff; }
+
+    @media (max-width: 1400px) {
+        .post_inner_banner.seopult_inner_banner .list ul { margin:10px 20px; }
+        .post_inner_banner.seopult_inner_banner .zig1 { margin-left: 0 }
+    }
+    @media (max-width: 1360px) {
+        .post_inner_banner.seopult_inner_banner .target { margin: 0 10px; }
+    }
+    @media (max-width: 1300px) {
+        .post_inner_banner.seopult_inner_banner .mmore { width:102px;font-size:14px; }
+    }
+    @media (max-width: 1230px) {
+
+        .post_inner_banner.seopult_inner_banner .target { width:152px;font-size:14px;padding-left:50px;margin:0 10px; }
+    }
+    @media (max-width: 1180px) {
+        .post_inner_banner.seopult_inner_banner .mline,
+        .post_inner_banner.seopult_inner_banner .mmore { display:none; }
+    }
+    @media (max-width: 1125px) {
+        .post_inner_banner.seopult_inner_banner .logo { width:140px; }
+    }
+    @media (max-width: 1040px) {
+        .post_inner_banner.seopult_inner_banner .logo { width: 120px; }
+        .post_inner_banner.seopult_inner_banner .list ul { margin:10px; }
+    }
+</style>
+<div class="seopult_inner_banner post_inner_banner">
+    <a href="http://ad.adriver.ru/cgi-bin/click.cgi?sid=1&ad=506846&bt=21&pid=1853258&bid=3703390&bn=3703390&rnd=576364064" target="_blank" class="block_url">
+        <div class="logo"></div>
+        <div class="zig zig1"></div>
+        <div class="target">Автоматизированное<br>продвижение сайтов</div>
+        <div class="zig zig2"></div>
+        <div class="list">
+            <ul>
+                <li>50% экономии на ссылках</li><li>Запуск проекта за 10 минут</li><li>Вывод и удержание в ТОП 10</li>
+            </ul>
+        </div>
+        <div class="mmore"><span>Подробнее</span></div>
+        <div class="mline"></div>
+    </a>
+</div></div>  
+
+  <script type="text/javascript">
+      /** Для блоков гугла **/
+      function requireAdsafe(file){
+          var head = document.getElementsByTagName("head")[0];
+          var script = document.createElement('script');
+          script.src = file;
+          script.type = 'text/javascript';
+          head.appendChild(script);
+      }
+
+      function show_inner_banner_block(name, url){
+          if( typeof(name) !== 'undefined'){
+              //$.get('/html/'+name+'/1424872488/', function(html){
+              $.get('http://special.habrahabr.ru/api/htmlblock/'+name+'/', function(html){
+                  $('#adriver_banner_132032996').html(html);
+                  $('.'+name+'_inner_banner').removeClass('hidden');
+                  if( typeof(url) !== 'undefined'){
+                      $('.'+name+'_inner_banner .block_url').attr('href', url);
+                  }
+              }, 'html')
+          }
+      }
+
+        $(function(){
+          var check_scroll_position = function() {
+            var height = $(window).height();
+            var scrollTop = $(window).scrollTop();
+            var scrollBottom = $(window).scrollTop() + height;
+            var blockTop = $('#adriver_banner_132032996').position().top;
+            var show = scrollTop < blockTop && blockTop < scrollBottom;
+            
+            if( show ){
+                $( window ).off('scroll', check_scroll_position);
+                $( window ).trigger('show_bn3');
+            }
+          };
+          //$( window ).on('scroll', check_scroll_position);
+          
+          $( window ).on('show_bn3', function(){
+            var keyword = '';
+            if (typeof crtg_content !== 'undefined' && crtg_content) { keyword = crtg_content; }
+            var custom = { 4:ar_duo1 };
+                custom[1] = 'image_processing';
+                custom[2] = 'algorithms';
+
+            //if (true)
+            //    show_inner_banner_block('raiffaizen2');
+            //else
+                new adriver("adriver_banner_132032996", {sid: 176776, bt: 52, bn: 3, custom: custom, keyword: keyword});
+          });      
+
+          $( window ).trigger('show_bn3');          
+        });
+    </script>
+    
+
+
+  	
+      
+      <div class="block_after_post">
+        
+
+
+<div class="block similar_posts">
+
+    <div class="title">Похожие публикации</div>
+    <div class="posts_list">
+        <div class="post_item">
+            <a class="post_name" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;tm_block&#39;, &#39;similar_posts&#39;, $(this).parents(&#39;.similar_posts&#39;).hasClass(&#39;float_block&#39;) ? &#39;float&#39; : &#39;common&#39;); }" href="http://habrahabr.ru/post/231247/">This is Science: Эластичный дисплей на квантовых точках</a>
+            <span class="when">28 июля 2014 в 21:23</span>
+        </div>
+        <div class="post_item">
+            <a class="post_name" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;tm_block&#39;, &#39;similar_posts&#39;, $(this).parents(&#39;.similar_posts&#39;).hasClass(&#39;float_block&#39;) ? &#39;float&#39; : &#39;common&#39;); }" href="http://habrahabr.ru/post/228587/">802.11ac точки доступа Cisco: порог гигабитного Wi-Fi пройден</a>
+            <span class="when"> 3 июля 2014 в 16:59</span>
+        </div>
+        <div class="post_item">
+            <a class="post_name" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;tm_block&#39;, &#39;similar_posts&#39;, $(this).parents(&#39;.similar_posts&#39;).hasClass(&#39;float_block&#39;) ? &#39;float&#39; : &#39;common&#39;); }" href="http://habrahabr.ru/post/209898/">Касаемо точек</a>
+            <span class="when">21 января 2014 в 21:02</span>
+        </div>
+        <div class="post_item">
+            <a class="post_name" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;tm_block&#39;, &#39;similar_posts&#39;, $(this).parents(&#39;.similar_posts&#39;).hasClass(&#39;float_block&#39;) ? &#39;float&#39; : &#39;common&#39;); }" href="http://habrahabr.ru/post/207594/">Совсем “не детектор” лжи</a>
+            <span class="when">27 декабря 2013 в 10:19</span>
+        </div>
+        <div class="post_item">
+            <a class="post_name" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;tm_block&#39;, &#39;similar_posts&#39;, $(this).parents(&#39;.similar_posts&#39;).hasClass(&#39;float_block&#39;) ? &#39;float&#39; : &#39;common&#39;); }" href="http://habrahabr.ru/post/200804/">Делаем детектор движения, или OpenCV — это просто</a>
+            <span class="when"> 5 ноября 2013 в 08:02</span>
+        </div>
+        <div class="post_item">
+            <a class="post_name" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;tm_block&#39;, &#39;similar_posts&#39;, $(this).parents(&#39;.similar_posts&#39;).hasClass(&#39;float_block&#39;) ? &#39;float&#39; : &#39;common&#39;); }" href="http://habrahabr.ru/post/190520/">Доменов без точки не будет</a>
+            <span class="when">19 августа 2013 в 10:26</span>
+        </div>
+        <div class="post_item">
+            <a class="post_name" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;tm_block&#39;, &#39;similar_posts&#39;, $(this).parents(&#39;.similar_posts&#39;).hasClass(&#39;float_block&#39;) ? &#39;float&#39; : &#39;common&#39;); }" href="http://habrahabr.ru/post/190424/">ICANN отклонил идею Google о доменах без точки</a>
+            <span class="when">17 августа 2013 в 18:56</span>
+        </div>
+        <div class="post_item">
+            <a class="post_name" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;tm_block&#39;, &#39;similar_posts&#39;, $(this).parents(&#39;.similar_posts&#39;).hasClass(&#39;float_block&#39;) ? &#39;float&#39; : &#39;common&#39;); }" href="http://habrahabr.ru/post/189992/">Теорема Клини о неподвижной точке: квайны</a>
+            <span class="when">14 августа 2013 в 03:13</span>
+        </div>
+        <div class="post_item">
+            <a class="post_name" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;tm_block&#39;, &#39;similar_posts&#39;, $(this).parents(&#39;.similar_posts&#39;).hasClass(&#39;float_block&#39;) ? &#39;float&#39; : &#39;common&#39;); }" href="http://habrahabr.ru/post/181448/">Особые экономические зоны: мифы и/или реальность?</a>
+            <span class="when">30 мая 2013 в 01:22</span>
+        </div>
+        <div class="post_item">
+            <a class="post_name" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;tm_block&#39;, &#39;similar_posts&#39;, $(this).parents(&#39;.similar_posts&#39;).hasClass(&#39;float_block&#39;) ? &#39;float&#39; : &#39;common&#39;); }" href="http://habrahabr.ru/post/159705/">ZigBee. Совместимость устройств, профили приложений, кластеры, конечные точки, привязки</a>
+            <span class="when">22 ноября 2012 в 00:39</span>
+        </div>
+    </div>
+</div>
+
+
+
+      </div>
+
+  		    <div class="comments_list " id="comments">
+
+        <h2 class="title ">Комментарии (<span id="comments_count">26</span>)
+            
+
+        </h2>
+
+        
+
+            <div class="comment_item" id="comment_8176695">
+
+    <span class="parent_id" data-parent_id="0"></span>
+    <div class="comment_body ">
+        <div class="info  " rel="8176695">
+            <div class="folding-dot-holder"><div class="folding-dot"></div></div>
+            <div id="voting_8176695" class="voting   ">
+                <span class="minus" title="Голосовать могут только зарегистрированные пользователи"></span>
+                <span class="plus" title="Голосовать могут только зарегистрированные пользователи"></span>
+                <div class="mark  ">
+                    <span class="score" title="Всего 2: ↑1 и ↓1">0</span>
+                </div>
+            </div>
+            <a href="http://habrahabr.ru/users/Ivaneo/" class="avatar"><img src="./Детекторы углов   Хабрахабр_files/27a889d15236d239a4bdf3b21b44c5e2_small.png" alt=""></a>
+            <a href="http://habrahabr.ru/users/Ivaneo/" class="username">Ivaneo</a>
+            <time>11 декабря 2014 в 23:49</time>
+
+            <a href="http://habrahabr.ru/post/244541/#comment_8176695" class="link_to_comment">#</a>
+            
+            <span class="to_chidren"></span>
+            <div class="clear"></div>
+        </div>
+        <div class="message html_format ">
+            Если соединить углы линиями и вычислить перспективу можно ли создать 3D модель объекта по фотографии?
+        </div>
+        <div class="reply_form_placeholder"></div>
+        <div class="reply">
+            
+        </div>
+    </div>
+
+    <div class="reply_comments" id="reply_comments_8176695">
+        <div class="comment_item" id="comment_8176803">
+
+    <span class="parent_id" data-parent_id="8176695"></span>
+    <div class="comment_body ">
+        <div class="info  " rel="8176803">
+            <div class="folding-dot-holder"><div class="folding-dot"></div></div>
+            <div id="voting_8176803" class="voting   ">
+                <span class="minus" title="Голосовать могут только зарегистрированные пользователи"></span>
+                <span class="plus" title="Голосовать могут только зарегистрированные пользователи"></span>
+                <div class="mark  negative">
+                    <span class="score" title="Всего 15: ↑1 и ↓14">–13</span>
+                </div>
+            </div>
+            <a href="http://habrahabr.ru/users/spice_harj/" class="avatar"><img src="./Детекторы углов   Хабрахабр_files/b374fc3a317826abd00dccbd789c99fd_small.jpg" alt=""></a>
+            <a href="http://habrahabr.ru/users/spice_harj/" class="username">spice_harj</a>
+            <time>12 декабря 2014 в 01:08</time>
+
+            <a href="http://habrahabr.ru/post/244541/#comment_8176803" class="link_to_comment">#</a>
+            
+                <div class="show_tree" data-id="8176803" data-parent_id="8176695" title="Показать ветку комментариев">↵</div>
+                <a href="http://habrahabr.ru/post/244541/#comment_8176695" data-id="8176803" data-parent_id="8176695" class="to_parent">↑</a>
+            <span class="to_chidren"></span>
+            <div class="clear"></div>
+        </div>
+        <div class="message html_format bad bad5">
+            как перспектива связана с трёхмерными моделями? Что бы рисовать «3D» надо как минимум 3и координаты…
+        </div>
+        <div class="reply_form_placeholder"></div>
+        <div class="reply">
+            
+        </div>
+    </div>
+
+    <div class="reply_comments" id="reply_comments_8176803">
+        <div class="comment_item" id="comment_8177561">
+
+    <span class="parent_id" data-parent_id="8176803"></span>
+    <div class="comment_body ">
+        <div class="info  " rel="8177561">
+            <div class="folding-dot-holder"><div class="folding-dot"></div></div>
+            <div id="voting_8177561" class="voting   ">
+                <span class="minus" title="Голосовать могут только зарегистрированные пользователи"></span>
+                <span class="plus" title="Голосовать могут только зарегистрированные пользователи"></span>
+                <div class="mark positive ">
+                    <span class="score" title="Всего 2: ↑2 и ↓0">+2</span>
+                </div>
+            </div>
+            <a href="http://habrahabr.ru/users/Jabher/" class="avatar"><img src="./Детекторы углов   Хабрахабр_files/af540b2bf8b80345ea4c30e42c4d0948_small.jpg" alt=""></a>
+            <a href="http://habrahabr.ru/users/Jabher/" class="username">Jabher</a>
+            <time>12 декабря 2014 в 14:03</time>
+
+            <a href="http://habrahabr.ru/post/244541/#comment_8177561" class="link_to_comment">#</a>
+            
+                <div class="show_tree" data-id="8177561" data-parent_id="8176803" title="Показать ветку комментариев">↵</div>
+                <a href="http://habrahabr.ru/post/244541/#comment_8176803" data-id="8177561" data-parent_id="8176803" class="to_parent">↑</a>
+            <span class="to_chidren"></span>
+            <div class="clear"></div>
+        </div>
+        <div class="message html_format ">
+            скажите гуглу, он научился строить карту глубины по одиночному снимку. то-то там удивятся что сделали то что нельзя было, оказывается.
+        </div>
+        <div class="reply_form_placeholder"></div>
+        <div class="reply">
+            
+        </div>
+    </div>
+
+    <div class="reply_comments" id="reply_comments_8177561">
+        <div class="comment_item" id="comment_8177569">
+
+    <span class="parent_id" data-parent_id="8177561"></span>
+    <div class="comment_body ">
+        <div class="info  " rel="8177569">
+            <div class="folding-dot-holder"><div class="folding-dot"></div></div>
+            <div id="voting_8177569" class="voting   ">
+                <span class="minus" title="Голосовать могут только зарегистрированные пользователи"></span>
+                <span class="plus" title="Голосовать могут только зарегистрированные пользователи"></span>
+                <div class="mark  negative">
+                    <span class="score" title="Всего 18: ↑1 и ↓17">–16</span>
+                </div>
+            </div>
+            <a href="http://habrahabr.ru/users/spice_harj/" class="avatar"><img src="./Детекторы углов   Хабрахабр_files/b374fc3a317826abd00dccbd789c99fd_small.jpg" alt=""></a>
+            <a href="http://habrahabr.ru/users/spice_harj/" class="username">spice_harj</a>
+            <time>12 декабря 2014 в 14:12<span class="time_changed"> (комментарий был изменён)</span></time>
+
+            <a href="http://habrahabr.ru/post/244541/#comment_8177569" class="link_to_comment">#</a>
+            
+                <div class="show_tree" data-id="8177569" data-parent_id="8177561" title="Показать ветку комментариев">↵</div>
+                <a href="http://habrahabr.ru/post/244541/#comment_8177561" data-id="8177569" data-parent_id="8177561" class="to_parent">↑</a>
+            <span class="to_chidren"></span>
+            <div class="clear"></div>
+        </div>
+        <div class="message html_format bad bad5">
+            Такие уроды… -8 за нормальное замечание. macik_spb Вам написал: «в простом случае знание о перспективе как таковой почти ничего не даст, если говорить о 3d. » тоже сказал и я… никто не говорил про карты нормалей/глубины/отражения и прочие шаманства. Рассчитать перспективу и построить 3d? ну удачи, мб продадите автокаду свои труды…<br>
+<br>
+Хотя бы по первой ссылке ответа ниже, идёт «искусственное» растяжение по неизвестной координате.
+        </div>
+        <div class="reply_form_placeholder"></div>
+        <div class="reply">
+            
+        </div>
+    </div>
+
+    <div class="reply_comments" id="reply_comments_8177569">
+        <div class="comment_item" id="comment_8177697">
+
+    <span class="parent_id" data-parent_id="8177569"></span>
+    <div class="comment_body ">
+        <div class="info  " rel="8177697">
+            <div class="folding-dot-holder"><div class="folding-dot"></div></div>
+            <div id="voting_8177697" class="voting   ">
+                <span class="minus" title="Голосовать могут только зарегистрированные пользователи"></span>
+                <span class="plus" title="Голосовать могут только зарегистрированные пользователи"></span>
+                <div class="mark positive ">
+                    <span class="score" title="Всего 2: ↑2 и ↓0">+2</span>
+                </div>
+            </div>
+            <a href="http://habrahabr.ru/users/Jabher/" class="avatar"><img src="./Детекторы углов   Хабрахабр_files/af540b2bf8b80345ea4c30e42c4d0948_small.jpg" alt=""></a>
+            <a href="http://habrahabr.ru/users/Jabher/" class="username">Jabher</a>
+            <time>12 декабря 2014 в 15:39<span class="time_changed"> (комментарий был изменён)</span></time>
+
+            <a href="http://habrahabr.ru/post/244541/#comment_8177697" class="link_to_comment">#</a>
+            
+                <div class="show_tree" data-id="8177697" data-parent_id="8177569" title="Показать ветку комментариев">↵</div>
+                <a href="http://habrahabr.ru/post/244541/#comment_8177569" data-id="8177697" data-parent_id="8177569" class="to_parent">↑</a>
+            <span class="to_chidren"></span>
+            <div class="clear"></div>
+        </div>
+        <div class="message html_format ">
+            я вас не минусовал. <br>
+я вообще не связан с 3д-моделированием на интеллектуальных алгоритмах.<br>
+<br>
+То, что вы считаете чем-то слабо или криво работающим — не значит, что оно и правда так. Вы не знаете, что под капотом, не знаете, какие технологические решения были использованы, не знаете, сколько научно-исследовательской работы положено в основу всего, какие математические теории используются, но уже готовы критиковать.<br>
+<br>
+Как человек, который активно пилит рекомендательную систему для музыки — могу по своему опыту сказать: если есть достаточно изначальных данных для анализа (в моем случае уже накопленное поведение людей), возможность протестировать новые модели анализа — крайне малого количества весьма неточных данных может оказаться достаточно для выстраивания весьма стройной модели.<br>
+<br>
+В моем случае, например, из для жанров аудиозаписей (которые забиты весьма криво и неточно) — строится модель, в ней устраняются сглаживания, устраняются выбросы. После этого строится ранжирование по времени внесения записей, строится линия в 22-мерном пространстве, соответствующая изменению жанрового вектора, экстраполируется, уменьшается до единичного вектора, дальше все множество таких единичных векторов через гномоническую проекцию проецируется в 21-мерное пространство, в котором идут определения жанровых предпочтений пользователя, и далее через нейронную сеть (мне было лень писать уже дальше алгоритм для расчетов) идет обучение системы о том, что пользователю нравится и что не нравится.<br>
+И это все делается в браузере (в том числе в мобильничках) в реальном времени для 5000 векторов. С некоторыми допущениями, конечно — на разных стадиях отсеиваются заранее неподходящие вектора, например, есть таблицы для переводов и так далее.<br>
+<br>
+А начиналось все с ранжирования по прямому сравнению порядка жанров — просто {рок; альтернатива; поп} и {рок; поп; альтернатива} считались ближе, чем {шансон; классика; рок}.<br>
+<br>
+Если что — я это один хрен опубликую с картинками и графиками в ближайшее время вместе с новым релизом, в котором уже это все будет, поэтому и спокойно рассказываю все детали.
+        </div>
+        <div class="reply_form_placeholder"></div>
+        <div class="reply">
+            
+        </div>
+    </div>
+
+    <div class="reply_comments" id="reply_comments_8177697">
+        <div class="comment_item" id="comment_8177723">
+
+    <span class="parent_id" data-parent_id="8177697"></span>
+    <div class="comment_body ">
+        <div class="info  " rel="8177723">
+            <div class="folding-dot-holder"><div class="folding-dot"></div></div>
+            <div id="voting_8177723" class="voting   ">
+                <span class="minus" title="Голосовать могут только зарегистрированные пользователи"></span>
+                <span class="plus" title="Голосовать могут только зарегистрированные пользователи"></span>
+                <div class="mark  negative">
+                    <span class="score" title="Всего 3: ↑0 и ↓3">–3</span>
+                </div>
+            </div>
+            <a href="http://habrahabr.ru/users/spice_harj/" class="avatar"><img src="./Детекторы углов   Хабрахабр_files/b374fc3a317826abd00dccbd789c99fd_small.jpg" alt=""></a>
+            <a href="http://habrahabr.ru/users/spice_harj/" class="username">spice_harj</a>
+            <time>12 декабря 2014 в 15:57<span class="time_changed"> (комментарий был изменён)</span></time>
+
+            <a href="http://habrahabr.ru/post/244541/#comment_8177723" class="link_to_comment">#</a>
+            
+                <div class="show_tree" data-id="8177723" data-parent_id="8177697" title="Показать ветку комментариев">↵</div>
+                <a href="http://habrahabr.ru/post/244541/#comment_8177697" data-id="8177723" data-parent_id="8177697" class="to_parent">↑</a>
+            <span class="to_chidren"></span>
+            <div class="clear"></div>
+        </div>
+        <div class="message html_format bad bad3">
+            по пунктам: <br>
+1) я не писал что криво работает, или по фотографии нельзя построить 3d модель. Ед. что следует из моего первого комментария это то, что нельзя рассчитав одну перспективу построить 3d модель. И это факт. Это был ответ на комментарий.<br>
+2)То что ответил именно на ваш комментарий связано исключительно с размещение комментариев на странице и никак иначе. Хотелось бы, что бы те «про» 3д моделирования, которые по одной перспективе строят виртуальные реальности прочитали, как мой комментарий, так комментарий macik_spb — развёрнутый и даже ссылками.<br>
+3)" что сделали то что нельзя было, оказывается." эта фраза вообще похожа на школьное агро! Я разве что-то подобное написал? Смотрите в корень господа. <br>
+<br>
+sry за оффтоп, но просьба, тем кто адово поддерживает минусы в комментах — аргументируйте свою точку зрения.<br>
+<br>
+upd: и да 3d модели и 3d картинки или ещё какие 3d — подразумевать/говорить/думать можно о совершенно разных вещах, однако это не отменяет того, что 3d модели это исключительно объекты с 3мя степенями свободы.
+        </div>
+        <div class="reply_form_placeholder"></div>
+        <div class="reply">
+            
+        </div>
+    </div>
+
+    <div class="reply_comments" id="reply_comments_8177723">
+    </div>
+</div>
+
+        <div class="comment_item" id="comment_8177913">
+
+    <span class="parent_id" data-parent_id="8177697"></span>
+    <div class="comment_body ">
+        <div class="info  " rel="8177913">
+            <div class="folding-dot-holder"><div class="folding-dot"></div></div>
+            <div id="voting_8177913" class="voting   ">
+                <span class="minus" title="Голосовать могут только зарегистрированные пользователи"></span>
+                <span class="plus" title="Голосовать могут только зарегистрированные пользователи"></span>
+                <div class="mark positive ">
+                    <span class="score" title="Всего 1: ↑1 и ↓0">+1</span>
+                </div>
+            </div>
+            <a href="http://habrahabr.ru/users/JustRoo/" class="avatar"><img src="./Детекторы углов   Хабрахабр_files/stub-user-small.gif" alt=""></a>
+            <a href="http://habrahabr.ru/users/JustRoo/" class="username">JustRoo</a>
+            <time>12 декабря 2014 в 17:43</time>
+
+            <a href="http://habrahabr.ru/post/244541/#comment_8177913" class="link_to_comment">#</a>
+            
+                <div class="show_tree" data-id="8177913" data-parent_id="8177697" title="Показать ветку комментариев">↵</div>
+                <a href="http://habrahabr.ru/post/244541/#comment_8177697" data-id="8177913" data-parent_id="8177697" class="to_parent">↑</a>
+            <span class="to_chidren"></span>
+            <div class="clear"></div>
+        </div>
+        <div class="message html_format ">
+            Ох, прям то, чем я занимался лет пять назад, почти слово в слово =). Интересно только, почему пространство всего 22-мерное — вероятно, особенности модели.
+        </div>
+        <div class="reply_form_placeholder"></div>
+        <div class="reply">
+            
+        </div>
+    </div>
+
+    <div class="reply_comments" id="reply_comments_8177913">
+    </div>
+</div>
+
+    </div>
+</div>
+
+    </div>
+</div>
+
+    </div>
+</div>
+
+    </div>
+</div>
+
+        <div class="comment_item" id="comment_8176857">
+
+    <span class="parent_id" data-parent_id="8176695"></span>
+    <div class="comment_body ">
+        <div class="info  " rel="8176857">
+            <div class="folding-dot-holder"><div class="folding-dot"></div></div>
+            <div id="voting_8176857" class="voting   ">
+                <span class="minus" title="Голосовать могут только зарегистрированные пользователи"></span>
+                <span class="plus" title="Голосовать могут только зарегистрированные пользователи"></span>
+                <div class="mark positive ">
+                    <span class="score" title="Всего 8: ↑8 и ↓0">+8</span>
+                </div>
+            </div>
+            <a href="http://habrahabr.ru/users/macik_spb/" class="avatar"><img src="./Детекторы углов   Хабрахабр_files/88cbddfb3295c413fbf55a7ca042cdbe_small.jpg" alt=""></a>
+            <a href="http://habrahabr.ru/users/macik_spb/" class="username">macik_spb</a>
+            <time>12 декабря 2014 в 02:46</time>
+
+            <a href="http://habrahabr.ru/post/244541/#comment_8176857" class="link_to_comment">#</a>
+            
+                <div class="show_tree" data-id="8176857" data-parent_id="8176695" title="Показать ветку комментариев">↵</div>
+                <a href="http://habrahabr.ru/post/244541/#comment_8176695" data-id="8176857" data-parent_id="8176695" class="to_parent">↑</a>
+            <span class="to_chidren"></span>
+            <div class="clear"></div>
+        </div>
+        <div class="message html_format ">
+            Тут очень много нюансов… в простом случае знание о перспективе как таковой почти ничего не даст, если говорить о 3d. <br>
+На самом деле тема очень глубокая и многогранная. О чем говорит даже подборка статей на хабре:<br>
+<ol>
+<li>про построение по 1-му фото, в «ручном» режиме — <a href="http://habrahabr.ru/post/193292/">тыц</a> </li>
+<li>по фото, рассчитывая карту глубин — <a href="http://habrahabr.ru/post/188320/">тыц</a></li>
+<li>по нескольким фото уже давно в ходу — <a href="http://habrahabr.ru/post/143094/">тыц</a>, <a href="http://habrahabr.ru/post/146157/">тыц</a>, <a href="http://habrahabr.ru/post/134781/">еще</a> и <a href="http://habrahabr.ru/post/64080/">еще</a> </li>
+<li>моделирование 3d миров на основе отдельных снимков местности — <a href="http://geektimes.ru/post/71905/">тыц</a><br>
+ <br>
+Ближе всего к вашему запросу вот эта статья — «Make3D из одной фотографии»: <a href="http://habrahabr.ru/post/95541/">часть 1</a> и <a href="http://habrahabr.ru/post/95559/">часть 2</a>. К сожалению большая часть картинок и видео из этих статей не доступна, но во второй части можно посмотреть видео для получения общего представления.<br>
+<br>
+Была на хабре еще одна статья на эту тему, но найти не смог. Там похожая технология использована для воссоздания интерьеров в 3д.</li>
+</ol>
+        </div>
+        <div class="reply_form_placeholder"></div>
+        <div class="reply">
+            
+        </div>
+    </div>
+
+    <div class="reply_comments" id="reply_comments_8176857">
+        <div class="comment_item" id="comment_8176871">
+
+    <span class="parent_id" data-parent_id="8176857"></span>
+    <div class="comment_body ">
+        <div class="info  " rel="8176871">
+            <div class="folding-dot-holder"><div class="folding-dot"></div></div>
+            <div id="voting_8176871" class="voting   ">
+                <span class="minus" title="Голосовать могут только зарегистрированные пользователи"></span>
+                <span class="plus" title="Голосовать могут только зарегистрированные пользователи"></span>
+                <div class="mark  ">
+                    <span class="score" title="Всего 0: ↑0 и ↓0">0</span>
+                </div>
+            </div>
+            <a href="http://habrahabr.ru/users/macik_spb/" class="avatar"><img src="./Детекторы углов   Хабрахабр_files/88cbddfb3295c413fbf55a7ca042cdbe_small.jpg" alt=""></a>
+            <a href="http://habrahabr.ru/users/macik_spb/" class="username">macik_spb</a>
+            <time>12 декабря 2014 в 02:52</time>
+
+            <a href="http://habrahabr.ru/post/244541/#comment_8176871" class="link_to_comment">#</a>
+            
+                <div class="show_tree" data-id="8176871" data-parent_id="8176857" title="Показать ветку комментариев">↵</div>
+                <a href="http://habrahabr.ru/post/244541/#comment_8176857" data-id="8176871" data-parent_id="8176857" class="to_parent">↑</a>
+            <span class="to_chidren"></span>
+            <div class="clear"></div>
+        </div>
+        <div class="message html_format ">
+            Вот <a href="http://habrahabr.ru/post/232513/">еще</a>. Не совсем по теме, но выглядит эффектно. 
+        </div>
+        <div class="reply_form_placeholder"></div>
+        <div class="reply">
+            
+        </div>
+    </div>
+
+    <div class="reply_comments" id="reply_comments_8176871">
+    </div>
+</div>
+
+    </div>
+</div>
+
+        <div class="comment_item" id="comment_8178395">
+
+    <span class="parent_id" data-parent_id="8176695"></span>
+    <div class="comment_body ">
+        <div class="info  is_topic_starter  " rel="8178395">
+            <div class="folding-dot-holder"><div class="folding-dot"></div></div>
+            <div id="voting_8178395" class="voting   ">
+                <span class="minus" title="Голосовать могут только зарегистрированные пользователи"></span>
+                <span class="plus" title="Голосовать могут только зарегистрированные пользователи"></span>
+                <div class="mark positive ">
+                    <span class="score" title="Всего 1: ↑1 и ↓0">+1</span>
+                </div>
+            </div>
+            <a href="http://habrahabr.ru/users/lightsource/" class="avatar"><img src="./Детекторы углов   Хабрахабр_files/aacf37cfa30fbe7704f94b5bfa154973_small.png" alt=""></a>
+            <a href="http://habrahabr.ru/users/lightsource/" class="username">lightsource</a>
+            <time>13 декабря 2014 в 01:52</time>
+
+            <a href="http://habrahabr.ru/post/244541/#comment_8178395" class="link_to_comment">#</a>
+            
+                <div class="show_tree" data-id="8178395" data-parent_id="8176695" title="Показать ветку комментариев">↵</div>
+                <a href="http://habrahabr.ru/post/244541/#comment_8176695" data-id="8178395" data-parent_id="8176695" class="to_parent">↑</a>
+            <span class="to_chidren"></span>
+            <div class="clear"></div>
+        </div>
+        <div class="message html_format ">
+            Посмотрите <a href="http://courses.graphicon.ru/files/courses/vision/2010/cv_2010_11.pdf">лекцию по трехмерной реконструкции</a>. Вот хорошие страницы по 3D восстановлению из одного изображения: <a href="http://cs.stanford.edu/people/asaxena/reconstruction3d/">один</a>, <a href="http://vision.in.tum.de/research/single_view_3d_reconstruction">два</a>. И здесь особые точки не используются.<br>
+Для получения 3D модели с использованием особых точек необходимо 2 и более фотографий (например, <a href="http://www.graphicon.ru/proceedings/2009/conference/se6/129/129_Paper.pdf">здесь</a>): используются особые точки с их дескрипторами и применением метода оценки параметров модели на основе случайных выборок RANSAC (Random Sample Consensus). Также для восстановления используют эпиполярную геометрию (<a href="http://en.wikipedia.org/wiki/Epipolar_geometry">epiporal geomerty</a>). Например, на <a href="http://habrahabr.ru/post/130300/">Хабрахабр</a> <a href="http://habrahabr.ru/users/alex2004/" class="user_link">Alex2004</a> писал про основы стереозрения, а здесь дана очень подробная статья по <a href="http://cgm.computergraphics.ru/content/view/141">геометрическим свойствам нескольких изображений</a>.<br>
+
+        </div>
+        <div class="reply_form_placeholder"></div>
+        <div class="reply">
+            
+        </div>
+    </div>
+
+    <div class="reply_comments" id="reply_comments_8178395">
+    </div>
+</div>
+
+    </div>
+</div>
+
+            <div class="comment_item" id="comment_8176769">
+
+    <span class="parent_id" data-parent_id="0"></span>
+    <div class="comment_body ">
+        <div class="info  " rel="8176769">
+            <div class="folding-dot-holder"><div class="folding-dot"></div></div>
+            <div id="voting_8176769" class="voting   ">
+                <span class="minus" title="Голосовать могут только зарегистрированные пользователи"></span>
+                <span class="plus" title="Голосовать могут только зарегистрированные пользователи"></span>
+                <div class="mark  ">
+                    <span class="score" title="Всего 4: ↑2 и ↓2">0</span>
+                </div>
+            </div>
+            <a href="http://habrahabr.ru/users/Cher/" class="avatar"><img src="./Детекторы углов   Хабрахабр_files/9dadbf3bea9addad8325ab253d6939f8_small.jpg" alt=""></a>
+            <a href="http://habrahabr.ru/users/Cher/" class="username">Cher</a>
+            <time>12 декабря 2014 в 00:35</time>
+
+            <a href="http://habrahabr.ru/post/244541/#comment_8176769" class="link_to_comment">#</a>
+            
+            <span class="to_chidren"></span>
+            <div class="clear"></div>
+        </div>
+        <div class="message html_format ">
+            сорри за оффтоп, но стиль похож на методичку которые были у нас в универе
+        </div>
+        <div class="reply_form_placeholder"></div>
+        <div class="reply">
+            
+        </div>
+    </div>
+
+    <div class="reply_comments" id="reply_comments_8176769">
+        <div class="comment_item" id="comment_8177319">
+
+    <span class="parent_id" data-parent_id="8176769"></span>
+    <div class="comment_body ">
+        <div class="info  is_topic_starter  " rel="8177319">
+            <div class="folding-dot-holder"><div class="folding-dot"></div></div>
+            <div id="voting_8177319" class="voting   ">
+                <span class="minus" title="Голосовать могут только зарегистрированные пользователи"></span>
+                <span class="plus" title="Голосовать могут только зарегистрированные пользователи"></span>
+                <div class="mark positive ">
+                    <span class="score" title="Всего 4: ↑4 и ↓0">+4</span>
+                </div>
+            </div>
+            <a href="http://habrahabr.ru/users/lightsource/" class="avatar"><img src="./Детекторы углов   Хабрахабр_files/aacf37cfa30fbe7704f94b5bfa154973_small.png" alt=""></a>
+            <a href="http://habrahabr.ru/users/lightsource/" class="username">lightsource</a>
+            <time>12 декабря 2014 в 11:42</time>
+
+            <a href="http://habrahabr.ru/post/244541/#comment_8177319" class="link_to_comment">#</a>
+            
+                <div class="show_tree" data-id="8177319" data-parent_id="8176769" title="Показать ветку комментариев">↵</div>
+                <a href="http://habrahabr.ru/post/244541/#comment_8176769" data-id="8177319" data-parent_id="8176769" class="to_parent">↑</a>
+            <span class="to_chidren"></span>
+            <div class="clear"></div>
+        </div>
+        <div class="message html_format ">
+            Я специально решил написать статью в таком виде, поскольку алгоритмы должны излагаться четко и последовательно. Никакого отношения к стилю как в методичке изначально не ставилась, было интересно разобраться. Наоборот, хотел, чтобы было понятно и не было ничего лишнего.<br>
+
+        </div>
+        <div class="reply_form_placeholder"></div>
+        <div class="reply">
+            
+        </div>
+    </div>
+
+    <div class="reply_comments" id="reply_comments_8177319">
+    </div>
+</div>
+
+    </div>
+</div>
+
+            <div class="comment_item" id="comment_8176815">
+
+    <span class="parent_id" data-parent_id="0"></span>
+    <div class="comment_body ">
+        <div class="info  " rel="8176815">
+            <div class="folding-dot-holder"><div class="folding-dot"></div></div>
+            <div id="voting_8176815" class="voting   ">
+                <span class="minus" title="Голосовать могут только зарегистрированные пользователи"></span>
+                <span class="plus" title="Голосовать могут только зарегистрированные пользователи"></span>
+                <div class="mark  ">
+                    <span class="score" title="Всего 0: ↑0 и ↓0">0</span>
+                </div>
+            </div>
+            <a href="http://habrahabr.ru/users/akimovpro/" class="avatar"><img src="./Детекторы углов   Хабрахабр_files/51012e9f1fe7d9b00f8a6a0142429f39_small.png" alt=""></a>
+            <a href="http://habrahabr.ru/users/akimovpro/" class="username">akimovpro</a>
+            <time>12 декабря 2014 в 01:24</time>
+
+            <a href="http://habrahabr.ru/post/244541/#comment_8176815" class="link_to_comment">#</a>
+            
+            <span class="to_chidren"></span>
+            <div class="clear"></div>
+        </div>
+        <div class="message html_format ">
+            Susan на тестовых изображениях наиболее аккуратна. Это так?
+        </div>
+        <div class="reply_form_placeholder"></div>
+        <div class="reply">
+            
+        </div>
+    </div>
+
+    <div class="reply_comments" id="reply_comments_8176815">
+    </div>
+</div>
+
+            <div class="comment_item" id="comment_8176831">
+
+    <span class="parent_id" data-parent_id="0"></span>
+    <div class="comment_body ">
+        <div class="info  " rel="8176831">
+            <div class="folding-dot-holder"><div class="folding-dot"></div></div>
+            <div id="voting_8176831" class="voting   ">
+                <span class="minus" title="Голосовать могут только зарегистрированные пользователи"></span>
+                <span class="plus" title="Голосовать могут только зарегистрированные пользователи"></span>
+                <div class="mark positive ">
+                    <span class="score" title="Всего 1: ↑1 и ↓0">+1</span>
+                </div>
+            </div>
+            <a href="http://habrahabr.ru/users/BelBES/" class="avatar"><img src="./Детекторы углов   Хабрахабр_files/ed7f8a612d130d60c98405b1f85cabef_small.png" alt=""></a>
+            <a href="http://habrahabr.ru/users/BelBES/" class="username">BelBES</a>
+            <time>12 декабря 2014 в 01:59</time>
+
+            <a href="http://habrahabr.ru/post/244541/#comment_8176831" class="link_to_comment">#</a>
+            
+            <span class="to_chidren"></span>
+            <div class="clear"></div>
+        </div>
+        <div class="message html_format ">
+            Если честно, совершенно не понятно, на основе чего получены сравнительные данные. Ну и сама пятибальная шкала «на глазок» в качестве сравнительной метрики как-то не очень. 
+        </div>
+        <div class="reply_form_placeholder"></div>
+        <div class="reply">
+            
+        </div>
+    </div>
+
+    <div class="reply_comments" id="reply_comments_8176831">
+        <div class="comment_item" id="comment_8177317">
+
+    <span class="parent_id" data-parent_id="8176831"></span>
+    <div class="comment_body ">
+        <div class="info  is_topic_starter  " rel="8177317">
+            <div class="folding-dot-holder"><div class="folding-dot"></div></div>
+            <div id="voting_8177317" class="voting   ">
+                <span class="minus" title="Голосовать могут только зарегистрированные пользователи"></span>
+                <span class="plus" title="Голосовать могут только зарегистрированные пользователи"></span>
+                <div class="mark positive ">
+                    <span class="score" title="Всего 1: ↑1 и ↓0">+1</span>
+                </div>
+            </div>
+            <a href="http://habrahabr.ru/users/lightsource/" class="avatar"><img src="./Детекторы углов   Хабрахабр_files/aacf37cfa30fbe7704f94b5bfa154973_small.png" alt=""></a>
+            <a href="http://habrahabr.ru/users/lightsource/" class="username">lightsource</a>
+            <time>12 декабря 2014 в 11:40</time>
+
+            <a href="http://habrahabr.ru/post/244541/#comment_8177317" class="link_to_comment">#</a>
+            
+                <div class="show_tree" data-id="8177317" data-parent_id="8176831" title="Показать ветку комментариев">↵</div>
+                <a href="http://habrahabr.ru/post/244541/#comment_8176831" data-id="8177317" data-parent_id="8176831" class="to_parent">↑</a>
+            <span class="to_chidren"></span>
+            <div class="clear"></div>
+        </div>
+        <div class="message html_format ">
+            Данные взяты из таблицы в книге <a href="http://books.google.ru/books?d=&hl=ru&id=8BHG-iPu-nQC&q=Comparison+of+select+corner+detectors#v=snippet&q=Comparison%20of%20select%20corner%20detectors&f=false">Digital Image Processing</a>.<br>
+Шкала получена не «на глазок», а напрямую из оригинальной таблицею Поэтому ранжировал следующим образом:<br>
+1 – Bad, 2 – Poor, 3 – Fair, 4 – Good, 4+ – Very Good, 5 – Excellent<br>
+
+        </div>
+        <div class="reply_form_placeholder"></div>
+        <div class="reply">
+            
+        </div>
+    </div>
+
+    <div class="reply_comments" id="reply_comments_8177317">
+        <div class="comment_item" id="comment_8177351">
+
+    <span class="parent_id" data-parent_id="8177317"></span>
+    <div class="comment_body ">
+        <div class="info  " rel="8177351">
+            <div class="folding-dot-holder"><div class="folding-dot"></div></div>
+            <div id="voting_8177351" class="voting   ">
+                <span class="minus" title="Голосовать могут только зарегистрированные пользователи"></span>
+                <span class="plus" title="Голосовать могут только зарегистрированные пользователи"></span>
+                <div class="mark  ">
+                    <span class="score" title="Всего 0: ↑0 и ↓0">0</span>
+                </div>
+            </div>
+            <a href="http://habrahabr.ru/users/BelBES/" class="avatar"><img src="./Детекторы углов   Хабрахабр_files/ed7f8a612d130d60c98405b1f85cabef_small.png" alt=""></a>
+            <a href="http://habrahabr.ru/users/BelBES/" class="username">BelBES</a>
+            <time>12 декабря 2014 в 12:00</time>
+
+            <a href="http://habrahabr.ru/post/244541/#comment_8177351" class="link_to_comment">#</a>
+            
+                <div class="show_tree" data-id="8177351" data-parent_id="8177317" title="Показать ветку комментариев">↵</div>
+                <a href="http://habrahabr.ru/post/244541/#comment_8177317" data-id="8177351" data-parent_id="8177317" class="to_parent">↑</a>
+            <span class="to_chidren"></span>
+            <div class="clear"></div>
+        </div>
+        <div class="message html_format ">
+            Так какие выводы я могу сделать из этой таблицы с такой шкалой? <br>
+Вот, допустим, хочу я написать feature based трекер объектов. Для этого мне нужны какие-то фичи и, например, алгоритм оптического потока Лукаса-Канаде. Вот исходя из ваших таблиц, вабор каких фич будет для меня оптимален по «устойчивости» трекинга? И как этих попугаев конвертировать в метрики, которые будут понятны заказчику?
+        </div>
+        <div class="reply_form_placeholder"></div>
+        <div class="reply">
+            
+        </div>
+    </div>
+
+    <div class="reply_comments" id="reply_comments_8177351">
+        <div class="comment_item" id="comment_8178619">
+
+    <span class="parent_id" data-parent_id="8177351"></span>
+    <div class="comment_body ">
+        <div class="info  is_topic_starter  " rel="8178619">
+            <div class="folding-dot-holder"><div class="folding-dot"></div></div>
+            <div id="voting_8178619" class="voting   ">
+                <span class="minus" title="Голосовать могут только зарегистрированные пользователи"></span>
+                <span class="plus" title="Голосовать могут только зарегистрированные пользователи"></span>
+                <div class="mark  ">
+                    <span class="score" title="Всего 0: ↑0 и ↓0">0</span>
+                </div>
+            </div>
+            <a href="http://habrahabr.ru/users/lightsource/" class="avatar"><img src="./Детекторы углов   Хабрахабр_files/aacf37cfa30fbe7704f94b5bfa154973_small.png" alt=""></a>
+            <a href="http://habrahabr.ru/users/lightsource/" class="username">lightsource</a>
+            <time>13 декабря 2014 в 12:35</time>
+
+            <a href="http://habrahabr.ru/post/244541/#comment_8178619" class="link_to_comment">#</a>
+            
+                <div class="show_tree" data-id="8178619" data-parent_id="8177351" title="Показать ветку комментариев">↵</div>
+                <a href="http://habrahabr.ru/post/244541/#comment_8177351" data-id="8178619" data-parent_id="8177351" class="to_parent">↑</a>
+            <span class="to_chidren"></span>
+            <div class="clear"></div>
+        </div>
+        <div class="message html_format ">
+            Да, по данным из таблицы SUSAN показывает неплохие результаты. Однако применение детектора зависит от предметной области. Опять же, необходимо провести исследование применимости детектора к изображениям из Вашей выборки изображений, например, посмотреть в Matlab, что получается на выходе. Но популярными детекторами до сих пор являются детекторы Харриса, FAST. <br>
+Также можно попытаться поискать другие статьи по сравнению. Например, <a href="http://ojs.academypublisher.com/index.php/jmm/article/view/0406435441">здесь</a> авторы проводят исследования детекторов Харриса и SUSAN, по результатам которых они делают вывод, что детектор Харриса лучше.
+        </div>
+        <div class="reply_form_placeholder"></div>
+        <div class="reply">
+            
+        </div>
+    </div>
+
+    <div class="reply_comments" id="reply_comments_8178619">
+    </div>
+</div>
+
+    </div>
+</div>
+
+    </div>
+</div>
+
+    </div>
+</div>
+
+            <div class="comment_item" id="comment_8176867">
+
+    <span class="parent_id" data-parent_id="0"></span>
+    <div class="comment_body ">
+        <div class="info  " rel="8176867">
+            <div class="folding-dot-holder"><div class="folding-dot"></div></div>
+            <div id="voting_8176867" class="voting   ">
+                <span class="minus" title="Голосовать могут только зарегистрированные пользователи"></span>
+                <span class="plus" title="Голосовать могут только зарегистрированные пользователи"></span>
+                <div class="mark  ">
+                    <span class="score" title="Всего 2: ↑1 и ↓1">0</span>
+                </div>
+            </div>
+            <a href="http://habrahabr.ru/users/Holms/" class="avatar"><img src="./Детекторы углов   Хабрахабр_files/d0d9a8d27725a1d4c6360944f4aaf2d4_small.jpg" alt=""></a>
+            <a href="http://habrahabr.ru/users/Holms/" class="username">Holms</a>
+            <time>12 декабря 2014 в 02:50</time>
+
+            <a href="http://habrahabr.ru/post/244541/#comment_8176867" class="link_to_comment">#</a>
+            
+            <span class="to_chidren"></span>
+            <div class="clear"></div>
+        </div>
+        <div class="message html_format ">
+            вы бы реализацию показали, без нее не интересно. 
+        </div>
+        <div class="reply_form_placeholder"></div>
+        <div class="reply">
+            
+        </div>
+    </div>
+
+    <div class="reply_comments" id="reply_comments_8176867">
+        <div class="comment_item" id="comment_8177163">
+
+    <span class="parent_id" data-parent_id="8176867"></span>
+    <div class="comment_body ">
+        <div class="info  " rel="8177163">
+            <div class="folding-dot-holder"><div class="folding-dot"></div></div>
+            <div id="voting_8177163" class="voting   ">
+                <span class="minus" title="Голосовать могут только зарегистрированные пользователи"></span>
+                <span class="plus" title="Голосовать могут только зарегистрированные пользователи"></span>
+                <div class="mark positive ">
+                    <span class="score" title="Всего 1: ↑1 и ↓0">+1</span>
+                </div>
+            </div>
+            <a href="http://habrahabr.ru/users/Sleuthhound/" class="avatar"><img src="./Детекторы углов   Хабрахабр_files/3989a0a3b85632de28d67377a7b926f3_small.png" alt=""></a>
+            <a href="http://habrahabr.ru/users/Sleuthhound/" class="username">Sleuthhound</a>
+            <time>12 декабря 2014 в 10:32<span class="time_changed"> (комментарий был изменён)</span></time>
+
+            <a href="http://habrahabr.ru/post/244541/#comment_8177163" class="link_to_comment">#</a>
+            
+                <div class="show_tree" data-id="8177163" data-parent_id="8176867" title="Показать ветку комментариев">↵</div>
+                <a href="http://habrahabr.ru/post/244541/#comment_8176867" data-id="8177163" data-parent_id="8176867" class="to_parent">↑</a>
+            <span class="to_chidren"></span>
+            <div class="clear"></div>
+        </div>
+        <div class="message html_format ">
+            Статья отличная, автору спасибо!<br>
+<br>
+В офиц. документации OpenCV вполне нормальные примеры,<br>
+детектор углов Harris<br>
+<a href="http://docs.opencv.org/doc/tutorials/features2d/trackingmotion/harris_detector/harris_detector.html">docs.opencv.org/doc/tutorials/features2d/trackingmotion/harris_detector/harris_detector.html</a><br>
+детектор углов Shi-Tomasi<br>
+<a href="http://docs.opencv.org/doc/tutorials/features2d/trackingmotion/good_features_to_track/good_features_to_track.html">docs.opencv.org/doc/tutorials/features2d/trackingmotion/good_features_to_track/good_features_to_track.html</a><br>
+
+        </div>
+        <div class="reply_form_placeholder"></div>
+        <div class="reply">
+            
+        </div>
+    </div>
+
+    <div class="reply_comments" id="reply_comments_8177163">
+    </div>
+</div>
+
+        <div class="comment_item" id="comment_8178285">
+
+    <span class="parent_id" data-parent_id="8176867"></span>
+    <div class="comment_body ">
+        <div class="info  is_topic_starter  " rel="8178285">
+            <div class="folding-dot-holder"><div class="folding-dot"></div></div>
+            <div id="voting_8178285" class="voting   ">
+                <span class="minus" title="Голосовать могут только зарегистрированные пользователи"></span>
+                <span class="plus" title="Голосовать могут только зарегистрированные пользователи"></span>
+                <div class="mark positive ">
+                    <span class="score" title="Всего 2: ↑2 и ↓0">+2</span>
+                </div>
+            </div>
+            <a href="http://habrahabr.ru/users/lightsource/" class="avatar"><img src="./Детекторы углов   Хабрахабр_files/aacf37cfa30fbe7704f94b5bfa154973_small.png" alt=""></a>
+            <a href="http://habrahabr.ru/users/lightsource/" class="username">lightsource</a>
+            <time>12 декабря 2014 в 23:32</time>
+
+            <a href="http://habrahabr.ru/post/244541/#comment_8178285" class="link_to_comment">#</a>
+            
+                <div class="show_tree" data-id="8178285" data-parent_id="8176867" title="Показать ветку комментариев">↵</div>
+                <a href="http://habrahabr.ru/post/244541/#comment_8176867" data-id="8178285" data-parent_id="8176867" class="to_parent">↑</a>
+            <span class="to_chidren"></span>
+            <div class="clear"></div>
+        </div>
+        <div class="message html_format ">
+            Реализация рассмотренных алгоритмов:<br>
+Moravec: <a href="http://en.pudn.com/downloads148/sourcecode/graph/texture_mapping/detail639869_en.html">Matlab</a>, <a href="http://grepcode.com/file/repo1.maven.org/maven2/de.lmu.ifi.dbs.jfeaturelib/JFeatureLib/1.6.1/de/lmu/ifi/dbs/jfeaturelib/pointDetector/Moravec.java?av=f">Java</a><br>
+Harris: <a href="https://code.google.com/p/accord/wiki/SampleApp_Harris">C#</a>, <a href="http://docs.opencv.org/doc/tutorials/features2d/trackingmotion/harris_detector/harris_detector.html">C++ OpenCV</a>, <a href="http://grepcode.com/file/repo1.maven.org/maven2/de.lmu.ifi.dbs.jfeaturelib/JFeatureLib/1.6.1/de/lmu/ifi/dbs/jfeaturelib/pointDetector/Harris.java?av=f">Java</a><br>
+Shi-Tomasi: <a href="http://docs.opencv.org/doc/tutorials/features2d/trackingmotion/good_features_to_track/good_features_to_track.html">OpenCV C++</a>, <a href="http://www.ces.clemson.edu/~stb/klt/">Matlab</a><br>
+Förstner: <a href="http://en.pudn.com/downloads358/sourcecode/graph/opencv/detail1556911_en.html">C++</a><br>
+SUSAN: <a href="http://users.fmrib.ox.ac.uk/~steve/susan/">C</a>, <a href="http://www.mathworks.com/matlabcentral/fileexchange/11723-fast-susan-feature-detection-and-non-linear-filter">Matlab</a><br>
+Trajkovic4: <a href="http://grepcode.com/file/repo1.maven.org/maven2/de.lmu.ifi.dbs.jfeaturelib/JFeatureLib/1.6.1/de/lmu/ifi/dbs/jfeaturelib/pointDetector/TrajkovicHedley4N.java?av=f">Java</a><br>
+FAST: <a href="https://code.google.com/p/accord/source/browse/trunk#trunk%2FSources%2FAccord.Imaging%2FInterest%20Points%253Fstate%253Dclosed">C#</a>, <a href="http://grepcode.com/file/repo1.maven.org/maven2/de.lmu.ifi.dbs.jfeaturelib/JFeatureLib/1.6.1/de/lmu/ifi/dbs/jfeaturelib/pointDetector/FASTCornerDetector.java?av=f">Java</a><br>
+CSS: <a href="http://www.mathworks.com/matlabcentral/fileexchange/33229-affine-resilient-curvature-scale-space-corner-detector">Matlab</a><br>
+Детектор, основанный на глобальных и локальных свойствах кривизны: <a href="http://www.mathworks.com/matlabcentral/fileexchange/7652-a-corner-detector-based-on-global-and-local-curvature-properties">Matlab</a><br>
+CPDA: <a href="http://www.mathworks.com/matlabcentral/fileexchange/22390-robust-image-corner-detection-based-on-the-chord-to-point-distance-accumulation-technique">Matlab 1</a>, <a href="http://freesourcecode.net/matlabprojects/67251/a-fast-corner-detector-based-on-the-chord-to-point-distance-accumulation-technique-in-matlab#.VItPBzGsUms">Matlab 2</a><br>
+
+        </div>
+        <div class="reply_form_placeholder"></div>
+        <div class="reply">
+            
+        </div>
+    </div>
+
+    <div class="reply_comments" id="reply_comments_8178285">
+    </div>
+</div>
+
+    </div>
+</div>
+
+            <div class="comment_item" id="comment_8177905">
+
+    <span class="parent_id" data-parent_id="0"></span>
+    <div class="comment_body ">
+        <div class="info  " rel="8177905">
+            <div class="folding-dot-holder"><div class="folding-dot"></div></div>
+            <div id="voting_8177905" class="voting   ">
+                <span class="minus" title="Голосовать могут только зарегистрированные пользователи"></span>
+                <span class="plus" title="Голосовать могут только зарегистрированные пользователи"></span>
+                <div class="mark positive ">
+                    <span class="score" title="Всего 2: ↑2 и ↓0">+2</span>
+                </div>
+            </div>
+            <a href="http://habrahabr.ru/users/niosus/" class="avatar"><img src="./Детекторы углов   Хабрахабр_files/9d8cbd97e8ba5478a1db9de761f2b9be_small.jpg" alt=""></a>
+            <a href="http://habrahabr.ru/users/niosus/" class="username">niosus</a>
+            <time>12 декабря 2014 в 17:38</time>
+
+            <a href="http://habrahabr.ru/post/244541/#comment_8177905" class="link_to_comment">#</a>
+            
+            <span class="to_chidren"></span>
+            <div class="clear"></div>
+        </div>
+        <div class="message html_format ">
+            оффтоп: Так вышло, что я работаю в лаборатории, в которой профессором до недавнего времени был Wolfgang Förstner из статьи. Он вышел на пенсию буквально пару месяцев назад. <a href="http://www.ipb.uni-bonn.de/foerstner/?no_cache=1&L=1">Тут</a> вы можете найти его публикации. Он вообще потрясающий человек. Если вы занимаетесь компьютерным зрением, в частности, реконструкцией 3д с помощью картинок, я бы мог позадавать ему интересующие вас вопросы. 
+        </div>
+        <div class="reply_form_placeholder"></div>
+        <div class="reply">
+            
+        </div>
+    </div>
+
+    <div class="reply_comments" id="reply_comments_8177905">
+        <div class="comment_item" id="comment_8178621">
+
+    <span class="parent_id" data-parent_id="8177905"></span>
+    <div class="comment_body ">
+        <div class="info  is_topic_starter  " rel="8178621">
+            <div class="folding-dot-holder"><div class="folding-dot"></div></div>
+            <div id="voting_8178621" class="voting   ">
+                <span class="minus" title="Голосовать могут только зарегистрированные пользователи"></span>
+                <span class="plus" title="Голосовать могут только зарегистрированные пользователи"></span>
+                <div class="mark  ">
+                    <span class="score" title="Всего 0: ↑0 и ↓0">0</span>
+                </div>
+            </div>
+            <a href="http://habrahabr.ru/users/lightsource/" class="avatar"><img src="./Детекторы углов   Хабрахабр_files/aacf37cfa30fbe7704f94b5bfa154973_small.png" alt=""></a>
+            <a href="http://habrahabr.ru/users/lightsource/" class="username">lightsource</a>
+            <time>13 декабря 2014 в 12:37</time>
+
+            <a href="http://habrahabr.ru/post/244541/#comment_8178621" class="link_to_comment">#</a>
+            
+                <div class="show_tree" data-id="8178621" data-parent_id="8177905" title="Показать ветку комментариев">↵</div>
+                <a href="http://habrahabr.ru/post/244541/#comment_8177905" data-id="8178621" data-parent_id="8177905" class="to_parent">↑</a>
+            <span class="to_chidren"></span>
+            <div class="clear"></div>
+        </div>
+        <div class="message html_format ">
+            Спасибо за предложение!
+        </div>
+        <div class="reply_form_placeholder"></div>
+        <div class="reply">
+            
+        </div>
+    </div>
+
+    <div class="reply_comments" id="reply_comments_8178621">
+    </div>
+</div>
+
+    </div>
+</div>
+
+            <div class="comment_item" id="comment_8178191">
+
+    <span class="parent_id" data-parent_id="0"></span>
+    <div class="comment_body ">
+        <div class="info  " rel="8178191">
+            <div class="folding-dot-holder"><div class="folding-dot"></div></div>
+            <div id="voting_8178191" class="voting   ">
+                <span class="minus" title="Голосовать могут только зарегистрированные пользователи"></span>
+                <span class="plus" title="Голосовать могут только зарегистрированные пользователи"></span>
+                <div class="mark  ">
+                    <span class="score" title="Всего 0: ↑0 и ↓0">0</span>
+                </div>
+            </div>
+            <a href="http://habrahabr.ru/users/mrgloom/" class="avatar"><img src="./Детекторы углов   Хабрахабр_files/stub-user-small.gif" alt=""></a>
+            <a href="http://habrahabr.ru/users/mrgloom/" class="username">mrgloom</a>
+            <time>12 декабря 2014 в 21:34<span class="time_changed"> (комментарий был изменён)</span></time>
+
+            <a href="http://habrahabr.ru/post/244541/#comment_8178191" class="link_to_comment">#</a>
+            
+            <span class="to_chidren"></span>
+            <div class="clear"></div>
+        </div>
+        <div class="message html_format ">
+            В описании в основном олдовые методы детекторов особых точек без оглядки на сравнение к инвариантности к повороту и скейлу\трансформациям и засветкам.<br>
+Или вы разделяете понятия детектор углов и детектор особых точек? Если нет, то почему не было про тот же SIFT и кучу других детекторов например из opencv? Если да, то для чего используются именно детекторы углов?<br>
+<br>
+вот довольно обширные сравнения<br>
+<a href="http://www.robots.ox.ac.uk/~vgg/research/affine/">http://www.robots.ox.ac.uk/~vgg/research/affine/</a><br>
+<a href="http://homes.esat.kuleuven.be/~tuytelaa/FT_survey_interestpoints08.pdf">http://homes.esat.kuleuven.be/~tuytelaa/FT_survey_interestpoints08.pdf </a>
+        </div>
+        <div class="reply_form_placeholder"></div>
+        <div class="reply">
+            
+        </div>
+    </div>
+
+    <div class="reply_comments" id="reply_comments_8178191">
+        <div class="comment_item" id="comment_8178281">
+
+    <span class="parent_id" data-parent_id="8178191"></span>
+    <div class="comment_body ">
+        <div class="info  " rel="8178281">
+            <div class="folding-dot-holder"><div class="folding-dot"></div></div>
+            <div id="voting_8178281" class="voting   ">
+                <span class="minus" title="Голосовать могут только зарегистрированные пользователи"></span>
+                <span class="plus" title="Голосовать могут только зарегистрированные пользователи"></span>
+                <div class="mark  ">
+                    <span class="score" title="Всего 0: ↑0 и ↓0">0</span>
+                </div>
+            </div>
+            <a href="http://habrahabr.ru/users/BelBES/" class="avatar"><img src="./Детекторы углов   Хабрахабр_files/ed7f8a612d130d60c98405b1f85cabef_small.png" alt=""></a>
+            <a href="http://habrahabr.ru/users/BelBES/" class="username">BelBES</a>
+            <time>12 декабря 2014 в 23:15</time>
+
+            <a href="http://habrahabr.ru/post/244541/#comment_8178281" class="link_to_comment">#</a>
+            
+                <div class="show_tree" data-id="8178281" data-parent_id="8178191" title="Показать ветку комментариев">↵</div>
+                <a href="http://habrahabr.ru/post/244541/#comment_8178191" data-id="8178281" data-parent_id="8178191" class="to_parent">↑</a>
+            <span class="to_chidren"></span>
+            <div class="clear"></div>
+        </div>
+        <div class="message html_format ">
+            Ну не такие уж FAST, Corner Harris и Shi-Tomasi и устаревшие. Их по прежнему активно используют для трекинга, т.к. они быстро считаются. <br>
+<br>
+Всякие детекторы типа SIFT, ORB, KAZE слишком тяжелые и иногда избыточные.
+        </div>
+        <div class="reply_form_placeholder"></div>
+        <div class="reply">
+            
+        </div>
+    </div>
+
+    <div class="reply_comments" id="reply_comments_8178281">
+    </div>
+</div>
+
+        <div class="comment_item" id="comment_8178569">
+
+    <span class="parent_id" data-parent_id="8178191"></span>
+    <div class="comment_body ">
+        <div class="info  is_topic_starter  " rel="8178569">
+            <div class="folding-dot-holder"><div class="folding-dot"></div></div>
+            <div id="voting_8178569" class="voting   ">
+                <span class="minus" title="Голосовать могут только зарегистрированные пользователи"></span>
+                <span class="plus" title="Голосовать могут только зарегистрированные пользователи"></span>
+                <div class="mark positive ">
+                    <span class="score" title="Всего 1: ↑1 и ↓0">+1</span>
+                </div>
+            </div>
+            <a href="http://habrahabr.ru/users/lightsource/" class="avatar"><img src="./Детекторы углов   Хабрахабр_files/aacf37cfa30fbe7704f94b5bfa154973_small.png" alt=""></a>
+            <a href="http://habrahabr.ru/users/lightsource/" class="username">lightsource</a>
+            <time>13 декабря 2014 в 11:13</time>
+
+            <a href="http://habrahabr.ru/post/244541/#comment_8178569" class="link_to_comment">#</a>
+            
+                <div class="show_tree" data-id="8178569" data-parent_id="8178191" title="Показать ветку комментариев">↵</div>
+                <a href="http://habrahabr.ru/post/244541/#comment_8178191" data-id="8178569" data-parent_id="8178191" class="to_parent">↑</a>
+            <span class="to_chidren"></span>
+            <div class="clear"></div>
+        </div>
+        <div class="message html_format ">
+            Алгоритм SIFT детектирует не углы, а капли (блобы, blobs) — структуры, описываемые 4 параметрами: координаты центра (x,y), масштаб и направление. В статье я рассматриваю обычные углы, которые описываются координатой центра (x,y) (только, если это не многомасштабный детектор). Поэтому я не рассматривал SIFT, о чем написано в статье.<br>
+
+        </div>
+        <div class="reply_form_placeholder"></div>
+        <div class="reply">
+            
+        </div>
+    </div>
+
+    <div class="reply_comments" id="reply_comments_8178569">
+    </div>
+</div>
+
+    </div>
+</div>
+
+            <div class="comment_item" id="comment_8182489">
+
+    <span class="parent_id" data-parent_id="0"></span>
+    <div class="comment_body ">
+        <div class="info  " rel="8182489">
+            <div class="folding-dot-holder"><div class="folding-dot"></div></div>
+            <div id="voting_8182489" class="voting   ">
+                <span class="minus" title="Голосовать могут только зарегистрированные пользователи"></span>
+                <span class="plus" title="Голосовать могут только зарегистрированные пользователи"></span>
+                <div class="mark  ">
+                    <span class="score" title="Всего 0: ↑0 и ↓0">0</span>
+                </div>
+            </div>
+            <a href="http://habrahabr.ru/users/netmaxed/" class="avatar"><img src="./Детекторы углов   Хабрахабр_files/stub-user-small.gif" alt=""></a>
+            <a href="http://habrahabr.ru/users/netmaxed/" class="username">netmaxed</a>
+            <time>16 декабря 2014 в 23:19</time>
+
+            <a href="http://habrahabr.ru/post/244541/#comment_8182489" class="link_to_comment">#</a>
+            
+            <span class="to_chidren"></span>
+            <div class="clear"></div>
+        </div>
+        <div class="message html_format ">
+            Прекрасная статья! спасибо! :)
+        </div>
+        <div class="reply_form_placeholder"></div>
+        <div class="reply">
+            
+        </div>
+    </div>
+
+    <div class="reply_comments" id="reply_comments_8182489">
+    </div>
+</div>
+
+    </div>
+
+
+  					<p class="for_users_only_msg">Только зарегистрированные пользователи могут оставлять комментарии. <a href="https://habrahabr.ru/auth/login/">Войдите</a>, пожалуйста.</p>
+
+
+  	
+<form action="http://habrahabr.ru/json/favorites/" method="post" id="edit_tags_form" class="hidden">
+  <input type="hidden" name="action" value="add">
+  <input type="hidden" name="ti" value="0">
+  <input type="hidden" name="tt" value="0">
+  <label>Пометьте топик понятными вам метками, если хотите</label>
+  <input type="text" name="tags_string" class="tags_string" autocomplete="off">
+  <div class="description">Метки лучше разделять запятой. Например: <i>общение, социальные сети, myspace.com, подростки, мердок</i></div>
+  <input type="submit" value="Сохранить" class="submit"> или <a href="http://habrahabr.ru/post/244541/#" class="close" onclick="return close_edit_tags()">закрыть</a>
+</form>
+    
+    
+
+  </div>
+  <div class="sidebar_right">
+  			<div class="banner_300x500">
+		<div id="adriver_banner_1863387959" title="" style="width: 300px; height: 500px; text-align: center; margin: 0px auto;"><a href="http://ad.adriver.ru/cgi-bin/click.cgi?sid=176776&ad=506846&bid=3703367&bt=52&bn=1&pz=0&xpid=CiAAzYnwlagxKKZgmJ_kEP078lWw04Q1v&ref=http:%2f%2fhabrahabr.ru%2fpost%2f244541%2f&custom=1%3Dimage_processing%3B2%3Dalgorithms%3B4%3D2&rleurl=" onclick="adriver(&#39;adriver_banner_1863387959&#39;).sendPixel(&#39;&#39;);" target="_blank"><img src="./Детекторы углов   Хабрахабр_files/bn2-seopult-1.jpg" alt="AdRiver" border="0"></a></div>
+		<script type="text/javascript">
+            function show_bn1_block(name, url){
+                console.log('show' + name);
+                if( typeof(name) !== 'undefined'){
+                    $.get('/html/'+name+'/1424872488/', function(html){
+                        $('#adriver_banner_1863387959').html(html);
+                        if( typeof(url) !== 'undefined'){
+                            $('.'+name+'_inner_banner .block_url').attr('href', url);
+                        }
+                    })
+                }
+            }
+
+
+
+			$(function(){
+
+                // конвертирут кириллицу в cp1251
+                // doc: http://www.adriver.ru/doc/edu-n/pub/settargt/standtrgt/scentrgt/scentrgt.html#9
+				function esc(s){
+                    for(var i=0,l=s.length,r='';i<l;i++){
+                        var c = s.charCodeAt(i);r += String.fromCharCode(c>1039&&c<1104 ? c-848 : c==1105 ? 184 : c==1025 ? 168 : c);
+                    }
+                    return r;
+                }
+
+                var keyword = '';
+
+                if (typeof crtg_content !== 'undefined' && crtg_content) { keyword = crtg_content; }
+                
+                
+
+				var custom = {4:ar_duo1};
+					custom[1] = 'image_processing';
+					custom[2] = 'algorithms';
+
+                 new adriver("adriver_banner_1863387959", {sid: 176776, bt: 52, bn: 1, custom: custom, keyword: keyword});
+			}());
+
+
+
+            
+		</script>
+	</div>
+
+  		
+  		
+<div class="block daily_best_posts" style="width: auto; opacity: 1;">
+  <div class="title">Популярное за сутки</div>
+  <div class="posts_list">
+      <div class="post_item">
+        
+				
+				
+				
+				
+				
+
+        <a href="http://habrahabr.ru/post/251451/" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;tm_block&#39;, &#39;daily_best_posts&#39;, $(this).parents(&#39;.daily_best_posts&#39;).hasClass(&#39;float_block&#39;) ? &#39;float&#39; : &#39;common&#39;); }" class="post_name">USB killer</a>
+      </div>
+      <div class="post_item">
+        
+				
+				
+				
+				
+				
+
+        <a href="http://habrahabr.ru/post/251359/" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;tm_block&#39;, &#39;daily_best_posts&#39;, $(this).parents(&#39;.daily_best_posts&#39;).hasClass(&#39;float_block&#39;) ? &#39;float&#39; : &#39;common&#39;); }" class="post_name">Полная энергетическая автономия или как выжить с солнечными батареями в глубинке (часть 1. теоретическая)</a>
+      </div>
+      <div class="post_item">
+        
+				
+				
+				
+				
+				
+
+        <a href="http://habrahabr.ru/company/mosigra/blog/251465/" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;tm_block&#39;, &#39;daily_best_posts&#39;, $(this).parents(&#39;.daily_best_posts&#39;).hasClass(&#39;float_block&#39;) ? &#39;float&#39; : &#39;common&#39;); }" class="post_name">Интерфейсы в реальном мире (ещё примеры)</a>
+      </div>
+      <div class="post_item">
+        
+				
+				
+				
+				
+				
+
+        <a href="http://habrahabr.ru/company/infopulse/blog/251259/" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;tm_block&#39;, &#39;daily_best_posts&#39;, $(this).parents(&#39;.daily_best_posts&#39;).hasClass(&#39;float_block&#39;) ? &#39;float&#39; : &#39;common&#39;); }" class="post_name">Чтение старых статей Хабра с картинками</a>
+      </div>
+      <div class="post_item">
+        
+				
+				
+				
+				
+				
+
+        <a href="http://habrahabr.ru/company/yandex/blog/251473/" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;tm_block&#39;, &#39;daily_best_posts&#39;, $(this).parents(&#39;.daily_best_posts&#39;).hasClass(&#39;float_block&#39;) ? &#39;float&#39; : &#39;common&#39;); }" class="post_name">Сайт с нуля на полном стеке БЭМ-технологий. Методология Яндекса</a>
+      </div>
+      <div class="post_item">
+        
+				
+				
+				
+				
+				
+
+        <a href="http://habrahabr.ru/post/251487/" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;tm_block&#39;, &#39;daily_best_posts&#39;, $(this).parents(&#39;.daily_best_posts&#39;).hasClass(&#39;float_block&#39;) ? &#39;float&#39; : &#39;common&#39;); }" class="post_name">Слив данных 180 тысяч пользователей FL.ru</a>
+      </div>
+      <div class="post_item">
+        
+				
+				
+				
+				
+				
+
+        <a href="http://habrahabr.ru/company/hexlet/blog/251411/" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;tm_block&#39;, &#39;daily_best_posts&#39;, $(this).parents(&#39;.daily_best_posts&#39;).hasClass(&#39;float_block&#39;) ? &#39;float&#39; : &#39;common&#39;); }" class="post_name">Почему научиться программировать так чертовски тяжело?</a>
+      </div>
+      <div class="post_item">
+        
+				
+				
+				
+				
+				
+
+        <a href="http://habrahabr.ru/company/vivaldi/blog/251433/" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;tm_block&#39;, &#39;daily_best_posts&#39;, $(this).parents(&#39;.daily_best_posts&#39;).hasClass(&#39;float_block&#39;) ? &#39;float&#39; : &#39;common&#39;); }" class="post_name">Началось голосование за новые функции браузера Vivaldi</a>
+      </div>
+      <div class="post_item">
+        
+				
+				
+				
+				
+				
+
+        <a href="http://habrahabr.ru/post/216057/" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;tm_block&#39;, &#39;daily_best_posts&#39;, $(this).parents(&#39;.daily_best_posts&#39;).hasClass(&#39;float_block&#39;) ? &#39;float&#39; : &#39;common&#39;); }" class="post_name">Из Oracle да в Postgres</a>
+      </div>
+      <div class="post_item">
+        
+				
+				
+				
+				
+				
+
+        <a href="http://habrahabr.ru/company/1cloud/blog/251469/" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;tm_block&#39;, &#39;daily_best_posts&#39;, $(this).parents(&#39;.daily_best_posts&#39;).hasClass(&#39;float_block&#39;) ? &#39;float&#39; : &#39;common&#39;); }" class="post_name">Как интернет-гиганты перевернули бизнес по продаже сетевого «железа»</a>
+      </div>
+      <div class="post_item">
+        
+				
+				
+				
+				
+				
+
+        <a href="http://habrahabr.ru/company/pentestit/blog/251209/" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;tm_block&#39;, &#39;daily_best_posts&#39;, $(this).parents(&#39;.daily_best_posts&#39;).hasClass(&#39;float_block&#39;) ? &#39;float&#39; : &#39;common&#39;); }" class="post_name">Этичный хакинг и тестирование на проникновение. Новый набор</a>
+      </div>
+      <div class="post_item">
+        
+				
+				
+				
+				
+				
+
+        <a href="http://habrahabr.ru/post/251413/" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;tm_block&#39;, &#39;daily_best_posts&#39;, $(this).parents(&#39;.daily_best_posts&#39;).hasClass(&#39;float_block&#39;) ? &#39;float&#39; : &#39;common&#39;); }" class="post_name">Как из пустой пластиковой бутылки, картинки и шейдера сделать игру для iOS за выходные</a>
+      </div>
+      <div class="post_item">
+        
+				
+				
+				
+				
+				
+
+        <a href="http://habrahabr.ru/post/251415/" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;tm_block&#39;, &#39;daily_best_posts&#39;, $(this).parents(&#39;.daily_best_posts&#39;).hasClass(&#39;float_block&#39;) ? &#39;float&#39; : &#39;common&#39;); }" class="post_name">Flask. Наполняем «флягу» функционалом</a>
+      </div>
+      <div class="post_item">
+        
+				
+				
+				
+				
+				
+
+        <a href="http://habrahabr.ru/company/microsoft/blog/251443/" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;tm_block&#39;, &#39;daily_best_posts&#39;, $(this).parents(&#39;.daily_best_posts&#39;).hasClass(&#39;float_block&#39;) ? &#39;float&#39; : &#39;common&#39;); }" class="post_name">Выпущен Visual Studio 2015 CTP6</a>
+      </div>
+      <div class="post_item">
+        
+				
+				
+				
+				
+				
+
+        <a href="http://habrahabr.ru/company/neuronspace/blog/249825/" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;tm_block&#39;, &#39;daily_best_posts&#39;, $(this).parents(&#39;.daily_best_posts&#39;).hasClass(&#39;float_block&#39;) ? &#39;float&#39; : &#39;common&#39;); }" class="post_name">Jammer: глушим GSM, 3G, 4G, WiMAX, Yota</a>
+      </div>
+      <div class="post_item">
+        
+				
+				
+				
+				
+				
+
+        <a href="http://habrahabr.ru/post/251417/" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;tm_block&#39;, &#39;daily_best_posts&#39;, $(this).parents(&#39;.daily_best_posts&#39;).hasClass(&#39;float_block&#39;) ? &#39;float&#39; : &#39;common&#39;); }" class="post_name">Сжатие изображений с потерями</a>
+      </div>
+      <div class="post_item">
+        
+				
+				
+				
+				
+				
+
+        <a href="http://habrahabr.ru/post/251467/" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;tm_block&#39;, &#39;daily_best_posts&#39;, $(this).parents(&#39;.daily_best_posts&#39;).hasClass(&#39;float_block&#39;) ? &#39;float&#39; : &#39;common&#39;); }" class="post_name">React v0.13 RC</a>
+      </div>
+      <div class="post_item">
+        
+				
+				
+				
+				
+				
+
+        <a href="http://habrahabr.ru/post/251403/" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;tm_block&#39;, &#39;daily_best_posts&#39;, $(this).parents(&#39;.daily_best_posts&#39;).hasClass(&#39;float_block&#39;) ? &#39;float&#39; : &#39;common&#39;); }" class="post_name">WEB Server на базе ENC28j60 + Arduino — проще не бывает</a>
+      </div>
+      <div class="post_item">
+        
+				
+				
+				
+				
+				
+
+        <a href="http://habrahabr.ru/post/251397/" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;tm_block&#39;, &#39;daily_best_posts&#39;, $(this).parents(&#39;.daily_best_posts&#39;).hasClass(&#39;float_block&#39;) ? &#39;float&#39; : &#39;common&#39;); }" class="post_name">Entity Framework: повышаем производительность при сохранении данных в БД</a>
+      </div>
+      <div class="post_item">
+        
+				
+				
+				
+				
+				
+
+        <a href="http://habrahabr.ru/post/251439/" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;tm_block&#39;, &#39;daily_best_posts&#39;, $(this).parents(&#39;.daily_best_posts&#39;).hasClass(&#39;float_block&#39;) ? &#39;float&#39; : &#39;common&#39;); }" class="post_name">Вывод температуры, пробок и курса валют на светодиодную матрицу Raspberry Pi</a>
+      </div>
+  </div>
+  <div class="all"><a href="http://habrahabr.ru/top/">все лучшие</a></div>
+</div>
+
+	    
+
+<div class="block geektimes_top">
+	<a href="http://geektimes.ru/" data-utm="?utm_source=tm_habrahabr&amp;utm_medium=tm_block&amp;utm_campaign=tm_promo" class="title">Лучшее на Geektimes</a>
+	<div class="posts_list">
+  		<div class="post_item">
+  			<a class="post_name" href="http://geektimes.ru/post/246380/" data-utm="?utm_source=tm_habrahabr&amp;utm_medium=tm_block&amp;utm_campaign=tm_promo">В Беларуси запретили Tor и анонимайзеры</a>
+  		</div>
+  		<div class="post_item">
+  			<a class="post_name" href="http://geektimes.ru/post/246334/" data-utm="?utm_source=tm_habrahabr&amp;utm_medium=tm_block&amp;utm_campaign=tm_promo">Тестирование аккумуляторов: первые выводы</a>
+  		</div>
+  		<div class="post_item">
+  			<a class="post_name" href="http://geektimes.ru/post/246406/" data-utm="?utm_source=tm_habrahabr&amp;utm_medium=tm_block&amp;utm_campaign=tm_promo">Энтропия? Это просто!</a>
+  		</div>
+  		<div class="post_item">
+  			<a class="post_name" href="http://geektimes.ru/post/246368/" data-utm="?utm_source=tm_habrahabr&amp;utm_medium=tm_block&amp;utm_campaign=tm_promo">Эдвард Сноуден объяснил, почему он не российский шпион</a>
+  		</div>
+  		<div class="post_item">
+  			<a class="post_name" href="http://geektimes.ru/post/246384/" data-utm="?utm_source=tm_habrahabr&amp;utm_medium=tm_block&amp;utm_campaign=tm_promo">Стоунхендж может построить один человек</a>
+  		</div>
+  		<div class="post_item">
+  			<a class="post_name" href="http://geektimes.ru/post/246396/" data-utm="?utm_source=tm_habrahabr&amp;utm_medium=tm_block&amp;utm_campaign=tm_promo">Шлем истребителя F-35 стоит $600 000</a>
+  		</div>
+  		<div class="post_item">
+  			<a class="post_name" href="http://geektimes.ru/post/246412/" data-utm="?utm_source=tm_habrahabr&amp;utm_medium=tm_block&amp;utm_campaign=tm_promo">Linux меняет версию на 4.0</a>
+  		</div>
+  		<div class="post_item">
+  			<a class="post_name" href="http://geektimes.ru/post/246382/" data-utm="?utm_source=tm_habrahabr&amp;utm_medium=tm_block&amp;utm_campaign=tm_promo">Рекурсивная фотография от NASA: остров в озере на острове в озере на острове</a>
+  		</div>
+  		<div class="post_item">
+  			<a class="post_name" href="http://geektimes.ru/post/246426/" data-utm="?utm_source=tm_habrahabr&amp;utm_medium=tm_block&amp;utm_campaign=tm_promo">Вышел Unreal Engine 4.7 с поддержкой HTML5 и WebGL</a>
+  		</div>
+  		<div class="post_item">
+  			<a class="post_name" href="http://geektimes.ru/post/246374/" data-utm="?utm_source=tm_habrahabr&amp;utm_medium=tm_block&amp;utm_campaign=tm_promo">Может ли приложение для смартфона диагностировать меланому?</a>
+  		</div>
+	</div>
+	<div class="all"><a href="http://geektimes.ru/" data-utm="?utm_source=tm_habrahabr&amp;utm_medium=tm_block&amp;utm_campaign=tm_promo">все публикации</a></div>
+</div>
+
+	  	
+
+<div class="block geektimes_top">
+    <a href="http://megamozg.ru/" data-utm="?utm_source=tm_habrahabr&amp;utm_medium=tm_block&amp;utm_campaign=tm_promo" class="title">Лучшее на Мегамозге</a>
+    <div class="posts_list">
+        <div class="post_item">
+            <a class="post_name" href="http://megamozg.ru/post/10802/" data-utm="?utm_source=tm_habrahabr&amp;utm_medium=tm_block&amp;utm_campaign=tm_promo">Пять заблуждений о продуктивности, которые мы себе внушаем</a>
+        </div>
+        <div class="post_item">
+            <a class="post_name" href="http://megamozg.ru/post/10834/" data-utm="?utm_source=tm_habrahabr&amp;utm_medium=tm_block&amp;utm_campaign=tm_promo">Karma Driven Development (KDD)</a>
+        </div>
+        <div class="post_item">
+            <a class="post_name" href="http://megamozg.ru/post/10820/" data-utm="?utm_source=tm_habrahabr&amp;utm_medium=tm_block&amp;utm_campaign=tm_promo">Объем продаж YotaPhone 2 аршином общим не измерить</a>
+        </div>
+        <div class="post_item">
+            <a class="post_name" href="http://megamozg.ru/post/10836/" data-utm="?utm_source=tm_habrahabr&amp;utm_medium=tm_block&amp;utm_campaign=tm_promo">7 интригующих прогнозов в электронной коммерции на 2015 год</a>
+        </div>
+        <div class="post_item">
+            <a class="post_name" href="http://megamozg.ru/post/10818/" data-utm="?utm_source=tm_habrahabr&amp;utm_medium=tm_block&amp;utm_campaign=tm_promo">Самые «умные» часы: краудфандинг, спрос, прогнозы, результаты</a>
+        </div>
+        <div class="post_item">
+            <a class="post_name" href="http://megamozg.ru/post/10828/" data-utm="?utm_source=tm_habrahabr&amp;utm_medium=tm_block&amp;utm_campaign=tm_promo">Google может заплатить 320 млн евро Италии за уход от налогов</a>
+        </div>
+        <div class="post_item">
+            <a class="post_name" href="http://megamozg.ru/post/10824/" data-utm="?utm_source=tm_habrahabr&amp;utm_medium=tm_block&amp;utm_campaign=tm_promo">Apple обязали выплатить $532,9 млн за нарушение патентов</a>
+        </div>
+        <div class="post_item">
+            <a class="post_name" href="http://megamozg.ru/post/10822/" data-utm="?utm_source=tm_habrahabr&amp;utm_medium=tm_block&amp;utm_campaign=tm_promo">Лаборатория Касперского запустила собственный акселератор</a>
+        </div>
+        <div class="post_item">
+            <a class="post_name" href="http://megamozg.ru/post/10838/" data-utm="?utm_source=tm_habrahabr&amp;utm_medium=tm_block&amp;utm_campaign=tm_promo">Приложение Getable для найма строительной техники получило пять миллионов долларов инвестиций</a>
+        </div>
+        <div class="post_item">
+            <a class="post_name" href="http://megamozg.ru/post/10852/" data-utm="?utm_source=tm_habrahabr&amp;utm_medium=tm_block&amp;utm_campaign=tm_promo">Инвестиционный фонд Runa Capital вкладывается в СУБД MariaDB</a>
+        </div>
+
+    </div>
+    <div class="all"><a href="http://megamozg.ru/" data-utm="?utm_source=tm_habrahabr&amp;utm_medium=tm_block&amp;utm_campaign=tm_promo">все публикации</a></div>
+</div>
+
+
+  	  
+
+  		
+  		
+
+	<div class="block live_broadcast">
+		<div class="title">Что обсуждают? </div>
+
+		<div class="live_broadcast_activity">
+				<div class="posts_list">
+							<div class="post_item">
+								<a href="http://habrahabr.ru/post/251415#comments" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;tm_block&#39;, &#39;live_broadcast_activity&#39;, &#39;post&#39;); }" class="post_name">Flask. Наполняем «флягу» функционалом</a>&nbsp;<span class="count">20</span>
+							</div>
+							<div class="post_item">
+								<a href="http://habrahabr.ru/post/251477#comments" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;tm_block&#39;, &#39;live_broadcast_activity&#39;, &#39;post&#39;); }" class="post_name">Честные приватные свойства в прототипе</a>&nbsp;<span class="count">8</span>
+							</div>
+							<div class="post_item">
+								<a href="http://habrahabr.ru/post/250937#comments" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;tm_block&#39;, &#39;live_broadcast_activity&#39;, &#39;post&#39;); }" class="post_name">На старт, внимание, DUMP! Екатеринбург, 20 марта</a>&nbsp;<span class="count">8</span>
+							</div>
+							<div class="post_item">
+								<a href="http://habrahabr.ru/post/216057#comments" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;tm_block&#39;, &#39;live_broadcast_activity&#39;, &#39;post&#39;); }" class="post_name">Из Oracle да в Postgres</a>&nbsp;<span class="count">23</span>
+							</div>
+							<div class="post_item">
+								<a href="http://habrahabr.ru/post/251403#comments" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;tm_block&#39;, &#39;live_broadcast_activity&#39;, &#39;post&#39;); }" class="post_name">WEB Server на базе ENC28j60 + Arduino — проще не бывает</a>&nbsp;<span class="count">37</span>
+							</div>
+							<div class="post_item">
+								<a href="http://habrahabr.ru/post/251491#comments" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;tm_block&#39;, &#39;live_broadcast_activity&#39;, &#39;post&#39;); }" class="post_name">MS Dynamics CRM и PostSharp</a>&nbsp;<span class="count">1</span>
+							</div>
+							<div class="post_item">
+								<a href="http://habrahabr.ru/post/251451#comments" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;tm_block&#39;, &#39;live_broadcast_activity&#39;, &#39;post&#39;); }" class="post_name">USB killer</a>&nbsp;<span class="count">210</span>
+							</div>
+							<div class="post_item">
+								<a href="http://habrahabr.ru/post/251259#comments" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;tm_block&#39;, &#39;live_broadcast_activity&#39;, &#39;post&#39;); }" class="post_name">Чтение старых статей Хабра с картинками</a>&nbsp;<span class="count">18</span>
+							</div>
+							<div class="post_item">
+								<a href="http://habrahabr.ru/post/251487#comments" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;tm_block&#39;, &#39;live_broadcast_activity&#39;, &#39;post&#39;); }" class="post_name">Слив данных 180 тысяч пользователей FL.ru</a>&nbsp;<span class="count">70</span>
+							</div>
+							<div class="post_item">
+								<a href="http://habrahabr.ru/post/251465#comments" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;tm_block&#39;, &#39;live_broadcast_activity&#39;, &#39;post&#39;); }" class="post_name">Интерфейсы в реальном мире (ещё примеры)</a>&nbsp;<span class="count">95</span>
+							</div>
+				</div>
+				<div class="all"><a href="http://habrahabr.ru/posts/" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;tm_block&#39;, &#39;live_broadcast_activity&#39;, &#39;all_posts&#39;); }">все публикации</a></div>
+		</div>
+
+	</div>
+  
+  		<!--  AdRiver code START. Type:AjaxJS Site: habrahabr PZ: 0 BN: 2 -->
+
+<div id="adriver_banner_480931290" class="adbanner" title="" style="width: 300px; height: 500px; text-align: center; margin: 0px auto;"><a href="http://ad.adriver.ru/cgi-bin/click.cgi?sid=176776&ad=506846&bid=3703373&bt=52&bn=2&pz=0&xpid=Cf0yVDMXu_dKMpIffkBUF6UfhO4Ky_CGq&ref=http:%2f%2fhabrahabr.ru%2fpost%2f244541%2f&custom=1%3Dimage_processing%3B2%3Dalgorithms%3B4%3D2&rleurl=" onclick="adriver(&#39;adriver_banner_480931290&#39;).sendPixel(&#39;&#39;);" target="_blank"><img src="./Детекторы углов   Хабрахабр_files/bn2-seopult-1(1).jpg" alt="AdRiver" border="0"></a></div>
+
+
+<script type="text/javascript">
+    function show_bn2_block(name, url){
+        if( typeof(name) !== 'undefined'){
+            $.get('/html/'+name+'/1424872488/', function(html){
+                $('#adriver_banner_480931290').html(html);
+                if( typeof(url) !== 'undefined'){
+                    $('.'+name+'_inner_banner .block_url').attr('href', url);
+                }
+            })
+        }
+    }
+
+    $(function(){
+
+        var check_scroll_position = function() {
+            var height = $(window).height();
+            var scrollTop = $(window).scrollTop();
+            var scrollBottom = $(window).scrollTop() + height;
+            var blockTop = $('#adriver_banner_480931290').position().top;
+            var show = scrollTop < blockTop && blockTop < scrollBottom;
+            if( show ){
+                $( window ).off('scroll', check_scroll_position);
+                $( window ).trigger('show_bn2');
+            }
+        };
+        $( window ).on('scroll', check_scroll_position);
+
+        $( window ).on('show_bn2', function(){
+            var keyword = '';
+            if (typeof crtg_content !== 'undefined' && crtg_content) { keyword = crtg_content; }
+            var custom = {4:ar_duo1};
+            custom[1] = 'image_processing';
+            custom[2] = 'algorithms';
+            new adriver("adriver_banner_480931290", {sid: 176776, bt: 52, bn: 2, custom: custom, keyword: keyword});
+        });
+    });
+    </script>
+<!--  AdRiver code END  -->
+
+  		
+<div class="block best_company">
+
+		<div class="title">Компания дня <img src="./Детекторы углов   Хабрахабр_files/bg_cicle_help.png" class="help-tip"></div>
+
+		<div class="company_info">
+			<div class="name">
+			 <img class="favicon" src="./Детекторы углов   Хабрахабр_files/bf83dff5f6c1e5df250600858252a54f_small.png" alt="Zfort Group" height="16" width="16">
+			 <div class="company_name"><a href="http://habrahabr.ru/company/zfort/" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;tm_block&#39;, &#39;best_company&#39;, &#39;title&#39;); }" class="title">Zfort Group</a></div>
+			</div>
+
+			<p>Последняя публикация:
+				<a href="http://habrahabr.ru/company/zfort/blog/251223/" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;tm_block&#39;, &#39;best_company&#39;, &#39;post&#39;); }">PHP-Дайджест № 57 – интересные новости, материалы и инструменты (9 – 22 февраля 2015)</a>
+			</p>
+
+			<div class="buttons">
+  			<div id="fans_count">4656 подписчиков</div>
+			</div>
+		</div>
+
+	</div>
+
+
+  		
+  		
+  		
+  </div>
+  <div class="clear"></div>
+
+  <script>
+    // hubs to GA
+      ga('send', 'event', 'Post_view', 'image_processing (Обработка изображений)',  window.location.pathname + window.location.search);
+      ga('send', 'event', 'Post_view', 'algorithms (Алгоритмы)',  window.location.pathname + window.location.search);
+  </script>
+
+
+
+
+        	
+	<div class="rotated_posts">
+			<div class="rotated_post ">
+				<a href="http://habrahabr.ru/post/240119/" class="grey" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;tm_block&#39;, &#39;posts_rotation_block&#39;); }">Как я разработал устройство для качания детской кроватки</a>
+			</div>
+			<div class="rotated_post ">
+				<a href="http://habrahabr.ru/post/239013/" class="grey" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;tm_block&#39;, &#39;posts_rotation_block&#39;); }">Caesar III: game loop</a>
+			</div>
+			<div class="rotated_post last">
+				<a href="http://habrahabr.ru/post/246339/" class="grey" onclick="if (typeof ga === &#39;function&#39;) { ga(&#39;send&#39;, &#39;event&#39;, &#39;tm_block&#39;, &#39;posts_rotation_block&#39;); }">Несколько интересных особенностей MySQL</a>
+			</div>
+		<div class="clear"></div>
+	</div>
+
+        <div class="bottom_promo_blocks">
+    <div class="left">
+            
+	<div class="block new_vacanies">
+  <a href="http://brainstorage.me/jobs" data-utm="?utm_source=tm_habrahabr&amp;utm_medium=tm_block&amp;utm_campaign=tm_promo" class="title">Brainstorage</a>
+  <div class="vacancies">
+		<div class="job_item marked">
+			<a href="http://brainstorage.me/jobs/25345" data-utm="?utm_source=tm_habrahabr&amp;utm_medium=tm_block&amp;utm_campaign=tm_promo">Frontend developer</a>
+		</div>
+		<div class="job_item ">
+			<a href="http://brainstorage.me/jobs/19743" data-utm="?utm_source=tm_habrahabr&amp;utm_medium=tm_block&amp;utm_campaign=tm_promo">PHP-программист (back-end) </a>
+		</div>
+		<div class="job_item ">
+			<a href="http://brainstorage.me/jobs/27173" data-utm="?utm_source=tm_habrahabr&amp;utm_medium=tm_block&amp;utm_campaign=tm_promo">Требуется ведущий программист asp</a>
+		</div>
+		<div class="job_item ">
+			<a href="http://brainstorage.me/jobs/27263" data-utm="?utm_source=tm_habrahabr&amp;utm_medium=tm_block&amp;utm_campaign=tm_promo">JavaScript Разработчик</a>
+		</div>
+		<div class="job_item ">
+			<a href="http://brainstorage.me/jobs/27141" data-utm="?utm_source=tm_habrahabr&amp;utm_medium=tm_block&amp;utm_campaign=tm_promo">Веб-программист</a>
+		</div>
+		<div class="job_item ">
+			<a href="http://brainstorage.me/jobs/12883" data-utm="?utm_source=tm_habrahabr&amp;utm_medium=tm_block&amp;utm_campaign=tm_promo">Программист PHP</a>
+		</div>
+		<div class="job_item ">
+			<a href="http://brainstorage.me/jobs/27257" data-utm="?utm_source=tm_habrahabr&amp;utm_medium=tm_block&amp;utm_campaign=tm_promo">Frontend</a>
+		</div>
+		<div class="job_item ">
+			<a href="http://brainstorage.me/jobs/27219" data-utm="?utm_source=tm_habrahabr&amp;utm_medium=tm_block&amp;utm_campaign=tm_promo">Технический руководитель разработки (тимлид)</a>
+		</div>
+		<div class="job_item ">
+			<a href="http://brainstorage.me/jobs/27251" data-utm="?utm_source=tm_habrahabr&amp;utm_medium=tm_block&amp;utm_campaign=tm_promo">Веб-разработчик (ASP.NET/JS)</a>
+		</div>
+		<div class="job_item ">
+			<a href="http://brainstorage.me/jobs/27253" data-utm="?utm_source=tm_habrahabr&amp;utm_medium=tm_block&amp;utm_campaign=tm_promo">Python Back-end Developer (Twisted/Tornado)</a>
+		</div>
+  </div>
+  <div class="all"><a href="http://brainstorage.me/jobs" data-utm="?utm_source=tm_habrahabr&amp;utm_medium=tm_block&amp;utm_campaign=tm_promo">все вакансии</a></div>
+</div>
+
+    </div>
+    <div class="right">
+        
+	<div class="block freelansim">
+	  <a href="http://freelansim.ru/" data-utm="?utm_source=habrahabr&amp;utm_medium=referral&amp;utm_campaign=mainpage&amp;utm_content=block_freelansim" class="title"></a>
+	  <div class="tasks">
+				<div class="task ">
+					<a href="http://freelansim.ru/tasks/101919" data-utm="?utm_source=habrahabr&amp;utm_medium=referral&amp;utm_campaign=mainpage&amp;utm_content=block_freelansim">Разработать конфигуратор комплектации автомобиля (frontend + backend)</a>
+				</div>
+				<div class="task ">
+					<a href="http://freelansim.ru/tasks/101895" data-utm="?utm_source=habrahabr&amp;utm_medium=referral&amp;utm_campaign=mainpage&amp;utm_content=block_freelansim">Доработка электронной wifi платы </a>
+				</div>
+				<div class="task ">
+					<a href="http://freelansim.ru/tasks/101891" data-utm="?utm_source=habrahabr&amp;utm_medium=referral&amp;utm_campaign=mainpage&amp;utm_content=block_freelansim">Сайт - биржа предметов Steam</a>
+				</div>
+				<div class="task ">
+					<a href="http://freelansim.ru/tasks/101887" data-utm="?utm_source=habrahabr&amp;utm_medium=referral&amp;utm_campaign=mainpage&amp;utm_content=block_freelansim">Верстальщик (можно по совместительству дизайнер) bootstrap</a>
+				</div>
+				<div class="task ">
+					<a href="http://freelansim.ru/tasks/101885" data-utm="?utm_source=habrahabr&amp;utm_medium=referral&amp;utm_campaign=mainpage&amp;utm_content=block_freelansim">Верстка сайта на Bitrix</a>
+				</div>
+				<div class="task ">
+					<a href="http://freelansim.ru/tasks/101853" data-utm="?utm_source=habrahabr&amp;utm_medium=referral&amp;utm_campaign=mainpage&amp;utm_content=block_freelansim">Дизайн портфолио для программиста</a>
+				</div>
+				<div class="task ">
+					<a href="http://freelansim.ru/tasks/101869" data-utm="?utm_source=habrahabr&amp;utm_medium=referral&amp;utm_campaign=mainpage&amp;utm_content=block_freelansim">Дизайн баннеров и других элементов для сайта</a>
+				</div>
+				<div class="task ">
+					<a href="http://freelansim.ru/tasks/101861" data-utm="?utm_source=habrahabr&amp;utm_medium=referral&amp;utm_campaign=mainpage&amp;utm_content=block_freelansim">Сверстать дизайн-макет стоматологического портала</a>
+				</div>
+				<div class="task ">
+					<a href="http://freelansim.ru/tasks/101845" data-utm="?utm_source=habrahabr&amp;utm_medium=referral&amp;utm_campaign=mainpage&amp;utm_content=block_freelansim">Создание сайта</a>
+				</div>
+				<div class="task ">
+					<a href="http://freelansim.ru/tasks/101535" data-utm="?utm_source=habrahabr&amp;utm_medium=referral&amp;utm_campaign=mainpage&amp;utm_content=block_freelansim">Составить отчет по изменениям проведенным в конфигурации ЗиК 7.7</a>
+				</div>
+
+	  </div>
+	  <div class="all"><a href="http://freelansim.ru/tasks" data-utm="?utm_source=habrahabr&amp;utm_medium=referral&amp;utm_campaign=mainpage&amp;utm_content=block_freelansim">все заказы</a></div>
+	</div>
+
+    </div>
+    <div class="clear"></div>
+</div>
+
+
+
+        <div class="clear"></div>
+
+        <div class="footer_panel">
+          <div id="footer">
+	<dl>
+		<dd><a href="https://habrahabr.ru/auth/login/">Войти</a></dd>
+		<dd><a href="https://habrahabr.ru/auth/register/">Регистрация</a></dd>
+	</dl>
+	<dl>
+		<dt>Разделы</dt>
+		<dd><a href="http://habrahabr.ru/posts/top/">Публикации</a></dd>
+		<dd><a href="http://habrahabr.ru/hubs/">Хабы</a></dd>
+		<dd><a href="http://habrahabr.ru/companies/">Компании</a></dd>
+		<dd><a href="http://habrahabr.ru/users/">Пользователи</a></dd>
+		<dd><a href="http://toster.ru/?_aa=press_anykey">Q&amp;A</a></dd>
+		<dd><a href="http://habrahabr.ru/sandbox/">Песочница</a></dd>
+		
+	</dl>	
+	<dl>
+		<dt>Инфо</dt>
+		<dd><a href="http://habrahabr.ru/info/about/">О сайте</a></dd>
+		<dd><a href="http://habrahabr.ru/info/help/rules/">Правила</a></dd>
+		<dd><a href="http://habrahabr.ru/info/help/">Помощь</a></dd>
+		<dd><a href="http://habrahabr.ru/info/agreement/">Соглашение</a></dd>
+	</dl>
+	<dl>
+		<dt>Услуги</dt>
+		<dd><a href="http://special.habrahabr.ru/advertising/">Реклама</a></dd>
+        <dd><a href="http://special.habrahabr.ru/">Спецпроекты</a></dd>
+        <dd><a href="http://special.habrahabr.ru/corporate/">Тарифы</a></dd>
+        <dd><a href="http://special.habrahabr.ru/content/">Контент</a></dd>
+        <dd><a href="http://special.habrahabr.ru/workshops/">Семинары</a></dd>
+	</dl>
+	<dl>
+		<dt>Разное</dt>
+		<dd><a href="http://habrahabr.ru/apps/">Приложения</a></dd>
+		<dd><a href="http://habrahabr.ru/special/testdrive/">Тест-драйвы</a></dd>
+		<dd><a href="http://special.habrahabr.ru/hello_startup/bizspark/">Помощь стартапам</a></dd>
+	</dl>
+	<div class="copyright">
+
+		<div class="about">
+			<a href="http://tmtm.ru/">© TM</a>
+			
+			<br><br>
+			<a href="http://habrahabr.ru/feedback/">Служба поддержки</a><br><br>
+                <a href="http://m.habrahabr.ru/post/244541/?mobile=yes">Мобильная версия</a><br><br>
+			
+
+			<div class="social_accounts">
+				<a href="https://twitter.com/habrahabr" class="tw"></a>
+				<a href="https://www.facebook.com/habrahabr.ru" class="fb"></a>
+				<a href="http://vk.com/habr" class="vk"></a>
+				<!-- <a href="" class="gp"></a> //-->
+			</div>
+
+		</div>
+	</div>
+
+</div>
+
+        </div>
+      </div>
+    </div>
+
+
+      <script type="text/javascript" src="./Детекторы углов   Хабрахабр_files/jquery.cookie.js"></script>
+      <script type="text/javascript">
+        $(document).ready( function(){
+          window.tmidLogin = function(){ return false; };
+          if( $.cookie('tmid_no_check') == undefined ) {
+            var expire = new Date();
+            expire.setMinutes(expire.getMinutes() + 10 );
+            $.cookie('tmid_no_check', 1, { expires: expire } );
+            $.getScript("https://id.tmtm.ru/checklogin/", function(){
+              if( window.tmidLogin() ) {
+
+                  var href = $('#login').attr('href');
+
+                  if( href !== undefined ) {
+                      window.location.href = href;
+                  }
+              }
+            });
+          }
+        });
+      </script>
+
+    <script type="text/javascript">
+  // global vars
+  var g_base_url = 'habrahabr.ru';
+  var g_show_xpanel = false;
+  var g_base_fullurl = 'http://habrahabr.ru/';
+  var g_is_guest = false;
+</script> 
+
+      <script type="text/javascript" src="./Детекторы углов   Хабрахабр_files/shortcuts.js"></script>
+
+    <script type="text/javascript" src="./Детекторы углов   Хабрахабр_files/global_footer_main.js"></script>
+
+    	<script type="text/javascript" src="./Детекторы углов   Хабрахабр_files/saved_resource"></script>
+
+    
+
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+(function (d, w, c) {
+    (w[c] = w[c] || []).push(function() {
+        try {
+            w.yaCounter24049213 = new Ya.Metrika({id:24049213,
+                    webvisor:true,
+                    clickmap:true,
+                    trackLinks:true,
+                    accurateTrackBounce:true});
+        } catch(e) { }
+    });
+
+    var n = d.getElementsByTagName("script")[0],
+        s = d.createElement("script"),
+        f = function () { n.parentNode.insertBefore(s, n); };
+    s.type = "text/javascript";
+    s.async = true;
+    s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js";
+
+    if (w.opera == "[object Opera]") {
+        d.addEventListener("DOMContentLoaded", f, false);
+    } else { f(); }
+})(document, window, "yandex_metrika_callbacks");
+</script>
+<noscript>&lt;div&gt;&lt;img src="//mc.yandex.ru/watch/24049213" style="position:absolute; left:-9999px;" alt="" /&gt;&lt;/div&gt;</noscript>
+<!-- /Yandex.Metrika counter -->
+
+
+
+<!-- adriver counter //-->
+<span style="position:absolute;left:-9999px;">
+  <img src="./Детекторы углов   Хабрахабр_files/rle.cgi" width="1" height="1" alt="">
+</span>
+<!-- adriver counter end //-->
+
+
+    
+
+    <!-- Хабр не резиновый! -->
+  
+
+<div id="tiptip_holder" style="max-width:auto;"><div id="tiptip_arrow"><div id="tiptip_arrow_inner"></div></div><div id="tiptip_content"></div></div><div id="AutocompleteContainter_8ed7a" style="position: absolute; z-index: 9999; top: 0px; left: 0px;"><div class="autocomplete-w1"><div class="autocomplete" id="Autocomplete_8ed7a" style="display: none; width: 300px; max-height: 400px;"></div></div></div><div id="AutocompleteContainter_54782" style="position: absolute; z-index: 9999; top: 2px; left: 0px;"><div class="autocomplete-w1"><div class="autocomplete" id="Autocomplete_54782" style="display: none; width: 300px; max-height: 400px;"></div></div></div><iframe src="./Детекторы углов   Хабрахабр_files/3(2).html" style="width: 10px; height: 10px; position: absolute; top: -10000px; left: -10000px;"></iframe><iframe src="./Детекторы углов   Хабрахабр_files/3.html" style="width: 10px; height: 10px; position: absolute; top: -10000px; left: -10000px;"></iframe><iframe src="./Детекторы углов   Хабрахабр_files/3(1).html" style="width: 10px; height: 10px; position: absolute; top: -10000px; left: -10000px;"></iframe></body></html>
